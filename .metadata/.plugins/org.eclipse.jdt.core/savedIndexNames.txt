@@ -9,7 +9,6 @@ INDEX VERSION 1.127+C:\Users\dell\Desktop\CS4_PROJECT\game-project\.metadata\.pl
 4161597615.index
 2260984242.index
 2987450006.index
-2577175673.index
 263604094.index
 419097373.index
 71249131.index
