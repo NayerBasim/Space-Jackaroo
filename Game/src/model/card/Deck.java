@@ -1,0 +1,127 @@
+package model.card;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
+import model.card.standard.*;
+import model.card.wild.*;
+import engine.GameManager;
+import engine.board.BoardManager;
+
+public class Deck {
+	private final static String CARDS_FILE = "Cards.csv";
+	private static ArrayList<Card> cardsPool;
+	
+	public Deck(){
+		cardsPool = new ArrayList<Card>();
+		
+	}
+	public static void handleString(String s , BoardManager boardManager, GameManager gameManager){
+		String[] arr = s.split(",");
+		int code  = Integer.parseInt(arr[0]);
+		int frequency = Integer.parseInt(arr[1]);
+		String name = arr[2];
+		String description = arr[3];
+		if(arr.length > 4){
+			int rank = Integer.parseInt(arr[4]);
+			Suit suit =  Suit.valueOf(arr[5]);
+			switch(code){
+			case 0:
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Standard(name, description, rank, suit, boardManager, gameManager));
+				}
+				break;
+			case 1 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Ace(name, description, suit, boardManager, gameManager));
+				}
+				break;
+			case 4 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Four(name, description, suit, boardManager, gameManager));
+				}
+				break;
+			case 5 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Five(name, description, suit, boardManager, gameManager));
+				}
+				break;
+			case 7 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Seven(name, description, suit, boardManager, gameManager));
+				}
+				break;
+			case 10 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Ten(name, description, suit, boardManager, gameManager));
+				}
+				break;
+			case 11 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Jack(name, description, suit, boardManager, gameManager));
+				}
+				break;
+			case 12 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Queen(name, description, suit, boardManager, gameManager));
+				}
+				break;
+			case 13 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new King(name, description, suit, boardManager, gameManager));
+				}
+				break;
+			default:
+				System.out.println("Not a valid id number");
+				
+			}
+		}else{
+			switch(code){
+			case 14 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Saver(name, description, boardManager, gameManager));
+				}
+				break;
+			case 15 :
+				for(int i = 0 ; i < frequency; i++){
+					cardsPool.add(0,new Burner(name, description, boardManager, gameManager));
+				}
+				break;
+			default:
+				System.out.println("Not a valid id number");
+				
+			}
+				
+		}
+			
+	}
+	public static void loadCardPool(BoardManager boardManager, GameManager gameManager) throws IOException{
+		try {
+		      File myObj = new File(CARDS_FILE);
+		      Scanner myReader = new Scanner(myObj);
+		      while (myReader.hasNextLine()) {
+		        String data = myReader.nextLine();
+		        handleString(data, boardManager , gameManager);
+		      }
+		      myReader.close();
+		    } catch (FileNotFoundException e) {
+		      System.out.println("An error occurred on opening the csv file");
+		      e.printStackTrace();
+		    }
+	}
+	public static ArrayList<Card> drawCards(){
+		Collections.shuffle(cardsPool);
+		ArrayList<Card> out = new ArrayList<Card>();
+		for(int i = 0 ; i < 4 ; i++){
+			out.add(cardsPool.remove(0));
+		}
+		return out;
+		
+		
+	}
+	
+}
