@@ -57,12 +57,6 @@ public class Board implements BoardManager {
 		
 		
 	}
-	public ArrayList<SafeZone> getSafeZones(){
-		return this.safeZones;
-	}
-	public ArrayList<Cell> getTrack(){
-		return this.track;
-	}
 
 	
 	public int getSplitDistance(){

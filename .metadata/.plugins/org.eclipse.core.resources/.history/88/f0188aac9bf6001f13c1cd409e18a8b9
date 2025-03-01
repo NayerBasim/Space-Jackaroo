@@ -11,7 +11,6 @@ import java.util.ArrayList; // to use arrayList
 public class Game implements GameManager {
 	final Board board ; // read only ,  An Object representing the game board
 	final ArrayList<Player> players ; // read only , representing the players participating in the game.
-	final private  ArrayList<Card> firePit; //read only, An arraylist representing the cards that have been played
 	private int currentPlayerIndex ; // An integer representing which of the players should play next
 	private int turn ; // An integer representing the current game turn.
 	
@@ -48,23 +47,10 @@ public class Game implements GameManager {
 		
 		this.players = new ArrayList<>();
 		//this adds a player with the name in the constructor and the first colour in the colourOrder arraylist
-		Player player_1 =new Player(playerName,colourOrder.get(0));
-		CPU cpu_1 =new CPU("CPU 1",colourOrder.get(1),(BoardManager)this.board);
-		CPU cpu_2 =new CPU("CPU 2",colourOrder.get(2),(BoardManager)this.board);
-		CPU cpu_3 =new CPU("CPU 3",colourOrder.get(3),(BoardManager)this.board);
+		this.players.add(new Player(playerName,colourOrder.get(0)));
 		
-		players.add(player_1);
-		players.add(cpu_1);
-		players.add(cpu_2);
-		players.add(cpu_3);
-		// set a hand for each player---------------
-		for(int i=0; i<4;i++){
-			players.get(i).setHand( Deck.drawCards());
-		}
-		//-------------------------------------------
-		this.currentPlayerIndex=0;
-		this.turn=0;
-		this.firePit = new ArrayList<>();
+		
+		
 	}
 	public Board getBoard(){
 		return this.board;
