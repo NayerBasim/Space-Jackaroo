@@ -16,7 +16,7 @@ public class Game implements GameManager {
 	private int turn ; // An integer representing the current game turn.
 	
 	public Game(String playerName) throws IOException{
-		
+		// (to be done) thats the last thing 
 		//filling the "ArrayList<Colour> colourOrder" at random-----
 		ArrayList<Colour> colourOrder = new ArrayList<>();
 		ArrayList<Integer> coloursUsed = new ArrayList<>();
@@ -42,16 +42,16 @@ public class Game implements GameManager {
 			}
 		}
 		//----------------------------------------------------------
-		this.board = new Board(colourOrder,this); // (check the typeCase)
+		this.board = new Board(colourOrder,(GameManager) this); // (check the typeCase)
 		
-		Deck.loadCardPool(this.board,this); //(check the typeCase)
+		Deck.loadCardPool((BoardManager)this.board, (GameManager) this); //(check the typeCase)
 		
 		this.players = new ArrayList<>();
 		//this adds a player with the name in the constructor and the first colour in the colourOrder arraylist
 		Player player_1 =new Player(playerName,colourOrder.get(0));
-		CPU cpu_1 =new CPU("CPU 1",colourOrder.get(1),this.board);
-		CPU cpu_2 =new CPU("CPU 2",colourOrder.get(2),this.board);
-		CPU cpu_3 =new CPU("CPU 3",colourOrder.get(3),this.board);
+		CPU cpu_1 =new CPU("CPU 1",colourOrder.get(1),(BoardManager)this.board);
+		CPU cpu_2 =new CPU("CPU 2",colourOrder.get(2),(BoardManager)this.board);
+		CPU cpu_3 =new CPU("CPU 3",colourOrder.get(3),(BoardManager)this.board);
 		
 		players.add(player_1);
 		players.add(cpu_1);
