@@ -11,7 +11,7 @@ public class Game implements GameManager {
 	private int turn ; // An integer representing the current game turn.
 	
 	public Game(String playerName) throws IOException{
-		// (to be done) thats the last thing 
+		// (to be done) bec. did not understand
 		
 		
 	}

@@ -20,7 +20,7 @@ public class Cell {
 	public void setCellType(CellType cellType){
 		this.cellType = cellType;
 	}
-	public boolean isTrap(){
+	public boolean getTrap(){
 		return trap;
 	}
 	public void setTrap(boolean trap){

@@ -36,8 +36,7 @@ public class Board implements BoardManager {
 		}
 		//---------------------------
 		for(int i =0; i<colourOrder.size();i++){
-			Colour Colour_turn = colourOrder.get(i);
-			this.track.add(SafeZone(Colour_turn));
+			this.track.add(SafeZone(colourOrder.get(i)));
 		}
 		
 		
