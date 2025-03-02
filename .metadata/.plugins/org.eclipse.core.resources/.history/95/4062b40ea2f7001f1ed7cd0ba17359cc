@@ -41,9 +41,7 @@ public class Game implements GameManager {
 						break;
 				}
 				i++;
-				coloursUsed.add(randomNum);
 			}
-			
 		}
 		//----------------------------------------------------------
 		this.board = new Board(colourOrder,this); // (check the typeCase)
@@ -76,16 +74,16 @@ public class Game implements GameManager {
 	public ArrayList<Player> getPlayers(){
 		return this.players;
 	}
-//	public int getCurrentPlayerIndex(){
-//		return currentPlayerIndex;
-//	}
-//	public void setCurrentPlayerIndex(int currentPlayerIndex){
-//		this.currentPlayerIndex = currentPlayerIndex;
-//	}
-//	public int getTurn(){
-//		return this.turn;
-//	}
-//	public void setTurn(int turn){
-//		this.turn =turn;
-//	}
+	public int getCurrentPlayerIndex(){
+		return currentPlayerIndex;
+	}
+	public void setCurrentPlayerIndex(int currentPlayerIndex){
+		this.currentPlayerIndex = currentPlayerIndex;
+	}
+	public int getTurn(){
+		return this.turn;
+	}
+	public void setTurn(int turn){
+		this.turn =turn;
+	}
 }

@@ -41,9 +41,7 @@ public class Game implements GameManager {
 						break;
 				}
 				i++;
-				coloursUsed.add(randomNum);
 			}
-			
 		}
 		//----------------------------------------------------------
 		this.board = new Board(colourOrder,this); // (check the typeCase)

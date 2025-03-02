@@ -6,7 +6,7 @@ import model.card.Card;
 
 public class Standard extends Card {
 	private int rank;
-	final private Suit suit;
+	private Suit suit;
 	
 	public int getRank() {
 		return rank;
