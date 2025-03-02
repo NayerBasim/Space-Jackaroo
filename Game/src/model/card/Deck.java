@@ -9,8 +9,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
+
 
 import model.card.standard.*;
 import model.card.wild.*;
@@ -138,13 +137,13 @@ public class Deck {
 			case 14 :
 				for(int i = 0 ; i < frequency; i++){
 					if(cardsPool != null)
-					cardsPool.add(0,new Saver(name, description, boardManager, gameManager));
+					cardsPool.add(0,new Burner(name, description, boardManager, gameManager));
 				}
 				break;
 			case 15 :
 				for(int i = 0 ; i < frequency; i++){
 					if(cardsPool != null)
-					cardsPool.add(0,new Burner(name, description, boardManager, gameManager));
+					cardsPool.add(0,new Saver(name, description, boardManager, gameManager));
 				}
 				break;
 			default:
@@ -156,7 +155,7 @@ public class Deck {
 			
 	}
 
-	public static void loadCardPool(BoardManager boardManager, GameManager gameManager) throws IOException, CsvException{
+	public static void loadCardPool(BoardManager boardManager, GameManager gameManager) throws IOException{
 
 		try {
 		      File myObj = new File(CARDS_FILE);
