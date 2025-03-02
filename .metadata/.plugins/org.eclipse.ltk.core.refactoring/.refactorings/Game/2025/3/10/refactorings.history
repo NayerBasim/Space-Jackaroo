@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Move element &apos;Suit.java&apos; to &apos;Game/src/model.card.standard&apos;&#x0D;&#x0A;- Original project: &apos;Game&apos;&#x0D;&#x0A;- Destination element: &apos;Game/src/model.card.standard&apos;&#x0D;&#x0A;- Original element: &apos;model.card.Suit.java&apos;&#x0D;&#x0A;- Update references to refactored element" description="Move compilation unit" destination="/src&lt;model.card.standard" element1="/src&lt;model.card{Suit.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.move" patterns="*" policy="org.eclipse.jdt.ui.moveResources" qualified="false" references="true" stamp="1740937431687" units="1" version="1.0"/>
+</session>

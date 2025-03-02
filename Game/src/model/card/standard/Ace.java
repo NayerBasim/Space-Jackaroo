@@ -2,7 +2,6 @@ package model.card.standard;
 
 import engine.GameManager;
 import engine.board.BoardManager;
-import model.card.Suit;
 
 public class Ace extends Standard{
 	

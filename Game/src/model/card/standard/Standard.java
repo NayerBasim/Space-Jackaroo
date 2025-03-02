@@ -3,7 +3,6 @@ package model.card.standard;
 import engine.GameManager;
 import engine.board.BoardManager;
 import model.card.Card;
-import model.card.Suit;
 
 public class Standard extends Card {
 	private int rank;

@@ -8,6 +8,8 @@ import java.util.Random;
 import java.io.*; // to throw IOException if the constructor runs into an error
 import java.util.ArrayList; // to use arrayList
 
+import com.opencsv.exceptions.CsvException;
+
 public class Game implements GameManager {
 	final Board board ; // read only ,  An Object representing the game board
 	final ArrayList<Player> players ; // read only , representing the players participating in the game.
@@ -15,7 +17,7 @@ public class Game implements GameManager {
 	private int currentPlayerIndex ; // An integer representing which of the players should play next
 	private int turn ; // An integer representing the current game turn.
 	
-	public Game(String playerName) throws IOException{
+	public Game(String playerName) throws IOException, CsvException{
 		
 		//filling the "ArrayList<Colour> colourOrder" at random-----
 		ArrayList<Colour> colourOrder = new ArrayList<>();
