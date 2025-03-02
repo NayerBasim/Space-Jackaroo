@@ -14,7 +14,6 @@ public class Game implements GameManager {
 	final private Board board ; // read only ,  An Object representing the game board
 	final ArrayList<Player> players ; // read only , representing the players participating in the game.
 	final private  ArrayList<Card> firePit; //read only, An arraylist representing the cards that have been played
-	
 	private int currentPlayerIndex ; // An integer representing which of the players should play next
 	private int turn ; // An integer representing the current game turn.
 	
@@ -76,9 +75,6 @@ public class Game implements GameManager {
 	}
 	public ArrayList<Player> getPlayers(){
 		return this.players;
-	}
-	public ArrayList<Card> getFirePit() {
-		return firePit;
 	}
 //	public int getCurrentPlayerIndex(){
 //		return currentPlayerIndex;

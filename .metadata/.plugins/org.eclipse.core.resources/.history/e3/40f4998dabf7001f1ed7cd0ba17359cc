@@ -18,7 +18,7 @@ import engine.GameManager;
 import engine.board.BoardManager;
 
 public class Deck {
-	private final static String CARDS_FILE = "Cards.csv";
+	private final static String CARDS_FILE = "Cards1.csv";
 	private static ArrayList<Card> cardsPool;
 	
 	public Deck(){
@@ -38,7 +38,7 @@ public class Deck {
 		int frequency = Integer.parseInt(arr[1]);
 		String name = arr[2];
 		String description = arr[3];
-		if(arr[4].length() > 0 && arr[5].length() > 0){
+		if(arr.length == 6 && arr[4].length() > 0 && isValidEnum(arr[5])){
 
 
 			int rank = Integer.parseInt(arr[4]);
@@ -106,7 +106,7 @@ public class Deck {
 				System.out.println("Not a valid id number in cards" + code);
 				
 			}
-		}else if(arr[4].length() == 0 && arr[5].length() == 0){
+		}else if(arr.length == 6 && arr[4].length() == 0 && arr[5].length() == 0){
 
 			switch(code){
 			
@@ -127,6 +127,9 @@ public class Deck {
 				
 			}
 				
+		}else{
+			System.out.println(arr[0] + " " + arr[1] + " "  +arr[2] + " " +arr[3] + " " +arr[4]+ " "  +arr[5]);
+			System.out.println(arr[4].length() == 1 );
 		}
 			
 	}
