@@ -26,7 +26,7 @@ public class Deck {
 		
 	}
 	public static String[] split_correctly(String s){
-		String[] out = new String[6];
+		String[] out = new String[5];
 		String temp = "";
 		int element = 0;
 		for(int i = 0 ; i < s.length(); i++){
@@ -36,7 +36,6 @@ public class Deck {
 				}	
 				else{
 					out[element++] = temp;
-					temp = "";
 				}
 			}else{
 				if(s.charAt(i) != '.' ){
@@ -44,11 +43,9 @@ public class Deck {
 				}	
 				else{
 					out[element++] = temp;
-					temp = "";
 					i += 1;
 				}
 			}
-			out[5] = temp;
 			
 				
 				

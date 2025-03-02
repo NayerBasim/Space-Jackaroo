@@ -48,7 +48,6 @@ public class Deck {
 					i += 1;
 				}
 			}
-			out[5] = temp;
 			
 				
 				

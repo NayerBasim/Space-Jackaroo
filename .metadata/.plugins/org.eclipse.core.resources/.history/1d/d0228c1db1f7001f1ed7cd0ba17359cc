@@ -26,7 +26,7 @@ public class Deck {
 		
 	}
 	public static String[] split_correctly(String s){
-		String[] out = new String[6];
+		String[] out = new String[5];
 		String temp = "";
 		int element = 0;
 		for(int i = 0 ; i < s.length(); i++){
@@ -36,7 +36,6 @@ public class Deck {
 				}	
 				else{
 					out[element++] = temp;
-					temp = "";
 				}
 			}else{
 				if(s.charAt(i) != '.' ){
@@ -44,11 +43,9 @@ public class Deck {
 				}	
 				else{
 					out[element++] = temp;
-					temp = "";
 					i += 1;
 				}
 			}
-			out[5] = temp;
 			
 				
 				
@@ -58,7 +55,6 @@ public class Deck {
 	}
 	public static void handleString(String s, BoardManager boardManager, GameManager gameManager){
 		String[] arr = split_correctly(s);
-		System.out.println(arr[0] + " " +arr[1] + " "+ arr[2] + " "+ arr[3] + " " +arr[4] + " "+ arr[5] );
 		int code  = Integer.parseInt(arr[0]);
 		int frequency = Integer.parseInt(arr[1]);
 		String name = arr[2];

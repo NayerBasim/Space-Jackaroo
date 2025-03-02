@@ -25,40 +25,15 @@ public class Deck {
 		cardsPool = new ArrayList<Card>();
 		
 	}
-	public static String[] split_correctly(String s){
-		String[] out = new String[6];
-		String temp = "";
-		int element = 0;
-		for(int i = 0 ; i < s.length(); i++){
-			if(element != 3){
-				if(s.charAt(i) != ',' ){
-					temp += s.charAt(i);
-				}	
-				else{
-					out[element++] = temp;
-					temp = "";
-				}
-			}else{
-				if(s.charAt(i) != '.' ){
-					temp += s.charAt(i);
-				}	
-				else{
-					out[element++] = temp;
-					temp = "";
-					i += 1;
-				}
-			}
-			out[5] = temp;
-			
-				
-				
-		}
-		return out;
-		
+	public static boolean isValidEnum(String value) {
+	    for (Suit s : Suit.values()) {
+	        if (s.name().equals(value)) {
+	            return true;
+	        }
+	    }
+	    return false;
 	}
-	public static void handleString(String s, BoardManager boardManager, GameManager gameManager){
-		String[] arr = split_correctly(s);
-		System.out.println(arr[0] + " " +arr[1] + " "+ arr[2] + " "+ arr[3] + " " +arr[4] + " "+ arr[5] );
+	public static void handleString(String[]  arr, BoardManager boardManager, GameManager gameManager){
 		int code  = Integer.parseInt(arr[0]);
 		int frequency = Integer.parseInt(arr[1]);
 		String name = arr[2];
@@ -158,18 +133,16 @@ public class Deck {
 
 	public static void loadCardPool(BoardManager boardManager, GameManager gameManager) throws IOException, CsvException{
 
-		try {
-		      File myObj = new File(CARDS_FILE);
-		      Scanner myReader = new Scanner(myObj);
-		      while (myReader.hasNextLine()) {
-		        String data = myReader.nextLine();
-		        handleString(data, boardManager , gameManager);
-		      }
-		      myReader.close();
-		    } catch (FileNotFoundException e) {
-		      System.out.println("An error occurred on opening the csv file");
-		      e.printStackTrace();
-		    }
+        try (CSVReader reader = new CSVReader(new FileReader(CARDS_FILE))) {
+            List<String[]> rows = reader.readAll();
+            for (String[] row : rows) {
+            	handleString(row, boardManager, gameManager);
+
+            }
+        }
+         catch (IOException e) {
+            e.printStackTrace();
+        }
 	}
 	public static ArrayList<Card> drawCards(){
 		if(cardsPool != null){
