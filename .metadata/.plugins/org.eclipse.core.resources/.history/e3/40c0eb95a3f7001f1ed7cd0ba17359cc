@@ -1,0 +1,15 @@
+package exception;
+
+abstract public class GameException extends Exception { /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+// there is a warning about serialization check it later
+	public GameException(){
+		super();
+	}
+	public GameException(String message){
+		super(message); // to be checked 
+	}
+	
+}

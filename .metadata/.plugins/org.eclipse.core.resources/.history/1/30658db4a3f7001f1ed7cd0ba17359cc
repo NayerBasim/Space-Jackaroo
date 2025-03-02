@@ -11,7 +11,7 @@ import java.util.ArrayList; // to use arrayList
 import com.opencsv.exceptions.CsvException;
 
 public class Game implements GameManager {
-	final private Board board ; // read only ,  An Object representing the game board
+	final Board board ; // read only ,  An Object representing the game board
 	final ArrayList<Player> players ; // read only , representing the players participating in the game.
 	final private  ArrayList<Card> firePit; //read only, An arraylist representing the cards that have been played
 	private int currentPlayerIndex ; // An integer representing which of the players should play next
