@@ -157,7 +157,7 @@ public class Deck {
 			return out;
 			
 		}
-		return new ArrayList<Card>();
+		
 		
 	}
 	

@@ -148,16 +148,13 @@ public class Deck {
         }
 	}
 	public static ArrayList<Card> drawCards(){
-		if(cardsPool != null){
-			Collections.shuffle(cardsPool);
-			ArrayList<Card> out = new ArrayList<Card>();
-			for(int i = 0 ; i < 4 ; i++){
-				out.add(cardsPool.remove(0));
-			}
-			return out;
-			
+		Collections.shuffle(cardsPool);
+		ArrayList<Card> out = new ArrayList<Card>();
+		for(int i = 0 ; i < 4 ; i++){
+			out.add(cardsPool.remove(0));
 		}
-		return new ArrayList<Card>();
+		return out;
+		
 		
 	}
 	

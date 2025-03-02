@@ -148,7 +148,7 @@ public class Deck {
         }
 	}
 	public static ArrayList<Card> drawCards(){
-		if(cardsPool != null){
+		if(cardsPool){
 			Collections.shuffle(cardsPool);
 			ArrayList<Card> out = new ArrayList<Card>();
 			for(int i = 0 ; i < 4 ; i++){
@@ -157,7 +157,7 @@ public class Deck {
 			return out;
 			
 		}
-		return new ArrayList<Card>();
+		
 		
 	}
 	

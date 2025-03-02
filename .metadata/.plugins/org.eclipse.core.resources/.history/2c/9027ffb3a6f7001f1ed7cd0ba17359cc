@@ -112,13 +112,11 @@ public class Deck {
 			
 			case 14 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
 					cardsPool.add(0,new Saver(name, description, boardManager, gameManager));
 				}
 				break;
 			case 15 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
 					cardsPool.add(0,new Burner(name, description, boardManager, gameManager));
 				}
 				break;
@@ -148,16 +146,13 @@ public class Deck {
         }
 	}
 	public static ArrayList<Card> drawCards(){
-		if(cardsPool != null){
-			Collections.shuffle(cardsPool);
-			ArrayList<Card> out = new ArrayList<Card>();
-			for(int i = 0 ; i < 4 ; i++){
-				out.add(cardsPool.remove(0));
-			}
-			return out;
-			
+		Collections.shuffle(cardsPool);
+		ArrayList<Card> out = new ArrayList<Card>();
+		for(int i = 0 ; i < 4 ; i++){
+			out.add(cardsPool.remove(0));
 		}
-		return new ArrayList<Card>();
+		return out;
+		
 		
 	}
 	
