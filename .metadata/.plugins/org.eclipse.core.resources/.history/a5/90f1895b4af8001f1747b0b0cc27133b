@@ -20,7 +20,44 @@ public class Deck {
 	private final static String CARDS_FILE = "Cards.csv";
 	private static ArrayList<Card> cardsPool ; 
 											
+<<<<<<< HEAD
+	public Deck(){ // changed you will find it down (loadCardPool)
+		//cardsPool = new ArrayList<Card>(); 
+		
+	}
 
+=======
+
+	public static String[] split_correctly(String s){
+		String[] out = new String[6];
+		String temp = "";
+		int element = 0;
+		for(int i = 0 ; i < s.length(); i++){
+			if(element != 3){
+				if(s.charAt(i) != ',' ){
+					temp += s.charAt(i);
+				}	
+				else{
+					out[element++] = temp;
+					temp = "";
+				}
+			}else{
+				if(s.charAt(i) != '.' ){
+					temp += s.charAt(i);
+				}	
+				else{
+					out[element++] = temp;
+					temp = "";
+					i += 1;
+				}
+			}
+			out[5] = temp;
+			
+				
+				
+		}
+		return out;
+>>>>>>> 16682036229de01b5b96fcfca72cd77f87807670
 		
 	
 	public static void handleString(String s, BoardManager boardManager, GameManager gameManager){
