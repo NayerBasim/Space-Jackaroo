@@ -20,7 +20,10 @@ public class Deck {
 	private final static String CARDS_FILE = "Cards.csv";
 	private static ArrayList<Card> cardsPool ; 
 											
-
+	public Deck(){ // changed you will find it down (loadCardPool)
+		//cardsPool = new ArrayList<Card>(); // 
+		
+	}
 	public static String[] split_correctly(String s){
 		String[] out = new String[6];
 		String temp = "";
@@ -155,7 +158,7 @@ public class Deck {
 	public static void loadCardPool(BoardManager boardManager, GameManager gameManager) throws IOException{
 
 		try {
-			  cardsPool = new ArrayList<Card>(); 
+			  cardsPool = new ArrayList<Card>(); // new changes
 		      File myObj = new File(CARDS_FILE);
 		      Scanner myReader = new Scanner(myObj);
 		      while (myReader.hasNextLine()) {

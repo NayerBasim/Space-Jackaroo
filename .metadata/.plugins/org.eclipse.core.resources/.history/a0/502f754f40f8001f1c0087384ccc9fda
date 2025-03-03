@@ -11,6 +11,7 @@ import java.util.Scanner;
 
 
 
+
 import model.card.standard.*;
 import model.card.wild.*;
 import engine.GameManager;
@@ -20,7 +21,10 @@ public class Deck {
 	private final static String CARDS_FILE = "Cards.csv";
 	private static ArrayList<Card> cardsPool ; 
 											
-
+	public Deck(){ // changed you will find it down (loadCardPool)
+		//cardsPool = new ArrayList<Card>(); 
+		
+	}
 	public static String[] split_correctly(String s){
 		String[] out = new String[6];
 		String temp = "";
@@ -53,7 +57,7 @@ public class Deck {
 		
 	}
 	public static void handleString(String s, BoardManager boardManager, GameManager gameManager){
-		String[] arr = split_correctly(s);
+		String[] arr = s.split(",");
 		System.out.println(arr[0] + " " +arr[1] + " "+ arr[2] + " "+ arr[3] + " " +arr[4] + " "+ arr[5] );
 		int code  = Integer.parseInt(arr[0]);
 		int frequency = Integer.parseInt(arr[1]);
@@ -152,10 +156,14 @@ public class Deck {
 			
 	}
 
+	private static String[] s.split(String s, String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	public static void loadCardPool(BoardManager boardManager, GameManager gameManager) throws IOException{
 
 		try {
-			  cardsPool = new ArrayList<Card>(); 
+			  cardsPool = new ArrayList<Card>(); // new changes
 		      File myObj = new File(CARDS_FILE);
 		      Scanner myReader = new Scanner(myObj);
 		      while (myReader.hasNextLine()) {
