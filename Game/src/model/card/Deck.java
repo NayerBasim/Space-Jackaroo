@@ -24,126 +24,98 @@ public class Deck {
 		//cardsPool = new ArrayList<Card>(); 
 		
 	}
-	public static String[] split_correctly(String s){
-		String[] out = new String[6];
-		String temp = "";
-		int element = 0;
-		for(int i = 0 ; i < s.length(); i++){
-			if(element != 3){
-				if(s.charAt(i) != ',' ){
-					temp += s.charAt(i);
-				}	
-				else{
-					out[element++] = temp;
-					temp = "";
-				}
-			}else{
-				if(s.charAt(i) != '.' ){
-					temp += s.charAt(i);
-				}	
-				else{
-					out[element++] = temp;
-					temp = "";
-					i += 1;
-				}
-			}
-			out[5] = temp;
-			
-				
-				
-		}
-		return out;
+
 		
-	}
+	
 	public static void handleString(String s, BoardManager boardManager, GameManager gameManager){
-		String[] arr = split_correctly(s);
-		System.out.println(arr[0] + " " +arr[1] + " "+ arr[2] + " "+ arr[3] + " " +arr[4] + " "+ arr[5] );
+		String[] arr = s.split(",");
+		if((arr[0].equals("14") || arr[0].equals("15")) && arr.length == 6){
+			arr[3] = arr[3] + "," + arr[4] + "," + arr[5];
+			arr[4] = "";
+			arr[5] = "";
+		}
+		//System.out.println(arr[0] + "// " +arr[1] + "// "+ arr[2] + "// "+ arr[3] + " //" +arr[4] + "// "+ arr[5] );
 		int code  = Integer.parseInt(arr[0]);
 		int frequency = Integer.parseInt(arr[1]);
 		String name = arr[2];
 		String description = arr[3];
-		if(arr[4].length() > 0 && arr[5].length() > 0){
-
+		if( arr.length > 4 && arr[4].length() > 0 && arr[5].length() > 0){
 
 			int rank = Integer.parseInt(arr[4]);
-
-			
 			Suit suit =  Suit.valueOf(arr[5]);
 			
 			switch(code){
 			case 0:
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new Standard(name, description, rank, suit, boardManager, gameManager));
+
+					cardsPool.add(new Standard(name, description, rank, suit, boardManager, gameManager));
 				}
 				break;
 			case 1 :
 				for(int i = 0 ; i < frequency; i++){
-					Card ace = new Ace(name, description, suit, boardManager, gameManager);
-					if(cardsPool != null)
-						cardsPool.add(0, ace);
+						cardsPool.add(new Ace(name, description, suit, boardManager, gameManager));
 				}
 				break;
 			case 4 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new Four(name, description, suit, boardManager, gameManager));
+
+					cardsPool.add(new Four(name, description, suit, boardManager, gameManager));
 				}
 				break;
 			case 5 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new Five(name, description, suit, boardManager, gameManager));
+
+					cardsPool.add(new Five(name, description, suit, boardManager, gameManager));
 				}
 				break;
 			case 7 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new Seven(name, description, suit, boardManager, gameManager));
+
+					cardsPool.add(new Seven(name, description, suit, boardManager, gameManager));
 				}
 				break;
 			case 10 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new Ten(name, description, suit, boardManager, gameManager));
+
+					cardsPool.add(new Ten(name, description, suit, boardManager, gameManager));
 				}
 				break;
 			case 11 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new Jack(name, description, suit, boardManager, gameManager));
+
+					cardsPool.add(new Jack(name, description, suit, boardManager, gameManager));
 				}
 				break;
 			case 12 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new Queen(name, description, suit, boardManager, gameManager));
+
+					cardsPool.add(new Queen(name, description, suit, boardManager, gameManager));
 				}
 				break;
 			case 13 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new King(name, description, suit, boardManager, gameManager));
+
+					cardsPool.add(new King(name, description, suit, boardManager, gameManager));
 				}
 				break;
 			default:
 				System.out.println("Not a valid id number in cards" + code);
 				
 			}
-		}else if(arr[4].length() == 0 && arr[5].length() == 0){
+		}else{
 
 			switch(code){
 			
 			case 14 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new Burner(name, description, boardManager, gameManager));
+
+					cardsPool.add(new Burner(name, description, boardManager, gameManager));
 				}
 				break;
 			case 15 :
 				for(int i = 0 ; i < frequency; i++){
-					if(cardsPool != null)
-					cardsPool.add(0,new Saver(name, description, boardManager, gameManager));
+
+					cardsPool.add(new Saver(name, description, boardManager, gameManager));
 				}
 				break;
 			default:
