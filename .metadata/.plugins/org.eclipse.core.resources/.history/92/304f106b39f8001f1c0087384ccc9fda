@@ -2,10 +2,10 @@ package exception;
 
 public class SplitOutOfRangeException extends InvalidSelectionException {
 
-	public SplitOutOfRangeException(){
+	SplitOutOfRangeException(){
 		super();
 	}
-	public SplitOutOfRangeException(String message){
+	SplitOutOfRangeException(String message){
 		super(message);
 	}
 	
