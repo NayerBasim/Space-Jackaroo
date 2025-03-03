@@ -70,6 +70,7 @@ public class Board implements BoardManager {
 		this.splitDistance=splitDistance;
 	}
 	
+	//
 
 	
 	
