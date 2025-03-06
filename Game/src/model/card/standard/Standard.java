@@ -5,7 +5,7 @@ import engine.board.BoardManager;
 import model.card.Card;
 
 public class Standard extends Card {
-	private int rank;
+	final private int rank;
 	final private Suit suit;
 	
 	public int getRank() {
