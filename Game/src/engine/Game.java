@@ -1,94 +1,60 @@
 package engine;
-import engine.board.*;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+import engine.board.Board;
 import model.Colour;
+import model.card.Card;
+import model.card.Deck;
 import model.player.*;
-import model.card.*;
 
-import java.util.Random;
-import java.io.*; // to throw IOException if the constructor runs into an error
-import java.util.ArrayList; // to use arrayList
-
-
+@SuppressWarnings("unused")
 public class Game implements GameManager {
-	final private Board board ; // read only ,  An Object representing the game board
-	final ArrayList<Player> players ; // read only , representing the players participating in the game.
-	final private  ArrayList<Card> firePit; //read only, An arraylist representing the cards that have been played
-	
-	private int currentPlayerIndex ; // An integer representing which of the players should play next
-	private int turn ; // An integer representing the current game turn.
-	
-	public Game(String playerName) throws IOException{
-		
-		//filling the "ArrayList<Colour> colourOrder" at random-----
-		ArrayList<Colour> colourOrder = new ArrayList<>();
-		ArrayList<Integer> coloursUsed = new ArrayList<>();
-		for(int i =0; i<4;){
-			int randomNum = (int) (Math.random() * 4); // 0 to 3
-			if(!(coloursUsed.contains(randomNum))){
-				
-				switch(randomNum){
-					case 0:
-						colourOrder.add(Colour.RED);
-						break;
-					case 1:
-						colourOrder.add(Colour.GREEN);
-						break;
-					case 2:
-						colourOrder.add(Colour.BLUE);
-						break;
-					case 3: 
-						colourOrder.add(Colour.YELLOW);
-						break;
-				}
-				i++;
-				coloursUsed.add(randomNum);
-			}
-			
-		}
-		//----------------------------------------------------------
-		this.board = new Board(colourOrder,this); // (check the typeCase)
-		
-		Deck.loadCardPool(this.board,this); //(check the typeCase)
-		
-		this.players = new ArrayList<>();
-		//this adds a player with the name in the constructor and the first colour in the colourOrder arraylist
-		Player player_1 =new Player(playerName,colourOrder.get(0));
-		CPU cpu_1 =new CPU("CPU 1",colourOrder.get(1),this.board);
-		CPU cpu_2 =new CPU("CPU 2",colourOrder.get(2),this.board);
-		CPU cpu_3 =new CPU("CPU 3",colourOrder.get(3),this.board);
-		
-		players.add(player_1);
-		players.add(cpu_1);
-		players.add(cpu_2);
-		players.add(cpu_3);
-		// set a hand for each player---------------
-		for(int i=0; i<4;i++){
-			players.get(i).setHand( Deck.drawCards());
-		}
-		//-------------------------------------------
-		this.currentPlayerIndex=0;
-		this.turn=0;
-		this.firePit = new ArrayList<>();
-	}
-	public Board getBoard(){
-		return this.board;
-	}
-	public ArrayList<Player> getPlayers(){
-		return this.players;
-	}
-	public ArrayList<Card> getFirePit() {
-		return firePit;
-	}
-//	public int getCurrentPlayerIndex(){
-//		return currentPlayerIndex;
-//	}
-//	public void setCurrentPlayerIndex(int currentPlayerIndex){
-//		this.currentPlayerIndex = currentPlayerIndex;
-//	}
-//	public int getTurn(){
-//		return this.turn;
-//	}
-//	public void setTurn(int turn){
-//		this.turn =turn;
-//	}
+    private final Board board;
+    private final ArrayList<Player> players;
+	private int currentPlayerIndex;
+    private final ArrayList<Card> firePit;
+    private int turn;
+
+    public Game(String playerName) throws IOException {
+        turn = 0;
+        currentPlayerIndex = 0;
+        firePit = new ArrayList<>();
+
+        ArrayList<Colour> colourOrder = new ArrayList<>();
+        
+        colourOrder.addAll(Arrays.asList(Colour.values()));
+        
+        Collections.shuffle(colourOrder);
+        
+        this.board = new Board(colourOrder, this);
+        
+        Deck.loadCardPool(this.board, (GameManager)this);
+        
+        this.players = new ArrayList<>();
+        this.players.add(new Player(playerName, colourOrder.get(0)));
+        
+        for (int i = 1; i < 4; i++) 
+            this.players.add(new CPU("CPU " + i, colourOrder.get(i), this.board));
+        
+        for (int i = 0; i < 4; i++) 
+            this.players.get(i).setHand(Deck.drawCards());
+        
+    }
+    
+    public Board getBoard() {
+        return board;
+    }
+
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public ArrayList<Card> getFirePit() {
+        return firePit;
+    }
+    
 }

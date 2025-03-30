@@ -1,157 +1,87 @@
 package model.card;
 
-import java.util.List;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
-
-
-import model.card.standard.*;
-import model.card.wild.*;
 import engine.GameManager;
 import engine.board.BoardManager;
+import model.card.standard.Ace;
+import model.card.standard.Five;
+import model.card.standard.Four;
+import model.card.standard.Jack;
+import model.card.standard.King;
+import model.card.standard.Queen;
+import model.card.standard.Seven;
+import model.card.standard.Standard;
+import model.card.standard.Suit;
+import model.card.standard.Ten;
+import model.card.wild.Burner;
+import model.card.wild.Saver;
 
 public class Deck {
-	private final static String CARDS_FILE = "Cards.csv";
-	private static ArrayList<Card> cardsPool ; 
-											
+    private static final String CARDS_FILE = "Cards.csv";
+    static private ArrayList<Card> cardsPool;
 
-		
-	
-	public static void handleString(String s, BoardManager boardManager, GameManager gameManager){
-		String[] arr = s.split(",");
-		if((arr[0].equals("14") || arr[0].equals("15")) && arr.length == 6){
-			arr[3] = arr[3] + "," + arr[4] + "," + arr[5];
-			arr[4] = "";
-			arr[5] = "";
-		}
-		//System.out.println(arr[0] + "// " +arr[1] + "// "+ arr[2] + "// "+ arr[3] + " //" +arr[4] + "// "+ arr[5] );
-		int code  = Integer.parseInt(arr[0]);
-		int frequency = Integer.parseInt(arr[1]);
-		String name = arr[2];
-		String description = arr[3];
-		if( arr.length > 4 && arr[4].length() > 0 && arr[5].length() > 0){
+    @SuppressWarnings("resource")
+	public static void loadCardPool(BoardManager boardManager, GameManager gameManager) throws IOException {
+        cardsPool = new ArrayList<>();
 
-			int rank = Integer.parseInt(arr[4]);
-			Suit suit =  Suit.valueOf(arr[5]);
+		BufferedReader br = new BufferedReader(new FileReader(CARDS_FILE));
+
+		while (br.ready()) {
+			String nextLine = br.readLine();
+			String[] data = nextLine.split(",");
 			
-			switch(code){
-			case 0:
-				for(int i = 0 ; i < frequency; i++){
+			if (data.length == 0) 
+				throw new IOException(nextLine);
 
-					cardsPool.add(new Standard(name, description, rank, suit, boardManager, gameManager));
-				}
-				break;
-			case 1 :
-				for(int i = 0 ; i < frequency; i++){
-						cardsPool.add(new Ace(name, description, suit, boardManager, gameManager));
-				}
-				break;
-			case 4 :
-				for(int i = 0 ; i < frequency; i++){
-
-					cardsPool.add(new Four(name, description, suit, boardManager, gameManager));
-				}
-				break;
-			case 5 :
-				for(int i = 0 ; i < frequency; i++){
-
-					cardsPool.add(new Five(name, description, suit, boardManager, gameManager));
-				}
-				break;
-			case 7 :
-				for(int i = 0 ; i < frequency; i++){
-
-					cardsPool.add(new Seven(name, description, suit, boardManager, gameManager));
-				}
-				break;
-			case 10 :
-				for(int i = 0 ; i < frequency; i++){
-
-					cardsPool.add(new Ten(name, description, suit, boardManager, gameManager));
-				}
-				break;
-			case 11 :
-				for(int i = 0 ; i < frequency; i++){
-
-					cardsPool.add(new Jack(name, description, suit, boardManager, gameManager));
-				}
-				break;
-			case 12 :
-				for(int i = 0 ; i < frequency; i++){
-
-					cardsPool.add(new Queen(name, description, suit, boardManager, gameManager));
-				}
-				break;
-			case 13 :
-				for(int i = 0 ; i < frequency; i++){
-
-					cardsPool.add(new King(name, description, suit, boardManager, gameManager));
-				}
-				break;
-			default:
-				System.out.println("Not a valid id number in cards" + code);
+            String name = data[2];
+            String description = data[3];
+			
+			int code = Integer.parseInt(data[0]);
+			int frequency = Integer.parseInt(data[1]);
+			
+			for (int i = 0; i < frequency; i++) {
+				Card card;
 				
-			}
-		}else{
-
-			switch(code){
+				if(code > 13) 
+					switch(code) {
+						case 14: card = new Burner(name, description, boardManager, gameManager); break;
+						case 15: card = new Saver(name, description, boardManager, gameManager); break;
+						default: throw new IOException(nextLine);
+					}
 			
-			case 14 :
-				for(int i = 0 ; i < frequency; i++){
-
-					cardsPool.add(new Burner(name, description, boardManager, gameManager));
+				else {
+	                int rank = Integer.parseInt(data[4]);
+	                Suit cardSuit = Suit.valueOf(data[5]);
+					switch(code) {
+						case 0: card = new Standard(name, description, rank, cardSuit, boardManager, gameManager); break;
+						case 1: card = new Ace(name, description, cardSuit, boardManager, gameManager); break;
+						case 4: card = new Four(name, description, cardSuit, boardManager, gameManager); break;
+						case 5: card = new Five(name, description, cardSuit, boardManager, gameManager); break;
+						case 7: card = new Seven(name, description, cardSuit, boardManager, gameManager); break;
+						case 10: card = new Ten(name, description, cardSuit, boardManager, gameManager); break;
+						case 11: card = new Jack(name, description, cardSuit, boardManager, gameManager); break;
+						case 12: card = new Queen(name, description, cardSuit, boardManager, gameManager); break;
+						case 13: card = new King(name, description, cardSuit, boardManager, gameManager); break;
+						default: throw new IOException(nextLine);
+					}
 				}
-				break;
-			case 15 :
-				for(int i = 0 ; i < frequency; i++){
-
-					cardsPool.add(new Saver(name, description, boardManager, gameManager));
-				}
-				break;
-			default:
-				System.out.println("Not a valid id number in wild " + code);
 				
-			}
-				
-		}
-			
-	}
+				cardsPool.add(card);
+			}	
+        }
+    }
 
-	public static void loadCardPool(BoardManager boardManager, GameManager gameManager) throws IOException{
+    public static ArrayList<Card> drawCards() {
+        Collections.shuffle(cardsPool);
+        ArrayList<Card> cards = new ArrayList<>(cardsPool.subList(0, 4));
+        cardsPool.subList(0, 4).clear();
+        return cards;
+    }
 
-		try {
-			  cardsPool = new ArrayList<Card>(); 
-		      File myObj = new File(CARDS_FILE);
-		      Scanner myReader = new Scanner(myObj);
-		      while (myReader.hasNextLine()) {
-		        String data = myReader.nextLine();
-		        handleString(data, boardManager , gameManager);
-		      }
-		      myReader.close();
-		    } catch (FileNotFoundException e) {
-		      System.out.println("An error occurred on opening the csv file");
-		      e.printStackTrace();
-		    }
-	}
-	public static ArrayList<Card> drawCards(){
-		if(cardsPool != null){
-			Collections.shuffle(cardsPool);
-			ArrayList<Card> out = new ArrayList<Card>();
-			for(int i = 0 ; i < 4 ; i++){
-				out.add(cardsPool.remove(0));
-			}
-			return out;
-			
-		}
-		return new ArrayList<Card>();
-		
-	}
-	
-	
 }
+

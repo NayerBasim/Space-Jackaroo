@@ -1,25 +1,26 @@
 package engine.board;
+
 import java.util.ArrayList;
+
 import model.Colour;
 
-
 public class SafeZone {
+    private final Colour colour;
+    private final ArrayList<Cell> cells;
 
-	final private Colour colour; // read only
-	final private ArrayList<Cell> cells; // read only
-	
-	public SafeZone(Colour colour){
-		this.colour = colour;
-		this.cells = new ArrayList<>();
-		for(int i =0;i<4;i++){
-			cells.add(new Cell(CellType.SAFE)); 
-		}
-		
-	}
-	public Colour getColour(){
-		return colour;
-	}
-	public ArrayList<Cell> getCells(){
-		return cells;
-	}
+    public SafeZone(Colour colour) {
+        this.colour = colour;
+        this.cells = new ArrayList<>();
+        for (int i = 0; i < 4; i++) 
+            this.cells.add(new Cell(CellType.SAFE));
+    }
+
+    public Colour getColour() {
+        return this.colour;
+    }
+
+    public ArrayList<Cell> getCells() {
+        return this.cells;
+    }
+
 }
