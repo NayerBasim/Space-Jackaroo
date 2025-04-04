@@ -7,4 +7,7 @@
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="engine.board.CellType"/>
 <fullyQualifiedTypeName name="model.Colour"/>
+<fullyQualifiedTypeName name="exception.InvalidCardException"/>
+<fullyQualifiedTypeName name="exception.InvalidMarbleException"/>
+<fullyQualifiedTypeName name="exception.SplitOutOfRangeException"/>
 </qualifiedTypeNameHistroy>

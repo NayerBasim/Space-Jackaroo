@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import engine.board.Board;
-import exception.GameException;
 import exception.InvalidCardException; // new import
 import exception.InvalidMarbleException;
 import exception.SplitOutOfRangeException;
@@ -76,27 +75,8 @@ public class Game implements GameManager {
     	// to be checked
     }
     public void editSplitDistance(int splitDistance) throws SplitOutOfRangeException{
-    	if(splitDistance>=1 || splitDistance<=6){
-    		board.setSplitDistance(splitDistance);
-    	}
-    	else{
-    		throw new SplitOutOfRangeException("the splitDistance is not in the range from 1-6");
-    	}
-    }
-    public  boolean canPlayTurn(){
-    	// to be done
-    }
-    public void playPlayerTurn() throws GameException{
-    	players.get(currentPlayerIndex).play();
-    }
-    public void endPlayerTurn(){
-    	Card selectedCard = players.get(currentPlayerIndex).getSelectedCard();
-    	firePit.add(selectedCard);
-    	players.get(currentPlayerIndex).deselectAll();
     	
     }
-    
-    
     
     
 }
