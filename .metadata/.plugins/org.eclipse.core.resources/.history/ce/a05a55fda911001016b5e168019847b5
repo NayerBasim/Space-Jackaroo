@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.Collections;
 
 import engine.board.Board;
-import engine.board.SafeZone;
 import exception.GameException;
 import exception.InvalidCardException; // new import
 import exception.InvalidMarbleException;
@@ -94,36 +93,6 @@ public class Game implements GameManager {
     	Card selectedCard = players.get(currentPlayerIndex).getSelectedCard();
     	firePit.add(selectedCard);
     	players.get(currentPlayerIndex).deselectAll();
-    	players.get(currentPlayerIndex).getHand().remove(selectedCard);
-    	currentPlayerIndex++;
-    	if(currentPlayerIndex >=4){
-    		turn++;
-    		currentPlayerIndex=0;
-    	}
-    	if(turn>=4){
-    		turn=0;
-    		for(int i =0 ;i<4;i++)
-    			players.get(i).setHand(Deck.drawCards());
-    	}
-    		
-  
-    	// to be done
-    	
-    	
-    }
-    
-    public Colour checkWin(){
-    	boolean win = false;
-    	ArrayList<SafeZone> safeZones = board.getSafeZones();
-    	for(int i=0;i<4;i++){
-    		win = safeZones.get(i).isFull();
-    		if(win)
-    			return safeZones.get(i).getColour();
-    	}
-    	return null;	
-    }
-    
-    public void sendHome(Marble marble){
     	
     }
     
