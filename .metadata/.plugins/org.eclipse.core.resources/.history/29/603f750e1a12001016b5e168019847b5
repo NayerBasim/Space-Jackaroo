@@ -159,20 +159,10 @@ public class Game implements GameManager {
     
     public void discardCard() throws CannotDiscardException{
     	Random rand = new Random();
-    	int index ;
     	do
-    		index = rand.nextInt(4);
-    	while(index == currentPlayerIndex);
-    	players.get(index).removeRandomCard();
+    		int index = rand.nextInt(4);
+    	
     }
-    public Colour getActivePlayerColour(){
-    	return players.get(currentPlayerIndex).getColour();
-    }
-    public Colour getNextPlayerColour(){
-    	return players.get(currentPlayerIndex+1).getColour();
-    }
-    
-    
     
     
     

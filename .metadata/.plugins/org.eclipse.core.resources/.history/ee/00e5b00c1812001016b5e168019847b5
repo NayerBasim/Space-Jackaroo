@@ -4,13 +4,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Random;
+
 import engine.board.Board;
 import engine.board.SafeZone;
-import exception.CannotDiscardException;
-import exception.CannotFieldException;
 import exception.GameException;
-import exception.IllegalDestroyException;
 import exception.InvalidCardException; // new import
 import exception.InvalidMarbleException;
 import exception.SplitOutOfRangeException;
@@ -84,7 +81,7 @@ public class Game implements GameManager {
     		board.setSplitDistance(splitDistance);
     	}
     	else{
-    		throw new SplitOutOfRangeException();
+    		throw new SplitOutOfRangeException("the splitDistance is not in the range from 1-6");
     	}
     }
     public  boolean canPlayTurn(){
@@ -127,53 +124,8 @@ public class Game implements GameManager {
     }
     
     public void sendHome(Marble marble){
-    	try{
-    		board.destroyMarble(marble);
-    	}
-    	catch(IllegalDestroyException){
-    		// to be done (what to do if it throws an exception)
-    	}
+    	
     }
-    public void fieldMarble() throws CannotFieldException, IllegalDestroyException{
-    	Marble marble = players.get(currentPlayerIndex).getOneMarble();
-    	if(marble == null){
-    		throw new CannotFieldException();
-    	}
-    	else{
-    		try{
-    			board.sendToBase(marble);
-    			players.get(currentPlayerIndex).getMarbles().remove(marble);
-    		}
-    		catch(CannotFieldException){
-    			// what to do if it can't field?
-    		}
-    	}
-    }
-    public void discardCard(Colour colour) throws CannotDiscardException{
-    	for(int i =0;i<4;i++){
-    		if(colour == players.get(i).getColour()){
-    			players.get(i).removeRandomCard();
-    		}
-    	}
-    }
-    
-    public void discardCard() throws CannotDiscardException{
-    	Random rand = new Random();
-    	int index ;
-    	do
-    		index = rand.nextInt(4);
-    	while(index == currentPlayerIndex);
-    	players.get(index).removeRandomCard();
-    }
-    public Colour getActivePlayerColour(){
-    	return players.get(currentPlayerIndex).getColour();
-    }
-    public Colour getNextPlayerColour(){
-    	return players.get(currentPlayerIndex+1).getColour();
-    }
-    
-    
-    
     
     
     
