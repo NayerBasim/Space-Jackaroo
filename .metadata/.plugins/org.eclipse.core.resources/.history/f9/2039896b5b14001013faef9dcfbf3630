@@ -68,13 +68,16 @@ public class Game implements GameManager {
     
     public void selectCard(Card card) throws InvalidCardException{
     	players.get(currentPlayerIndex).selectCard(card);
+    	// to be checked
     }
     
     public void selectMarble(Marble marble) throws InvalidMarbleException{
     	players.get(currentPlayerIndex).selectMarble(marble);
+    	// to be checked
     }
     public void deselectAll(){
     	players.get(currentPlayerIndex).deselectAll();
+    	// to be checked
     }
     public void editSplitDistance(int splitDistance) throws SplitOutOfRangeException{
     	if(splitDistance>=1 || splitDistance<=6){
@@ -85,14 +88,7 @@ public class Game implements GameManager {
     	}
     }
     public  boolean canPlayTurn(){
-    	
-    	int handSize = players.get(currentPlayerIndex).getHand().size();
-    	if (handSize + turn ==4){
-    		return true;
-    	}
-    	else{
-    		return false;
-    	}
+    	// to be done
     }
     public void playPlayerTurn() throws GameException{
     	players.get(currentPlayerIndex).play();
@@ -109,14 +105,14 @@ public class Game implements GameManager {
     	}
     	if(turn>=4){
     		turn=0;
-    		for(int i =0 ;i<4;i++){
-    			if(Deck.getPoolSize()<4){
-    				Deck.refillPool(firePit);
-    				firePit.clear();
-    			}
+    		for(int i =0 ;i<4;i++)
     			players.get(i).setHand(Deck.drawCards());
-    		}	
-    	}	
+    	}
+    		
+  
+    	// to be done
+    	
+    	
     }
     
     public Colour checkWin(){
@@ -131,13 +127,12 @@ public class Game implements GameManager {
     }
     
     public void sendHome(Marble marble){
-    	Colour marbelColour = marble.getColour();
-    	for(int i = 0 ; i<4 ; i++){
-    		if(players.get(i).getColour() == marbelColour){
-    			players.get(i).regainMarble(marble);
-    		}
+    	try{
+    		board.destroyMarble(marble);
     	}
-    	
+    	catch(IllegalDestroyException){
+    		// to be done (what to do if it throws an exception)
+    	}
     }
     public void fieldMarble() throws CannotFieldException, IllegalDestroyException{
     	Marble marble = players.get(currentPlayerIndex).getOneMarble();
@@ -145,8 +140,13 @@ public class Game implements GameManager {
     		throw new CannotFieldException();
     	}
     	else{
-    		board.sendToBase(marble);
-    		players.get(currentPlayerIndex).getMarbles().remove(marble);
+    		try{
+    			board.sendToBase(marble);
+    			players.get(currentPlayerIndex).getMarbles().remove(marble);
+    		}
+    		catch(CannotFieldException){
+    			// what to do if it can't field?
+    		}
     	}
     }
     public void discardCard(Colour colour) throws CannotDiscardException{

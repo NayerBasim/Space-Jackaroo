@@ -131,13 +131,7 @@ public class Game implements GameManager {
     }
     
     public void sendHome(Marble marble){
-    	Colour marbelColour = marble.getColour();
-    	for(int i = 0 ; i<4 ; i++){
-    		if(players.get(i).getColour() == marbelColour){
-    			players.get(i).regainMarble(marble);
-    		}
-    	}
-    	
+    	//to be done
     }
     public void fieldMarble() throws CannotFieldException, IllegalDestroyException{
     	Marble marble = players.get(currentPlayerIndex).getOneMarble();
@@ -145,8 +139,13 @@ public class Game implements GameManager {
     		throw new CannotFieldException();
     	}
     	else{
-    		board.sendToBase(marble);
-    		players.get(currentPlayerIndex).getMarbles().remove(marble);
+    		try{
+    			board.sendToBase(marble);
+    			players.get(currentPlayerIndex).getMarbles().remove(marble);
+    		}
+    		catch(CannotFieldException){
+    			// what to do if it can't field?
+    		}
     	}
     }
     public void discardCard(Colour colour) throws CannotDiscardException{
