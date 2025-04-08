@@ -11,7 +11,7 @@ import exception.CannotDiscardException;
 import exception.CannotFieldException;
 import exception.GameException;
 import exception.IllegalDestroyException;
-import exception.InvalidCardException; 
+import exception.InvalidCardException; // new import
 import exception.InvalidMarbleException;
 import exception.SplitOutOfRangeException;
 import model.Colour;
@@ -117,7 +117,8 @@ public class Game implements GameManager {
     			players.get(i).setHand(Deck.drawCards());
     		}	
     	}	
-    }  
+    }
+    
     public Colour checkWin(){
     	boolean win = false;
     	ArrayList<SafeZone> safeZones = board.getSafeZones();
@@ -128,6 +129,7 @@ public class Game implements GameManager {
     	}
     	return null;	
     }
+    
     public void sendHome(Marble marble){
     	Colour marbelColour = marble.getColour();
     	for(int i = 0 ; i<4 ; i++){
@@ -135,6 +137,7 @@ public class Game implements GameManager {
     			players.get(i).regainMarble(marble);
     		}
     	}
+    	
     }
     public void fieldMarble() throws CannotFieldException, IllegalDestroyException{
     	Marble marble = players.get(currentPlayerIndex).getOneMarble();
@@ -153,6 +156,7 @@ public class Game implements GameManager {
     		}
     	}
     }
+    
     public void discardCard() throws CannotDiscardException{
     	Random rand = new Random();
     	int index ;
