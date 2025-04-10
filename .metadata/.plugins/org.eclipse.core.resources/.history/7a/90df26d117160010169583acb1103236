@@ -115,56 +115,6 @@ public class Board implements BoardManager {
     
     private ArrayList<Cell> validateSteps(Marble marble, int steps) throws IllegalMovementException{
     	
-    	ArrayList<Cell> safe_zone = getSafeZone(marble.getColour());
-    	int pos_track = getPositionInPath(track, marble);
-    	int pos_safe = getPositionInPath(safe_zone, marble);
-    	ArrayList<Cell> path  = new ArrayList<Cell>();
-    	Colour player_colour  = gameManager.getActivePlayerColour();
-    	
-    	if(pos_track == -1 && pos_safe == -1)
-    		throw new IllegalMovementException("marble is not on track or in its safe zone");
-    	
-    	if(pos_track != -1){
-    		int dist_to_entry = getEntryPosition(marble.getColour()) - pos_track;
-    		if(dist_to_entry < 0)
-    			dist_to_entry += 100;
-    		
-    		
-    		if(steps > dist_to_entry + 4)
-    			throw new IllegalMovementException("rank of played card it too high");
-    		else if(steps > dist_to_entry && player_colour.equals(marble.getColour())){
-    			
-    			for(int i = 0 ; i <= dist_to_entry; i++){
-					path.add(track.get((pos_track + i) % 100));
-				}
-    			for(int i = 0 ; i < steps - dist_to_entry; i++){
-					path.add(safe_zone.get((pos_safe + i) % 100));
-				}
-    		}else{
-    			if(steps > 0)
-    				for(int i = 0 ; i <= steps; i++){
-    					path.add(track.get((pos_track + i) % 100));
-    				}
-    			else
-    				for(int i = 0 ; i <= steps; i--){
-    					int pos = pos_track + i >= 0 ? pos_track + i : pos_track + i + 100;
-    					path.add(track.get(pos_track + i));
-    				}
-    		}
-    	}else{
-    		if(steps < 0)
-    			throw new IllegalMovementException("cannot move backwards into safezone");
-    		else if(steps > 3 - pos_safe)
-    			throw new IllegalMovementException("rank of played card it too high");
-    		else{
-    			for(int i = 0 ; i <= steps; i++){
-					path.add(safe_zone.get(pos_safe + i));
-				}
-    		}
-    	}
-    	
-    	return path;
-    	
     }
     private void validatePath(Marble marble, ArrayList<Cell> fullPath, boolean destroy) throws IllegalMovementException{
     	
