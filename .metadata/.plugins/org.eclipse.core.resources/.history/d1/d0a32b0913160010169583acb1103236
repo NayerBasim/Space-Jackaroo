@@ -121,25 +121,6 @@ public class Board implements BoardManager {
     }
     
     private void move(Marble marble, ArrayList<Cell> fullPath, boolean destroy) throws IllegalDestroyException{
-    	fullPath.get(0).setMarble(null);
-    	
-    	if(destroy)
-	    	for(int i = 0 ; i < fullPath.size() - 1 ; i++){
-	    		if(fullPath.get(i).getMarble() != null)
-	    			destroyMarble(fullPath.get(i).getMarble());
-	    	}
-	    
-    	Cell target = fullPath.get(fullPath.size() - 1);
-    	if(target.getMarble() != null)
-    		destroyMarble(target.getMarble());
-    	
-    	target.setMarble(marble);
-    	
-    	if(target.isTrap()){
-    		destroyMarble(marble);
-    		target.setTrap(false);
-    		assignTrapCell();
-    	}
     	
     }
     
