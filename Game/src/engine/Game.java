@@ -77,7 +77,7 @@ public class Game implements GameManager {
     	players.get(currentPlayerIndex).deselectAll();
     }
     public void editSplitDistance(int splitDistance) throws SplitOutOfRangeException{
-    	if(splitDistance>=1 || splitDistance<=6){
+    	if(splitDistance>=1 && splitDistance<=6){
     		board.setSplitDistance(splitDistance);
     	}
     	else{
@@ -123,8 +123,9 @@ public class Game implements GameManager {
     	ArrayList<SafeZone> safeZones = board.getSafeZones();
     	for(int i=0;i<4;i++){
     		win = safeZones.get(i).isFull();
-    		if(win)
+    		if(win){
     			return safeZones.get(i).getColour();
+    		}
     	}
     	return null;	
     }

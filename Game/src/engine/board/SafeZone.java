@@ -24,8 +24,19 @@ public class SafeZone {
     }
     
     public boolean isFull() {
-    	if(cells.size()==4) {return true;}
-    	else {return false;}
+    	//if(cells.size()==4) {return true;}
+    	//else {return false;}
+    	int size = 0;
+    	for(int i=0;i<4;i++){
+    		if(cells.get(i).getMarble()!= null)
+    			size++;
+    	}
+    	if(size ==4){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
     }
 
 }
