@@ -108,32 +108,18 @@ public class Player {
     }
     
     public void play() throws GameException{
-		/*
-		 * Colour marble_1_color=null; Colour marble_2_color=null;
-		 * 
-		 * 
-		 * if(selectedMarbles.size()==0) {
-		 * 
-		 * if(selectedCard instanceof Ten) {
-		 * 
-		 * }
-		 * 
-		 * } else { if(selectedMarbles.size()==1) {
-		 * marble_1_color=selectedMarbles.getFirst().getColour(); } else
-		 * if(selectedMarbles.size()==2) {
-		 * marble_1_color=selectedMarbles.getFirst().getColour();
-		 * marble_2_color=selectedMarbles.getLast().getColour(); } else {
-		 * 
-		 * } }
-		 * 
-		 * 
-		 * 
-		 * if(selectedCard==null) {throw new InvalidCardException();} else
-		 * if(selectedMarbles.size()>2) {throw new InvalidMarbleException();} else {
-		 * 
-		 * 
-		 * }
-		 */
+    	
+    	if(selectedCard==null) {throw new InvalidCardException();}
+    	else if(!selectedCard.validateMarbleColours(selectedMarbles)){ 
+    		throw new InvalidMarbleException("Invalid Colours!");
+    	}else if(!selectedCard.validateMarbleSize(selectedMarbles)) {
+    		throw new InvalidMarbleException("Invalid Size!");
+    	}else {
+    		selectedCard.act(selectedMarbles);
+    	}
+    	
+    	
+    	
     }
 
 }
