@@ -22,5 +22,10 @@ public class SafeZone {
     public ArrayList<Cell> getCells() {
         return this.cells;
     }
+    
+    public boolean isFull() {
+    	if(cells.size()==4) {return true;}
+    	else {return false;}
+    }
 
 }

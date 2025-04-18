@@ -155,7 +155,7 @@ public class Board implements BoardManager {
     		if(steps < 0)
     			throw new IllegalMovementException("cannot move backwards into safezone");
     		else if(steps > 3 - pos_safe)
-    			throw new IllegalMovementException("rank of played card it too high");
+    			throw new IllegalMovementException("rank of played card is too high");
     		else{
     			for(int i = 0 ; i <= steps; i++){
 					path.add(safe_zone.get(pos_safe + i));
@@ -167,16 +167,16 @@ public class Board implements BoardManager {
     	
     }
     private void validatePath(Marble marble, ArrayList<Cell> fullPath, boolean destroy) throws IllegalMovementException{
-//    	– Self-Blocking: A marble cannot move if there is another marble owned by the same
+//    	ï¿½ Self-Blocking: A marble cannot move if there is another marble owned by the same
 //    	player either in its path or at the target position. Meaning, I, as a player cannot
 //    	bypass or destroy my own marble.
-//    	– Path Blockage: Movement is invalid if there is more than one marble (owned by
+//    	ï¿½ Path Blockage: Movement is invalid if there is more than one marble (owned by
 //    	any player) blocking the path.
-//    	– Safe Zone Entry: A marble cannot enter its player’s Safe Zone if any marble is
-//    	stationed at its player’s Safe Zone Entry.
-//    	– Base Cell Blockage: A marble’s movement is blocked if another player’s marble is
-//    	in its player’s Base cell, either in the path or target position.
-//    	– Rule Breakage: Special cards can break some of the movement rules (detailed
+//    	ï¿½ Safe Zone Entry: A marble cannot enter its playerï¿½s Safe Zone if any marble is
+//    	stationed at its playerï¿½s Safe Zone Entry.
+//    	ï¿½ Base Cell Blockage: A marbleï¿½s movement is blocked if another playerï¿½s marble is
+//    	in its playerï¿½s Base cell, either in the path or target position.
+//    	ï¿½ Rule Breakage: Special cards can break some of the movement rules (detailed
 //    	individually for each card later)
     	
     	Colour player_colour  = gameManager.getActivePlayerColour();
