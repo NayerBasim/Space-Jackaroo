@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="model.player.Marble"/>
 <fullyQualifiedTypeName name="engine.GameManager"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="engine.board.CellType"/>
 <fullyQualifiedTypeName name="model.Colour"/>
 <fullyQualifiedTypeName name="exception.InvalidCardException"/>
-<fullyQualifiedTypeName name="exception.InvalidMarbleException"/>
 <fullyQualifiedTypeName name="exception.SplitOutOfRangeException"/>
 <fullyQualifiedTypeName name="exception.GameException"/>
 <fullyQualifiedTypeName name="engine.board.Board"/>
-<fullyQualifiedTypeName name="exception.IllegalDestroyException"/>
+<fullyQualifiedTypeName name="exception.IllegalSwapException"/>
+<fullyQualifiedTypeName name="exception.InvalidMarbleException"/>
+<fullyQualifiedTypeName name="exception.IllegalMovementException"/>
+<fullyQualifiedTypeName name="model.player.Marble"/>
 <fullyQualifiedTypeName name="exception.CannotFieldException"/>
+<fullyQualifiedTypeName name="exception.IllegalDestroyException"/>
 <fullyQualifiedTypeName name="exception.CannotDiscardException"/>
 </qualifiedTypeNameHistroy>
