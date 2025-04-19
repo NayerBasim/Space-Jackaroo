@@ -34,8 +34,8 @@ public class Seven extends Standard {
 		
 		if(marbles.size()==2) {
 			
-			Marble marble1=marbles.getFirst();
-			Marble marble2=marbles.getLast();
+			Marble marble1=marbles.get(0);
+			Marble marble2=marbles.get(1);
 			int splitDist= boardManager.getSplitDistance();
 			
 			boardManager.moveBy(marble1, splitDist, false);

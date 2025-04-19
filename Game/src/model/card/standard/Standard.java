@@ -29,7 +29,7 @@ public class Standard extends Card {
 
 	@Override
 	public void act(ArrayList<Marble> marbles) throws ActionException, InvalidMarbleException {
-		Marble currentMarble=marbles.getFirst();
+		Marble currentMarble=marbles.get(0);
 		boardManager.moveBy(currentMarble, rank, false);
 		
 	}

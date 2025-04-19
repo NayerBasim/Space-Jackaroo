@@ -16,7 +16,7 @@ public class Four  extends Standard {
     
 	public void act(ArrayList<Marble> marbles) throws ActionException, InvalidMarbleException {
 		
-		Marble curr=marbles.getFirst();
+		Marble curr=marbles.get(0);
 		boardManager.moveBy(curr, -this.getRank(), false);
 		
 		}

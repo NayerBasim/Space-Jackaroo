@@ -142,6 +142,7 @@ public class Game implements GameManager {
     	if(marble == null){
     		throw new CannotFieldException();
     	}
+    	
     	else{
     		board.sendToBase(marble);
     		players.get(currentPlayerIndex).getMarbles().remove(marble);

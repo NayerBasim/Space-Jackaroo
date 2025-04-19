@@ -43,8 +43,8 @@ public class Jack extends Standard {
 	public void act(ArrayList<Marble> marbles) throws ActionException, InvalidMarbleException {
 
 		if(marbles.size()==2) {
-			Marble marble1 = marbles.getFirst();
-			Marble marble2 = marbles.getLast();
+			Marble marble1 = marbles.get(0);
+			Marble marble2 = marbles.get(1);
 			boardManager.swap(marble1, marble2);
 		}else {
 			super.act(marbles);

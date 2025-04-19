@@ -28,8 +28,8 @@ public class King extends Standard {
 			gameManager.fieldMarble();
 			
 		}else {
-			Marble curr=marbles.getFirst();
-			boardManager.moveBy(curr, getRank(), true);
+			Marble curr=marbles.get(0);
+			boardManager.moveBy(curr, this.getRank(), true);
 		}
 		
 	}

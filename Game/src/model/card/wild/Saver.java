@@ -17,7 +17,7 @@ public class Saver extends Wild {
 
 	public void act(ArrayList<Marble> marbles) throws ActionException, InvalidMarbleException {
 		
-		Marble curr=marbles.getFirst();
+		Marble curr=marbles.get(0);
 		boardManager.sendToSafe(curr);
 		
 	}
