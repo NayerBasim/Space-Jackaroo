@@ -27,7 +27,7 @@ public class Ten extends Standard {
 		
 		if(marbles.size()==0) {
 			Colour nextPlayer=gameManager.getNextPlayerColour();
-			gameManager.discardCard(nextPlayer);
+			this.gameManager.discardCard(nextPlayer);
 			
 		}else {
 			super.act(marbles);

@@ -25,7 +25,7 @@ public class Ace extends Standard {
 		
 		if(marbles.size()==0) {
 			
-			gameManager.fieldMarble();
+			this.gameManager.fieldMarble();
 			
 			}
 		

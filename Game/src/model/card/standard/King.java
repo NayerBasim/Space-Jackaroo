@@ -25,11 +25,11 @@ public class King extends Standard {
 
 		if(marbles.size()==0) {
 			
-			gameManager.fieldMarble();
+			this.gameManager.fieldMarble();
 			
 		}else {
 			Marble curr=marbles.get(0);
-			boardManager.moveBy(curr, this.getRank(), true);
+			this.boardManager.moveBy(curr, this.getRank(), true);
 		}
 		
 	}

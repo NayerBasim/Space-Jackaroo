@@ -81,7 +81,7 @@ public class Player {
     public Marble getOneMarble() {
     	
     	if(marbles.isEmpty()) {return null;}
-    	else { return marbles.getFirst(); }
+    	else { return marbles.get(0); }
     	
     }
     

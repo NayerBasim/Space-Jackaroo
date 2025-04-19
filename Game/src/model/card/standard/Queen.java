@@ -26,7 +26,7 @@ public class Queen extends Standard {
 
 		if(marbles.size()==0) {
 			
-			gameManager.discardCard();
+			this.gameManager.discardCard();
 			
 		}else {
 			

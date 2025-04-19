@@ -38,8 +38,8 @@ public class Seven extends Standard {
 			Marble marble2=marbles.get(1);
 			int splitDist= boardManager.getSplitDistance();
 			
-			boardManager.moveBy(marble1, splitDist, false);
-			boardManager.moveBy(marble2, 7-splitDist, false);
+			this.boardManager.moveBy(marble1, splitDist, false);
+			this.boardManager.moveBy(marble2, 7-splitDist, false);
 			
 		}
 		

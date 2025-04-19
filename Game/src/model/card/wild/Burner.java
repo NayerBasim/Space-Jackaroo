@@ -28,7 +28,7 @@ public class Burner extends Wild {
 	public void act(ArrayList<Marble> marbles) throws ActionException, InvalidMarbleException {
 		
 		Marble curr=marbles.get(0);
-		gameManager.sendHome(curr);
+		this.gameManager.sendHome(curr);
 		
 	}
 

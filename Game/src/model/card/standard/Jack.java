@@ -45,7 +45,7 @@ public class Jack extends Standard {
 		if(marbles.size()==2) {
 			Marble marble1 = marbles.get(0);
 			Marble marble2 = marbles.get(1);
-			boardManager.swap(marble1, marble2);
+			this.boardManager.swap(marble1, marble2);
 		}else {
 			super.act(marbles);
 		}
