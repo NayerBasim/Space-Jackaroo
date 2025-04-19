@@ -95,6 +95,7 @@ public class Player {
     public void selectMarble(Marble marble) throws InvalidMarbleException{
     	
     	if(selectedMarbles.size()==2) {throw new InvalidMarbleException();}
+    	else if(selectedMarbles.contains(marble)) {return;}
     	else{selectedMarbles.add(marble);}
     	
     	
