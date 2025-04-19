@@ -68,7 +68,7 @@ public class Player {
     	}
     	else{
     		Random rand = new Random();
-    		int cardIndex = rand.nextInt(4);
+    		int cardIndex = rand.nextInt(hand.size());
     		hand.remove(cardIndex);
     	}
     	
