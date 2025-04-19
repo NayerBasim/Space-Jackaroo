@@ -31,9 +31,12 @@ public abstract class Card {
     }
     
     public boolean validateMarbleSize(ArrayList<Marble> marbles) {
+    	int size=0;
+    	for(int i=0; i<marbles.size() ; i++) {
+    		if(marbles.get(i)!=null) {size++;}
+    	}
     	
-    	if(marbles.size()==1) {return true;}
-    	else {return false;}
+    	return size==1;
     	
     }
     
