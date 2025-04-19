@@ -110,11 +110,11 @@ public class Player {
     
     public void play() throws GameException{
     	
-    	if(selectedCard==null) {throw new InvalidCardException();}
-    	else if(!selectedCard.validateMarbleColours(selectedMarbles)){ 
-    		throw new InvalidMarbleException("Invalid Colours!");
+    	if(selectedCard==null) {throw new InvalidCardException();
     	}else if(!selectedCard.validateMarbleSize(selectedMarbles)) {
     		throw new InvalidMarbleException("Invalid Size!");
+    	}else if(!selectedCard.validateMarbleColours(selectedMarbles)){ 
+    		throw new InvalidMarbleException("Invalid Colours!");
     	}else {
     		selectedCard.act(selectedMarbles);
     	}
