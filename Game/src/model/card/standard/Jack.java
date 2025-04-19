@@ -32,8 +32,8 @@ public class Jack extends Standard {
     	Colour playerColour = gameManager.getActivePlayerColour();
 	    	
 		if(marbles.size()==2) {
-			Colour marble1 = marbles.getFirst().getColour();
-			Colour marble2 = marbles.getLast().getColour();
+			Colour marble1 = marbles.get(0).getColour();
+			Colour marble2 = marbles.get(1).getColour();
 			
 			if((marble1==playerColour && marble2!=playerColour) || (marble2==playerColour && marble1!=playerColour)) {return true;}
 			else {return false;}
