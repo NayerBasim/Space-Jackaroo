@@ -167,7 +167,10 @@ public class Game implements GameManager {
     	return players.get(currentPlayerIndex).getColour();
     }
     public Colour getNextPlayerColour(){
-    	return players.get(currentPlayerIndex+1).getColour();
+    	if(currentPlayerIndex<3) {
+    		return players.get(currentPlayerIndex+1).getColour();
+    	}
+    	return players.get(0).getColour();
     }
     
     
