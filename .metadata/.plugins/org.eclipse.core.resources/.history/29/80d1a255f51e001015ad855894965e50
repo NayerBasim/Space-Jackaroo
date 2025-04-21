@@ -138,7 +138,7 @@ public class Board implements BoardManager {
 					path.add(track.get((pos_track + i) % 100));
 				}
     			for(int i = 0 ; i < steps - dist_to_entry; i++){
-					path.add(safe_zone.get(pos_safe + i));
+					path.add(safe_zone.get((pos_safe + i) % 100));
 				}
     		}else{
     			if(steps > 0)
@@ -148,7 +148,7 @@ public class Board implements BoardManager {
     			else
     				for(int i = 0 ; i >= steps; i--){
     					int pos = pos_track + i >= 0 ? pos_track + i : pos_track + i + 100;
-    					path.add(track.get((pos_track + i)%100));
+    					path.add(track.get(pos_track + i));
     				}
     		}
     	}else{
@@ -158,7 +158,7 @@ public class Board implements BoardManager {
     			throw new IllegalMovementException("rank of played card is too high");
     		else{
     			for(int i = 0 ; i <= steps; i++){
-					path.add(safe_zone.get((pos_safe + i)%100));
+					path.add(safe_zone.get(pos_safe + i));
 				}
     		}
     	}
@@ -198,7 +198,7 @@ public class Board implements BoardManager {
     			}
     			if(fullPath.get(i) == track.get(getBasePosition(m.getColour())))
     				throw new IllegalMovementException("cannot pass a marble in its base cell");
-    			if(fullPath.get(i).getCellType().equals(CellType.SAFE))
+    			if(fullPath.get(i).getCellType().equals(CellType.ENTRY))
     				throw new IllegalMovementException("cannot destroy a marble in safe zone");
     			
     		}			
@@ -212,7 +212,7 @@ public class Board implements BoardManager {
 	    	if( target == track.get(getBasePosition(target.getMarble().getColour())))
 				throw new IllegalMovementException("cannot destroy a marble in its base cell");
 	    	
-	    	if(target.getCellType().equals(CellType.SAFE))
+	    	if(target.getCellType().equals(CellType.ENTRY))
 				throw new IllegalMovementException("cannot destroy a marble in safe zone");
     	}
     }
@@ -242,18 +242,13 @@ public class Board implements BoardManager {
     
     
     private void validateSwap(Marble marble_1, Marble marble_2) throws IllegalSwapException{
-    	Colour player_colour  = gameManager.getActivePlayerColour();
     	
     	if(getPositionInPath(track,marble_1) == -1 || getPositionInPath(track,marble_2) == -1)
     		throw new IllegalSwapException("Cant swap marbles not on track");
-    	if(player_colour == marble_2.getColour()){
-	    	if(getPositionInPath(track,marble_1) == getBasePosition(marble_1.getColour()))
-	    		throw new IllegalSwapException("Cant swap a marble on its base cell");
-    	}
-    	if(player_colour == marble_1.getColour()){
-	    	if(getPositionInPath(track,marble_2) == getBasePosition(marble_2.getColour()))
-	    		throw new IllegalSwapException("Cant swap a marble on its base cell");
-    	}
+    	if(getPositionInPath(track,marble_1) == getBasePosition(marble_1.getColour()))
+    		throw new IllegalSwapException("Cant swap a marble on its base cell");
+    	if(getPositionInPath(track,marble_2) == getBasePosition(marble_2.getColour()))
+    		throw new IllegalSwapException("Cant swap a marble on its base cell");
     }
     
     
@@ -267,9 +262,8 @@ public class Board implements BoardManager {
     
     
     private void validateFielding(Cell occupiedBaseCell) throws CannotFieldException{
-    	Colour player_colour  = gameManager.getActivePlayerColour();
-
-    	if(occupiedBaseCell.getMarble() != null && occupiedBaseCell.getMarble().getColour() == player_colour)
+    	Colour c = occupiedBaseCell.getMarble().getColour();
+    	if(track.get(getBasePosition(c)) == occupiedBaseCell)
     		throw new CannotFieldException("marble of the same colour as the player is already in the Base Cell");
     		
     		

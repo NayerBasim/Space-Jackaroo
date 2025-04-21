@@ -138,7 +138,7 @@ public class Board implements BoardManager {
 					path.add(track.get((pos_track + i) % 100));
 				}
     			for(int i = 0 ; i < steps - dist_to_entry; i++){
-					path.add(safe_zone.get(pos_safe + i));
+					path.add(safe_zone.get((pos_safe + i) % 100));
 				}
     		}else{
     			if(steps > 0)
@@ -158,7 +158,7 @@ public class Board implements BoardManager {
     			throw new IllegalMovementException("rank of played card is too high");
     		else{
     			for(int i = 0 ; i <= steps; i++){
-					path.add(safe_zone.get((pos_safe + i)%100));
+					path.add(safe_zone.get(pos_safe + i));
 				}
     		}
     	}
