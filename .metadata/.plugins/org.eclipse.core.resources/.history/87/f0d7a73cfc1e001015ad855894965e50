@@ -148,7 +148,7 @@ public class Board implements BoardManager {
     			else
     				for(int i = 0 ; i >= steps; i--){
     					int pos = pos_track + i >= 0 ? pos_track + i : pos_track + i + 100;
-    					path.add(track.get(pos));
+    					path.add(track.get((pos_track + i)%100));
     				}
     		}
     	}else{
@@ -178,10 +178,6 @@ public class Board implements BoardManager {
 //    	in its player�s Base cell, either in the path or target position.
 //    	� Rule Breakage: Special cards can break some of the movement rules (detailed
 //    	individually for each card later)
-    	
-    	
-    	if(fullPath.size() == 1) return;
-    	
     	
     	Colour player_colour  = gameManager.getActivePlayerColour();
     	int num_marbles = 0;
