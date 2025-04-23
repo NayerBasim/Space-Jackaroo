@@ -18,12 +18,7 @@ public class Jack extends Standard {
     
     
     public boolean validateMarbleSize(ArrayList<Marble> marbles) {
-    	int size=0;
-    	for(int i=0; i<marbles.size() ; i++) {
-    		if(marbles.get(i)!=null) {size++;}
-    	}
-    	
-    	return size==1 || size==2;
+    	return super.validateMarbleSize(marbles) || marbles.size()==2;
     	
     }
     
