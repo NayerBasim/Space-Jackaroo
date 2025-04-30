@@ -131,7 +131,7 @@ public class Board implements BoardManager {
     		
     		
     		if(steps > dist_to_entry + 4)
-    			throw new IllegalMovementException("rank of played card it too high");
+    			throw new IllegalMovementException("rank of played card is too high");
     		else if(steps > dist_to_entry && player_colour.equals(marble.getColour())){
     			
     			for(int i = 0 ; i <= dist_to_entry; i++){
