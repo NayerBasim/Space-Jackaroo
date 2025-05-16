@@ -58,7 +58,7 @@ public CPUPlayer2(Main app){
 
 	this.ProfileSection = section;
 }
-public  VBox getPlayer(){
+public  VBox getScene(){
 	return this.ProfileSection;
 }
 

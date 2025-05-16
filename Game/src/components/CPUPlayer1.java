@@ -13,7 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.FontPosture;
 public class CPUPlayer1 {
-	private Scene ProfileSection;
+	private HBox ProfileSection;
 	
 	public CPUPlayer1(Main app){
 		HBox section = new HBox();
@@ -57,14 +57,13 @@ public class CPUPlayer1 {
 		cards.setPadding(new Insets(5,5,5,5));
 		cards.setSpacing(5);
 		Name.setPadding(new Insets(5,5,5,5));
-		
-		Scene s = new Scene(section, 500,500);
-		this.ProfileSection = s;
+
+		this.ProfileSection = section;
 		
 		
 		
 	}
-	public Scene getScene(){
+	public HBox getPlayer(){
 		return this.ProfileSection;
 	}
 }

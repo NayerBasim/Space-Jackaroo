@@ -16,7 +16,7 @@ import javafx.scene.text.FontPosture;
 
 
 public class CPUPlayer2 {
-private  VBox ProfileSection;
+private Scene ProfileSection;
 
 public CPUPlayer2(Main app){
 	VBox section = new VBox();
@@ -55,10 +55,10 @@ public CPUPlayer2(Main app){
 	cards.setSpacing(5);
 	Name.setPadding(new Insets(5,5,5,5));
 	
-
-	this.ProfileSection = section;
+	Scene s = new Scene(section, 500,500);
+	this.ProfileSection = s;
 }
-public  VBox getPlayer(){
+public Scene getScene(){
 	return this.ProfileSection;
 }
 

@@ -52,16 +52,16 @@ public class GameScreen {
 	public GameScreen(Main app, BoardManager boardManager, GameManager gameManager){
 			BorderPane root = new BorderPane();
 	  	    StackPane grid = new Board().boardRoot;
-	  	    grid.setMaxSize(500, 500);
+	       
 	        ArrayList<Card> cards = new ArrayList<Card>();
 	        cards.add(new Four("Four", "description", Suit.SPADE,boardManager, gameManager));
 	        cards.add(new Five("Five", "description",Suit.DIAMOND,boardManager, gameManager ));
 	        
 	        Pane playerHand = new PlayerHand(cards);
-			
-	        root.setBottom(new MainPlayer(app).getPlayer());
-	        root.setRight(new CPUPlayer1(app).getPlayer());
-	        root.setTop(new CPUPlayer2(app).getPlayer());
+
+	        root.setTop(new MainPlayer( app).getPlayer());
+	        root.setBottom(new CPUPlayer1(app).getPlayer());
+	        root.setRight(new CPUPlayer2(app).getPlayer());
 	        root.setLeft(new CPUPlayer3(app).getPlayer());
 	        root.setCenter(grid);
 	        

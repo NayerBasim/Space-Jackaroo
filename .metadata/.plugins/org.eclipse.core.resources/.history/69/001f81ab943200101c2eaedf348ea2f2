@@ -15,7 +15,7 @@ import javafx.scene.text.FontPosture;
 
 public class MainPlayer {
 
-	private VBox ProfileSection;
+	private Scene ProfileSection;
 	
 	public MainPlayer(Main app) {
 		
@@ -60,11 +60,11 @@ public class MainPlayer {
 		Name.setPadding(new Insets(5,5,5,5));
 		
 	
-
-		this.ProfileSection = section;
+		Scene s = new Scene(section, 500,500);
+		this.ProfileSection = s;
 		
 	}
-	public VBox getPlayer(){
+	public Scene getScene(){
 		return this.ProfileSection;
 	}
 }

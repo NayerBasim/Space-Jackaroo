@@ -64,7 +64,7 @@ public class MainPlayer {
 		this.ProfileSection = section;
 		
 	}
-	public VBox getPlayer(){
+	public VBox getScene(){
 		return this.ProfileSection;
 	}
 }
