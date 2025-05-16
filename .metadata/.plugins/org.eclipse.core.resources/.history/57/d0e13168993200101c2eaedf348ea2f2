@@ -60,7 +60,7 @@ public CPUPlayer2(Main app){
 	Name.setPadding(new Insets(5,5,5,5));
 	section.setMaxHeight(200);
 	
-	section.setPadding(new Insets(20));
+
 	this.ProfileSection = section;
 }
 public  VBox getPlayer(){
