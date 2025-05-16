@@ -27,7 +27,6 @@ public class MainPlayer {
 		Image profilePic = new Image(getClass().getResource("profil.jpg").toExternalForm());
 		ImageView Profile = new ImageView(profilePic);
 		Profile.setFitWidth(100);
-		Profile.setFitHeight(100);
 		Profile.preserveRatioProperty();
 
 
@@ -67,8 +66,8 @@ public class MainPlayer {
 		Name.setPadding(new Insets(5,5,5,5));
 		section.setMaxHeight(100);
 		
-		section.setPadding(new Insets(20));
-		
+	
+
 		this.ProfileSection = section;
 		
 	}

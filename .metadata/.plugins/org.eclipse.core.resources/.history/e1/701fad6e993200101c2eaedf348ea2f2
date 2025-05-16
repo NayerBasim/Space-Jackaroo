@@ -67,8 +67,8 @@ public class MainPlayer {
 		Name.setPadding(new Insets(5,5,5,5));
 		section.setMaxHeight(100);
 		
-		section.setPadding(new Insets(20));
-		
+	
+
 		this.ProfileSection = section;
 		
 	}

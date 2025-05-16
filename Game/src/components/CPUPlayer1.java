@@ -25,6 +25,10 @@ public class CPUPlayer1 {
 		
 		Image profilePic = new Image(getClass().getResource("profil.jpg").toExternalForm());
 		ImageView Profile = new ImageView(profilePic);
+		Profile.setFitWidth(100);
+		Profile.setFitHeight(100);
+		Profile.preserveRatioProperty();
+		
 		Image card = new Image(getClass().getResource("cards_back.png").toExternalForm());
 		ImageView cardHolder1 = new ImageView(card);
 		ImageView cardHolder2 = new ImageView(card);
@@ -57,7 +61,9 @@ public class CPUPlayer1 {
 		cards.setPadding(new Insets(5,5,5,5));
 		cards.setSpacing(5);
 		Name.setPadding(new Insets(5,5,5,5));
-
+		section.setMaxHeight(200);
+		
+		section.setPadding(new Insets(20));
 		this.ProfileSection = section;
 		
 		
