@@ -54,7 +54,7 @@ public class GameScreen {
 	        cards.add(new Five("Five", "description",Suit.DIAMOND,boardManager, gameManager ));
 	        
 	        Pane playerHand = new PlayerHand(cards);
-
+	        root.setBottom(playerHand);
 	        root.setTop(playerHand);
 	        root.setCenter(grid);
 	        
