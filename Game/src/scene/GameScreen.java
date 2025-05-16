@@ -46,6 +46,7 @@ public class GameScreen {
 	            grid.getColumnConstraints().add(cc);
 	            grid.getRowConstraints().add(rc);
 	        }
+	        //hello
 
 	        // build the “X” path: main diagonal, then anti‑diagonal (skip center)
 	        List<int[]> path = new ArrayList<>(TOTAL_TRACKS);
