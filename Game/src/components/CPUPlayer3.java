@@ -1,5 +1,7 @@
 package components;
 
+import javafx.scene.Scene;
+import javafx.scene.Scene;
 import view.Main;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -13,16 +15,19 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.FontPosture;
 
-public class MainPlayer {
+
+public class CPUPlayer3 {
 
 	private Scene ProfileSection;
 	
-	public MainPlayer(Main app) {
-		
-		VBox section = new VBox();
+	
+	public CPUPlayer3(Main app){
+		HBox section = new HBox();
 		section.setAlignment(Pos.CENTER);
-		HBox cards = new HBox();
+		VBox cards = new VBox();
+		VBox ProfileDiv = new VBox();
 		cards.setAlignment(Pos.CENTER);
+		ProfileDiv.setAlignment(Pos.CENTER);
 		
 		Image profilePic = new Image(getClass().getResource("profil.jpg").toExternalForm());
 		ImageView Profile = new ImageView(profilePic);
@@ -35,36 +40,40 @@ public class MainPlayer {
 		cardHolder1.setFitWidth(50);
 		cardHolder1.setFitHeight(70);
 		cardHolder1.setPreserveRatio(true);
+		cardHolder1.setRotate(-90);
 		cardHolder2.setFitWidth(50);
 		cardHolder2.setFitHeight(70);
 		cardHolder2.setPreserveRatio(true);
+		cardHolder2.setRotate(-90);
 		cardHolder3.setFitWidth(50);
 		cardHolder3.setFitHeight(70);
 		cardHolder3.setPreserveRatio(true);
+		cardHolder3.setRotate(-90);
 		cardHolder4.setFitWidth(50);
 		cardHolder4.setFitHeight(70);
 		cardHolder4.setPreserveRatio(true);
-		
-		
+		cardHolder4.setRotate(-90);
 		
 		Label Name = new Label("youssef");
 		Name.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 20));
-		
-		
-		
+		ProfileDiv.getChildren().addAll(Profile,Name);
+		section.getChildren().addAll(ProfileDiv,cards);
 		cards.getChildren().addAll(cardHolder1, cardHolder2, cardHolder3, cardHolder4);
-		section.getChildren().addAll(cards,Profile,Name);
 		
 		cards.setPadding(new Insets(5,5,5,5));
+		ProfileDiv.setPadding(new Insets(10,10,10,10));
 		cards.setSpacing(5);
 		Name.setPadding(new Insets(5,5,5,5));
 		
-	
 		Scene s = new Scene(section, 500,500);
 		this.ProfileSection = s;
+		
+		
 		
 	}
 	public Scene getScene(){
 		return this.ProfileSection;
 	}
+		
+	
 }
