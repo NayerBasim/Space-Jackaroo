@@ -1,8 +1,12 @@
 package scene;
 
+import model.card.standard.Five;
 import java.util.ArrayList;
 import java.util.List;
 
+import components.PlayerHand;
+import engine.GameManager;
+import engine.board.BoardManager;
 import view.Main;
 import javafx.application.Application;
 import javafx.geometry.HPos;
@@ -21,6 +25,10 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import model.card.Card;
+import model.card.standard.Ace;
+import model.card.standard.Four;
+import model.card.standard.Suit;
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -35,7 +43,7 @@ public class GameScreen {
 	  private static final int TOTAL_TRACKS = 100;  // we’ll skip the center to get 100
 	  private static final int CELL_SIZE = 12;      // px
 	  private static final double CIRCLE_RADIUS = 4;
-	public GameScreen(Main app){
+	public GameScreen(Main app, BoardManager boardManager, GameManager gameManager){
 
 		 GridPane grid = new GridPane();
 	        grid.setGridLinesVisible(false);
@@ -73,8 +81,11 @@ public class GameScreen {
 	            GridPane.setHalignment(circle, HPos.CENTER);
 	            GridPane.setValignment (circle, VPos.CENTER);
 	        }
-
-	        Scene scene = new Scene(new StackPane(grid), 
+	        ArrayList<Card> cards = new ArrayList<Card>();
+	        cards.add(new Four("Four", "description", Suit.SPADE,boardManager, gameManager));
+	        cards.add(new Five("Five", "description",Suit.DIAMOND,boardManager, gameManager ));
+	        Pane playerHand = new PlayerHand(cards);
+	        Scene scene = new Scene(playerHand, 
 	                                GRID_SIZE*CELL_SIZE, GRID_SIZE*CELL_SIZE);
 		     this.GameScene = scene;
 		    

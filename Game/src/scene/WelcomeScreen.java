@@ -2,7 +2,10 @@ package scene;
 
 
 
+import engine.Game;
 import view.Main;
+import engine.GameManager;
+import engine.board.BoardManager;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -28,7 +31,7 @@ public class WelcomeScreen{
 
 	private Scene WelcomeSceneScene;
 	
-	public WelcomeScreen(Main app) {
+	public WelcomeScreen(Main app, BoardManager boardManager, GameManager gameManager) {
 		StackPane root = new StackPane();
 		VBox content = new VBox();
 		
@@ -56,7 +59,7 @@ public class WelcomeScreen{
 
 				String userInput = inputField.getText();
 				if(!inputField.getText().equals(""))
-					app.showSceneTwo();
+					app.showSceneTwo((Game) gameManager);
 
 				else
 					message.setText("Input your name");
