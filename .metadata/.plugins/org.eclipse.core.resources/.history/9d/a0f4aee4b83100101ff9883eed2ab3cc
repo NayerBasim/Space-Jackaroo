@@ -1,0 +1,121 @@
+package scene;
+
+import view.Main;
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+public class GameScreen {
+	private Scene GameScene;
+    private static final int SIZE = 10;
+    private static final int TRACK_CELLS = 100;
+    private static final int CELL_SIZE = 50;
+	public GameScreen(Main app){
+
+		        GridPane grid = new GridPane();
+		        grid.setGridLinesVisible(true); // Optional for debug
+		        grid.setAlignment(Pos.CENTER);
+
+		        // Set up row and column constraints
+		        for (int i = 0; i < SIZE; i++) {
+		            ColumnConstraints col = new ColumnConstraints(CELL_SIZE);
+		            RowConstraints row = new RowConstraints(CELL_SIZE);
+		            grid.getColumnConstraints().add(col);
+		            grid.getRowConstraints().add(row);
+		        }
+
+		        int count = 0;
+
+		        // Top row (left to right)
+		        for (int col = 0; col < SIZE && count < TRACK_CELLS; col++) {
+		            grid.add(createCircle(count++), col, 0);
+		        }
+
+		        // Right column (top to bottom)
+		        for (int row = 1; row < SIZE - 1 && count < TRACK_CELLS; row++) {
+		            grid.add(createCircle(count++), SIZE - 1, row);
+		        }
+
+		        // Bottom row (right to left)
+		        for (int col = SIZE - 1; col >= 0 && count < TRACK_CELLS; col--) {
+		            grid.add(createCircle(count++), col, SIZE - 1);
+		        }
+
+		        // Left column (bottom to top)
+		        for (int row = SIZE - 2; row > 0 && count < TRACK_CELLS; row--) {
+		            grid.add(createCircle(count++), 0, row);
+		        }
+
+		        // Inner loop layer
+		        int layer = 1;
+		        while (count < TRACK_CELLS && layer < SIZE / 2) {
+		            // Top row
+		            for (int col = layer; col < SIZE - layer && count < TRACK_CELLS; col++) {
+		                grid.add(createCircle(count++), col, layer);
+		            }
+
+		            // Right column
+		            for (int row = layer + 1; row < SIZE - layer - 1 && count < TRACK_CELLS; row++) {
+		                grid.add(createCircle(count++), SIZE - layer - 1, row);
+		            }
+
+		            // Bottom row
+		            for (int col = SIZE - layer - 1; col >= layer && count < TRACK_CELLS; col--) {
+		                grid.add(createCircle(count++), col, SIZE - layer - 1);
+		            }
+
+		            // Left column
+		            for (int row = SIZE - layer - 2; row > layer && count < TRACK_CELLS; row--) {
+		                grid.add(createCircle(count++), layer, row);
+		            }
+
+		            layer++;
+		        }
+
+		        Scene scene = new Scene(grid, SIZE * CELL_SIZE, SIZE * CELL_SIZE);
+		        this.GameScene = scene;
+		    
+
+
+
+		
+
+		
+
+	}
+    private StackPane createCircle(int number) {
+        Circle circle = new Circle(15);
+        circle.setFill(Color.LIGHTBLUE);
+        circle.setStroke(Color.DARKBLUE);
+
+        StackPane pane = new StackPane();
+        pane.getChildren().add(circle);
+        pane.setPrefSize(CELL_SIZE, CELL_SIZE);
+
+        return pane;
+    }
+
+	
+	public Scene getScene(){
+		return this.GameScene;
+	}
+}

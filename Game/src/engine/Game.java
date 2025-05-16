@@ -21,13 +21,13 @@ import model.player.*;
 
 @SuppressWarnings("unused")
 public class Game implements GameManager {
-    private final Board board;
+    final Board board;
     private final ArrayList<Player> players;
 	private int currentPlayerIndex;
     private final ArrayList<Card> firePit;
     private int turn;
 
-    public Game(String playerName) throws IOException {
+    public Game() throws IOException {
         turn = 0;
         currentPlayerIndex = 0;
         firePit = new ArrayList<>();
@@ -43,9 +43,9 @@ public class Game implements GameManager {
         Deck.loadCardPool(this.board, (GameManager)this);
         
         this.players = new ArrayList<>();
-        this.players.add(new Player(playerName, colourOrder.get(0)));
+//        this.players.add(new Player(playerName, colourOrder.get(0)));
         
-        for (int i = 1; i < 4; i++) 
+        for (int i = 0; i < 4; i++) 
             this.players.add(new CPU("CPU " + i, colourOrder.get(i), this.board));
         
         for (int i = 0; i < 4; i++) 
@@ -95,8 +95,10 @@ public class Game implements GameManager {
     	}
     }
     public void playPlayerTurn() throws GameException{
-    	players.get(currentPlayerIndex).play();
+	    players.get(currentPlayerIndex).play();	
+	    
     }
+    
     public void endPlayerTurn(){
     	Card selectedCard = players.get(currentPlayerIndex).getSelectedCard();
     	firePit.add(selectedCard);
@@ -174,7 +176,59 @@ public class Game implements GameManager {
     }
     
     
+//    public static void main(String[] args) throws IOException, GameException   {
+//
+//
+//        Game game1 = new Game();
+//        Colour win_color = null;
+//
+//        
+//        while(win_color == null){
+//        	if(game1.canPlayTurn()){
+//        		game1.playPlayerTurn();
+//        		game1.endPlayerTurn();
+//        	}
+//        	win_color = game1.checkWin();
+//        	ArrayList<SafeZone> safeZones = game1.board.getSafeZones();
+//        	for(int i = 0 ; i < 4; i++)
+//        		System.out.println(safeZones.get(1).getCells().get(i).getMarble());
+//
+//
+//        	
+//            
+//        }
+//        System.out.println(win_color);
+//
+//        }
+    public static void main(String[] args) throws IOException, GameException   {
+
+
+        Game game1 = new Game();
+        Colour win_color = null;
+        int i =0;
+        while(win_color == null){
+            game1.players.get(i).play();
+        	ArrayList<SafeZone> safeZones = game1.board.getSafeZones();
+        	for(int v = 0 ; v < 4; v++)
+        		System.out.println(safeZones.get(1).getCells().get(v).getMarble());
+            win_color = game1.checkWin();
+            i++;
+            if(i==4)
+                i=0;
+        }
+        System.out.println(win_color);
+
+        }
     
+    // This makes no sense
+    // I am sorry for whoever has to debug this 
+    // RIP :( 
+    // We have spent a total of 50000 man hours on this code
+    // the road seems empty and deserted
+    // no finish line in sight
+    // I surrender my control to the code monster 
+    // Goodbye world....
+    // System.out.println("Goodbye World");
     
     
     
