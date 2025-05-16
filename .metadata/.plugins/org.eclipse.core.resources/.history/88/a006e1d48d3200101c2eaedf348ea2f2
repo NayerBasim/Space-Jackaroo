@@ -54,10 +54,8 @@ public class GameScreen {
 	        cards.add(new Five("Five", "description",Suit.DIAMOND,boardManager, gameManager ));
 	        
 	        Pane playerHand = new PlayerHand(cards);
-
-	        root.setTop(playerHand);
+	        root.setBottom(playerHand);
 	        root.setCenter(grid);
-	        
 	        Scene scene = new Scene(root,700,700);
 		     this.GameScene = scene;
 		    

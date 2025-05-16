@@ -1,11 +1,9 @@
 package scene;
 
 import model.card.standard.Five;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import components.Board;
 import components.PlayerHand;
 import engine.GameManager;
 import engine.board.BoardManager;
@@ -46,19 +44,49 @@ public class GameScreen {
 	  private static final int CELL_SIZE = 12;      // px
 	  private static final double CIRCLE_RADIUS = 4;
 	public GameScreen(Main app, BoardManager boardManager, GameManager gameManager){
-			BorderPane root = new BorderPane();
-	  	    StackPane grid = new Board().boardRoot;
-	       
+
+		 GridPane grid = new GridPane();
+	        grid.setGridLinesVisible(false);
+	        // fix each row/col to CELL_SIZE
+	        for (int i = 0; i < GRID_SIZE; i++) {
+	            ColumnConstraints cc = new ColumnConstraints(CELL_SIZE);
+	            RowConstraints    rc = new RowConstraints(CELL_SIZE);
+	            grid.getColumnConstraints().add(cc);
+	            grid.getRowConstraints().add(rc);
+	        }
+	        //hello
+
+	        // build the “X” path: main diagonal, then anti‑diagonal (skip center)
+	        List<int[]> path = new ArrayList<>(TOTAL_TRACKS);
+	        for (int i = 0; i < GRID_SIZE; i++) {
+	            path.add(new int[]{ i, i });  // main diag
+	        }
+	        for (int i = 0; i < GRID_SIZE; i++) {
+	            if (i == GRID_SIZE/2) continue;   // skip center overlap
+	            path.add(new int[]{ i, GRID_SIZE-1 - i });  // anti‑diag
+	        }
+	        // now place only the first 100 circles
+	        for (int idx = 0; idx < TOTAL_TRACKS; idx++) {
+	            int r = path.get(idx)[0];
+	            int c = path.get(idx)[1];
+	            Circle circle = new Circle(CIRCLE_RADIUS, Color.LIGHTGREEN);
+	            circle.setStroke(Color.DARKGREEN);
+
+	            StackPane cell = new StackPane(circle);
+	            // optional: show numbering
+	            // Text num = new Text(String.valueOf(idx+1));
+	            // cell.getChildren().add(num);
+
+	            grid.add(cell, c, r);
+	            GridPane.setHalignment(circle, HPos.CENTER);
+	            GridPane.setValignment (circle, VPos.CENTER);
+	        }
 	        ArrayList<Card> cards = new ArrayList<Card>();
 	        cards.add(new Four("Four", "description", Suit.SPADE,boardManager, gameManager));
 	        cards.add(new Five("Five", "description",Suit.DIAMOND,boardManager, gameManager ));
-	        
 	        Pane playerHand = new PlayerHand(cards);
-
-	        root.setTop(playerHand);
-	        root.setCenter(grid);
-	        
-	        Scene scene = new Scene(root,700,700);
+	        Scene scene = new Scene(playerHand, 
+	                                GRID_SIZE*CELL_SIZE, GRID_SIZE*CELL_SIZE);
 		     this.GameScene = scene;
 		    
 
