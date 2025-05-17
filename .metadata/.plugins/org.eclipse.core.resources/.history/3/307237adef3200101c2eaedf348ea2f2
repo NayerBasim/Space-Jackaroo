@@ -85,7 +85,7 @@ public class WelcomeScreen{
 		root.getChildren().add(content);
 
 		
-		Scene s = new Scene(root, 900,800);
+		Scene s = new Scene(root, 600,400);
 		this.WelcomeSceneScene = s;
 		
 

@@ -82,7 +82,7 @@ public class GameScreen {
 	        );
 	        root.setBackground(new Background(bgImage));
 	        
-	        Scene scene = new Scene(root,950,950);
+	        Scene scene = new Scene(root,700,700);
 		     this.GameScene = scene;
 		    
 
