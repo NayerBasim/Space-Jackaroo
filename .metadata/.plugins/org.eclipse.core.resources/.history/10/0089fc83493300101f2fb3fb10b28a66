@@ -55,7 +55,6 @@ public class CPUPlayer1 {
 		Label Name = new Label("youssef");
 		Name.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 20));
 		ProfileDiv.getChildren().addAll(Profile,Name);
-		ProfileDiv.setPadding(new Insets(10,10,10,10));
 		section.getChildren().addAll(cards,ProfileDiv);
 		cards.getChildren().addAll(cardHolder1, cardHolder2, cardHolder3, cardHolder4);
 		

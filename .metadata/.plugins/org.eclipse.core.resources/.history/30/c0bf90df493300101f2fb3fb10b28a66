@@ -65,11 +65,13 @@ public class GameScreen {
 	        ArrayList<Card> cards = new ArrayList<Card>();
 	        cards.add(new Four("Four", "description", Suit.SPADE,boardManager, gameManager));
 	        cards.add(new Five("Five", "description",Suit.DIAMOND,boardManager, gameManager ));
+	        StackPane player1 = new StackPane(new CPUPlayer1(app).getPlayer());
+	        player1.setPadding(new Insets(20));
+	        StackPane mainPlayer = new StackPane(new MainPlayer(app).getPlayer());
 
 
-
-	        root.setBottom(new MainPlayer(app).getPlayer());
-	        root.setRight(new CPUPlayer1(app).getPlayer());
+	        root.setBottom(mainPlayer);
+	        root.setRight(player1);
 	        root.setTop(new CPUPlayer2(app).getPlayer());
 	        root.setLeft(new CPUPlayer3(app).getPlayer());
 	        root.setCenter(grid);

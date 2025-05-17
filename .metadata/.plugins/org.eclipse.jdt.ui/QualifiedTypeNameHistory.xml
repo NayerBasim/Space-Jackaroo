@@ -16,4 +16,11 @@
 <fullyQualifiedTypeName name="exception.CannotFieldException"/>
 <fullyQualifiedTypeName name="exception.IllegalDestroyException"/>
 <fullyQualifiedTypeName name="exception.CannotDiscardException"/>
+<fullyQualifiedTypeName name="components.Board"/>
+<fullyQualifiedTypeName name="components.MainPlayer"/>
+<fullyQualifiedTypeName name="components.CPUPlayer1"/>
+<fullyQualifiedTypeName name="components.CPUPlayer2"/>
+<fullyQualifiedTypeName name="components.CPUPlayer3"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.Pane"/>
+<fullyQualifiedTypeName name="javafx.scene.layout.StackPane"/>
 </qualifiedTypeNameHistroy>
