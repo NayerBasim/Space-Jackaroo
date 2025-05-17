@@ -52,7 +52,7 @@ public class CPUPlayer1 {
 		cardHolder4.setPreserveRatio(true);
 		cardHolder4.setRotate(-90);
 		
-		Label Name = new Label("youssef");
+		Label Name = new Label("CPU 1");
 		Name.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 20));
 		ProfileDiv.getChildren().addAll(Profile,Name);
 		ProfileDiv.setPadding(new Insets(10,10,10,10));
@@ -60,11 +60,12 @@ public class CPUPlayer1 {
 		cards.getChildren().addAll(cardHolder1, cardHolder2, cardHolder3, cardHolder4);
 		
 		cards.setPadding(new Insets(5,5,5,5));
+		ProfileDiv.setPadding(new Insets(10,10,10,10));
 		cards.setSpacing(5);
 		Name.setPadding(new Insets(5,5,5,5));
 		section.setMaxHeight(200);
-		
 		section.setPadding(new Insets(20));
+	
 		this.ProfileSection = section;
 		
 		

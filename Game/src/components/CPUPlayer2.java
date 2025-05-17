@@ -49,7 +49,7 @@ public CPUPlayer2(Main app){
 	cardHolder4.setFitHeight(70);
 	cardHolder4.setPreserveRatio(true);
 	
-	Label Name = new Label("youssef");
+	Label Name = new Label("CPU 2");
 	Name.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 20));
 	
 	cards.getChildren().addAll(cardHolder1, cardHolder2, cardHolder3, cardHolder4);

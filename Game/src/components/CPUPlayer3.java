@@ -58,7 +58,7 @@ public class CPUPlayer3 {
 		cardHolder4.setPreserveRatio(true);
 		cardHolder4.setRotate(-90);
 		
-		Label Name = new Label("youssef3");
+		Label Name = new Label("CPU 3");
 		Name.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 20));
 		ProfileDiv.getChildren().addAll(Profile,Name);
 		section.getChildren().addAll(ProfileDiv,cards);
