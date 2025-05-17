@@ -49,8 +49,7 @@ public class Board {
 	public Board() {
 	     StackPane root = new StackPane();
 		 GridPane grid = new GridPane();
-	        grid.setGridLinesVisible(false);
-	        
+	        grid.setGridLinesVisible(true);
 	        
 	        circles = new ArrayList<Circle>();
 	        
@@ -249,7 +248,7 @@ public class Board {
 	        
 	        grid.setPadding(new Insets(5));
 
-
+	        
 
 	        root.getChildren().add(grid);
 
@@ -276,7 +275,7 @@ public class Board {
 	            )
 	        );
 	        root.setBackground(new Background(bgImage));
-
+//	        
 		     this.boardRoot = root;
 		     
 		    

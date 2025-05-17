@@ -51,7 +51,6 @@ public class Board {
 		 GridPane grid = new GridPane();
 	        grid.setGridLinesVisible(false);
 	        
-	        
 	        circles = new ArrayList<Circle>();
 	        
 	        for (int i = 0; i < GRID_SIZE; i++) {
@@ -249,7 +248,7 @@ public class Board {
 	        
 	        grid.setPadding(new Insets(5));
 
-
+	        
 
 	        root.getChildren().add(grid);
 
@@ -276,7 +275,7 @@ public class Board {
 	            )
 	        );
 	        root.setBackground(new Background(bgImage));
-
+//	        
 		     this.boardRoot = root;
 		     
 		    

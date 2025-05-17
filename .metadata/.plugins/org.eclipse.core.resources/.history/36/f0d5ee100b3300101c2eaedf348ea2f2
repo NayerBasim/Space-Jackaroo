@@ -67,7 +67,7 @@ public class CPUPlayer3 {
 		cards.setPadding(new Insets(5,5,5,5));
 		ProfileDiv.setPadding(new Insets(10,10,10,10));
 		cards.setSpacing(5);
-		Name.setPadding(new Insets(5,5,5,5));
+		Name.setPadding(new Insets(20));
 		section.setMaxHeight(200);
 		section.setPadding(new Insets(20));
 	

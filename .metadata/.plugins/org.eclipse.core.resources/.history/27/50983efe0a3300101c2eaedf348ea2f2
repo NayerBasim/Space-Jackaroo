@@ -64,7 +64,7 @@ public class CPUPlayer3 {
 		section.getChildren().addAll(ProfileDiv,cards);
 		cards.getChildren().addAll(cardHolder1, cardHolder2, cardHolder3, cardHolder4);
 		
-		cards.setPadding(new Insets(5,5,5,5));
+		cards.setPadding(new Insets(10,5,5,5));
 		ProfileDiv.setPadding(new Insets(10,10,10,10));
 		cards.setSpacing(5);
 		Name.setPadding(new Insets(5,5,5,5));
