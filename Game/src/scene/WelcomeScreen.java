@@ -59,7 +59,7 @@ public class WelcomeScreen{
 
 				String userInput = inputField.getText();
 				if(!inputField.getText().equals(""))
-					app.showSceneTwo();
+					app.showSceneTwo(userInput);	
 					
 
 				else

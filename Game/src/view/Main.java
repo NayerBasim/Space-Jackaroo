@@ -42,8 +42,8 @@ public class Main extends Application {
         primaryStage.setTitle("Scene One");
         primaryStage.show();
     }
-    public void showSceneTwo() {
-    	GameScreen sceneTwo = new GameScreen(this);
+    public void showSceneTwo(String userInput) {
+    	GameScreen sceneTwo = new GameScreen(this, userInput);
         primaryStage.setScene(sceneTwo.getScene());
         primaryStage.setTitle("Scene Two");
         primaryStage.show();

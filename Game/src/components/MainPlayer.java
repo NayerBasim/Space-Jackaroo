@@ -16,13 +16,15 @@ import javafx.scene.text.FontPosture;
 public class MainPlayer {
 
 	private VBox ProfileSection;
+	private final String PlayerName;
 	
-	public MainPlayer(Main app) {
+	public MainPlayer(Main app,String PlayerName) {
 		
 		VBox section = new VBox();
 		section.setAlignment(Pos.CENTER);
 		HBox cards = new HBox();
 		cards.setAlignment(Pos.CENTER);
+		this.PlayerName=PlayerName;
 		
 		Image profilePic = new Image(getClass().getResource("profil.jpg").toExternalForm());
 		ImageView Profile = new ImageView(profilePic);
@@ -54,7 +56,7 @@ public class MainPlayer {
 		
 		
 		
-		Label Name = new Label("youssef");
+		Label Name = new Label(PlayerName);
 		Name.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 20));
 		
 		

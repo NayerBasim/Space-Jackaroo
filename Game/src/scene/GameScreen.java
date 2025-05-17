@@ -55,8 +55,10 @@ public class GameScreen {
 	  private static final int TOTAL_TRACKS = 100;  // we’ll skip the center to get 100
 	  private static final int CELL_SIZE = 12;      // px
 	  private static final double CIRCLE_RADIUS = 4;
-	public GameScreen(Main app){
+	  private final String PlayerName;
+	public GameScreen(Main app, String PlayerName){
 			BorderPane root = new BorderPane();
+			this.PlayerName = PlayerName;
 			
 			
 	  	    StackPane grid = new Board().boardRoot;
@@ -66,7 +68,7 @@ public class GameScreen {
 
 
 
-	        root.setBottom(new MainPlayer(app).getPlayer());
+	        root.setBottom(new MainPlayer(app, PlayerName).getPlayer());
 	        root.setRight(new CPUPlayer1(app).getPlayer());
 	        root.setTop(new CPUPlayer2(app).getPlayer());
 	        root.setLeft(new CPUPlayer3(app).getPlayer());
@@ -85,7 +87,7 @@ public class GameScreen {
 	        );
 	        root.setBackground(new Background(bgImage));
 	        
-	        Scene scene = new Scene(root,850,850);
+	        Scene scene = new Scene(root,900,900);
 		     this.GameScene = scene;
 		    
 
