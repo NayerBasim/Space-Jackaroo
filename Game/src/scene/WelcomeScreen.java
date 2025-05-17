@@ -2,6 +2,8 @@ package scene;
 
 
 
+import java.io.IOException;
+
 import engine.Game;
 import view.Main;
 import engine.GameManager;
@@ -31,7 +33,7 @@ public class WelcomeScreen{
 
 	private Scene WelcomeSceneScene;
 	
-	public WelcomeScreen(Main app) {
+	public WelcomeScreen(Main app) throws IOException{
 		StackPane root = new StackPane();
 		VBox content = new VBox();
 		
@@ -59,9 +61,12 @@ public class WelcomeScreen{
 
 				String userInput = inputField.getText();
 				if(!inputField.getText().equals(""))
-					app.showSceneTwo(userInput);	
-					
-
+					try {
+						app.showSceneTwo(userInput);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				else
 					message.setText("Input your name");
 		});

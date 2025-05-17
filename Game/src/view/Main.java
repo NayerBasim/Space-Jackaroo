@@ -2,6 +2,8 @@ package view;
 
 
 
+import java.io.IOException;
+
 import controller.GameController;
 import engine.GameManager;
 import scene.GameScreen;
@@ -36,13 +38,13 @@ public class Main extends Application {
 		
 
 	}
-    public void showSceneOne() {
+    public void showSceneOne() throws IOException{
         WelcomeScreen sceneOne = new WelcomeScreen(this);
         primaryStage.setScene(sceneOne.getScene());
         primaryStage.setTitle("Scene One");
         primaryStage.show();
     }
-    public void showSceneTwo(String userInput) {
+    public void showSceneTwo(String userInput) throws IOException{
     	GameScreen sceneTwo = new GameScreen(this, userInput);
         primaryStage.setScene(sceneTwo.getScene());
         primaryStage.setTitle("Scene Two");

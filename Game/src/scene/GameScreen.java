@@ -2,6 +2,7 @@ package scene;
 
 import model.card.standard.Five;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import components.CPUPlayer2;
 import components.CPUPlayer3;
 import components.MainPlayer;
 import components.PlayerHand;
+import engine.Game;
 import engine.GameManager;
 import engine.board.BoardManager;
 import view.Main;
@@ -56,7 +58,7 @@ public class GameScreen {
 	  private static final int CELL_SIZE = 12;      // px
 	  private static final double CIRCLE_RADIUS = 4;
 	  private final String PlayerName;
-	public GameScreen(Main app, String PlayerName){
+	public GameScreen(Main app, String PlayerName) throws IOException{
 			BorderPane root = new BorderPane();
 			this.PlayerName = PlayerName;
 			
@@ -64,13 +66,17 @@ public class GameScreen {
 	  	    StackPane grid = new Board().boardRoot;
 	  	    grid.setMaxSize(100, 100);
 	  	    
+	  	    Game temp=new Game();
 
+	  	    ArrayList<Card> cards = new ArrayList<Card>();
+	        cards.add(new Four("Four", "description", Suit.SPADE,(BoardManager)temp.getBoard(), (GameManager)temp));
+	        cards.add(new Five("Five", "description",Suit.DIAMOND,(BoardManager)temp.getBoard(), (GameManager)temp ));
 
-
-
+	        Pane hand=new PlayerHand(cards);
+	        
 	        root.setBottom(new MainPlayer(app, PlayerName).getPlayer());
 	        root.setRight(new CPUPlayer1(app).getPlayer());
-	        root.setTop(new CPUPlayer2(app).getPlayer());
+	        root.setTop(hand);
 	        root.setLeft(new CPUPlayer3(app).getPlayer());
 	        root.setCenter(grid);
 	        root.setPadding(new Insets(0,0,100,0));
