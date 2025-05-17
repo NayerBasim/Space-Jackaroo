@@ -65,12 +65,14 @@ public class GameScreen {
 	        ArrayList<Card> cards = new ArrayList<Card>();
 	        cards.add(new Four("Four", "description", Suit.SPADE,boardManager, gameManager));
 	        cards.add(new Five("Five", "description",Suit.DIAMOND,boardManager, gameManager ));
+	        
+	        Pane hand=new PlayerHand(cards);
 
 
 
 	        root.setBottom(new MainPlayer(app).getPlayer());
 	        root.setRight(new CPUPlayer1(app).getPlayer());
-	        root.setTop(new CPUPlayer2(app).getPlayer());
+	        root.setTop(hand);
 	        root.setLeft(new CPUPlayer3(app).getPlayer());
 	        root.setCenter(grid);
 	        root.setPadding(new Insets(0,0,100,0));

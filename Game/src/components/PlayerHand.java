@@ -13,16 +13,30 @@ import model.card.Card;
 public class PlayerHand extends HBox {
 
     public PlayerHand(ArrayList<Card> cards) {
-    	ArrayList<CardView> cardViews= new ArrayList<>();
+    	
+    	this.setSpacing(-40); // overlap
+    	
+    	
     	for(Card currCard : cards) {
     		Image currImage=new CardImage(currCard).getImage();
     		CardView currView=new CardView(currImage);
-    		cardViews.add(currView);
+    		
+    		currView.setOnMouseClicked(event -> {
+                System.out.println("Card clicked: " + currCard); // Debug
+            });
+    		
+    		currView.setOnMouseEntered(e -> currView.setScaleX(1.1));
+    		currView.setOnMouseExited(e -> currView.setScaleX(1.0));
+
+    		
+            this.getChildren().add(currView);
     	}
     	
-    	this.setSpacing(-40); // overlap
-        for (CardView cardView : cardViews) {
-            this.getChildren().add(cardView);
-        }
+    	
+
+
+        
+        
+        
     }
 }
