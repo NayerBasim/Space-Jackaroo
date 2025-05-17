@@ -30,20 +30,20 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		controller = new GameController();
 		this.primaryStage = primaryStage;
-		showSceneOne();
+		showSceneOne(controller);
 	
 	
 		
 
 	}
     public void showSceneOne() {
-        WelcomeScreen sceneOne = new WelcomeScreen(this);
+        WelcomeScreen sceneOne = new WelcomeScreen();
         primaryStage.setScene(sceneOne.getScene());
         primaryStage.setTitle("Scene One");
         primaryStage.show();
     }
     public void showSceneTwo() {
-    	GameScreen sceneTwo = new GameScreen(this);
+    	GameScreen sceneTwo = new GameScreen();
         primaryStage.setScene(sceneTwo.getScene());
         primaryStage.setTitle("Scene Two");
         primaryStage.show();

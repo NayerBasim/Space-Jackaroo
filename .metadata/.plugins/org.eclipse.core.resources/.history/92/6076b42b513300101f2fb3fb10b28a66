@@ -68,7 +68,7 @@ public class GameScreen {
 
 	        root.setBottom(new MainPlayer(app).getPlayer());
 	        root.setRight(new CPUPlayer1(app).getPlayer());
-	        root.setTop(new CPUPlayer2(app).getPlayer());
+	        root.setTop(hand);
 	        root.setLeft(new CPUPlayer3(app).getPlayer());
 	        root.setCenter(grid);
 	        root.setPadding(new Insets(0,0,100,0));

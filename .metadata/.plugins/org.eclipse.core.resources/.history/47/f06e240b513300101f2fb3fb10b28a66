@@ -31,7 +31,7 @@ public class WelcomeScreen{
 
 	private Scene WelcomeSceneScene;
 	
-	public WelcomeScreen(Main app) {
+	public WelcomeScreen() {
 		StackPane root = new StackPane();
 		VBox content = new VBox();
 		
@@ -59,7 +59,7 @@ public class WelcomeScreen{
 
 				String userInput = inputField.getText();
 				if(!inputField.getText().equals(""))
-					app.showSceneTwo();
+					app.showSceneTwo((Game) gameManager);
 					
 
 				else
