@@ -2,57 +2,39 @@ package components;
 
 
 
-import java.util.ArrayList;
-
 import cardImages.CardImage;
-import javafx.scene.Cursor;
-import javafx.scene.effect.DropShadow;
+import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import model.card.Card;
 
 public class PlayerHand extends HBox {
+	
+	ToggleGroup handGroup;
 
-    public PlayerHand(ArrayList<Card> cards) {
+    public PlayerHand() {
     	
-    	this.setSpacing(-40); // overlap
-    	
-    	
-    	for(Card currCard : cards) {
-    		Image currImage=new CardImage(currCard).getImage();
-    		CardView currView=new CardView(currImage);
-    		
-    		currView.setOnMouseClicked(event -> {
-                System.out.println("Card clicked: " + currCard); // Debug
-            });
-    		
-    		currView.setOnMouseEntered(e -> {currView.setScaleX(1.1);
-    		currView.setTranslateX(10);
-    		currView.setTranslateY(-10);
-    		currView.setCursor(Cursor.HAND);
-    		DropShadow shadow = new DropShadow();
-    		currView.setEffect(shadow);
-    		});
-    		
-    		
-    		
-    		currView.setOnMouseExited(e -> {currView.setScaleX(1.0);
-    		currView.setTranslateX(0);
-    		currView.setTranslateY(0);
-    		currView.setCursor(Cursor.DEFAULT);
-    		currView.setEffect(null);
-    		});
-
-    		
-            this.getChildren().add(currView);
-    	}
-    	
-    	
-
-
-        
-        
-        
+    	this.setSpacing(-40); // overlap  
+    	handGroup=new ToggleGroup();
+ 
+    }
+    
+    
+    public ToggleButton addCard(Card card) {
+    	Image currImage=new CardImage(card).getImage();
+		CardView currView=new CardView(currImage);
+		ToggleButton btn=new ToggleButton();
+		btn.setPrefSize(70, 100); // Match the image size
+		btn.setMaxSize(80, 110);
+		btn.setMinSize(70, 100);
+		btn.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
+		btn.setStyle("-fx-padding: 0;");
+		btn.setGraphic(currView);
+		btn.setToggleGroup(handGroup);
+		this.getChildren().add(btn);
+		return btn;
     }
 }

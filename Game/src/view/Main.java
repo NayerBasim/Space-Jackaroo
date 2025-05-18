@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -56,4 +57,22 @@ public class Main extends Application {
 		
 		launch(args);
 	}
+	
+	public void showAlert(String title, String message) {
+		Stage alertStage = new Stage();
+        alertStage.setTitle(title);
+
+        Label label = new Label(message);
+        Button closeButton = new Button("Continue Shopping");
+        closeButton.setOnAction(event -> alertStage.close());
+
+        BorderPane pane = new BorderPane();
+        pane.setTop(label);
+        pane.setCenter(closeButton);
+
+        Scene scene = new Scene(pane, 500, 100);
+        alertStage.setScene(scene);
+        alertStage.show();
+	}
+	
 }

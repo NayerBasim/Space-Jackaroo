@@ -27,8 +27,8 @@ public CPUPlayer2(Main app, ArrayList<Card> cards){
 	
 	Image profilePic = new Image(getClass().getResource("profil.jpg").toExternalForm());
 	ImageView Profile = new ImageView(profilePic);
-	Profile.setFitWidth(100);
-	Profile.setFitHeight(100);
+	Profile.setFitWidth(75);
+	Profile.setFitHeight(75);
 	Profile.preserveRatioProperty();
 	
 //	Image card = new Image(getClass().getResource("cards_back.png").toExternalForm());

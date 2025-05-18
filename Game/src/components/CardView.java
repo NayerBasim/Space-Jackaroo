@@ -12,6 +12,7 @@ public class CardView extends StackPane {
         ImageView view = new ImageView(image);
         view.setFitWidth(70);
         view.setFitHeight(100);
+        view.setPreserveRatio(true);
         this.getChildren().add(view);
     }
 }

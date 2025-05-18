@@ -24,17 +24,15 @@ public class CardImage {
 			if(card.getName().equalsIgnoreCase("marblenurner")) {
 				rank=14;
 				suit=null;
-				cardImage=new Image(getClass().getResourceAsStream("MarbelBurner.jpg"));
+				cardImage=new Image(getClass().getResourceAsStream("MarbleBurner.png"));
 			}else {
 				rank=15;
 				suit=null;
-				cardImage=new Image(getClass().getResourceAsStream("MarbelSaver.jpg"));
+				cardImage=new Image(getClass().getResourceAsStream("MarbleSaver.png"));
 				
 			}
 		}
 		if(suit!=null) {
-			System.out.println(suit);
-			System.out.println(rank);
 			cardImage=new Image(getClass().getResourceAsStream(suit.name() + "_" + rank + ".png"));
 		}
 		

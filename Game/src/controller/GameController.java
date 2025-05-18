@@ -3,16 +3,16 @@ package controller;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import engine.Game;
+import exception.InvalidCardException;
+import exception.InvalidMarbleException;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.shape.Circle;
 import model.card.Card;
 import model.player.Marble;
 import model.player.Player;
 import view.Main;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
-import engine.Game;
-import exception.InvalidMarbleException;
 
 
 public class GameController {
@@ -79,5 +79,36 @@ public class GameController {
 	
 	
 	//
+	
+	public ArrayList<ArrayList<Card>> getHands(){
+		ArrayList<ArrayList<Card>> hands=new ArrayList<ArrayList<Card>>();
+		
+		ArrayList<Player> players=game.getPlayers();
+		
+		for(Player curr : players) {
+			hands.add(curr.getHand());
+		}
+		
+		
+		return hands;
+	}
+	
+	public boolean handleClick(Card card){
+		game.deselectAll();
+		
+		try{
+			
+			game.selectCard(card);
+			
+		}catch(InvalidCardException e) { //can only access the player's hand aslan. whats the use?? 
+			return false;
+		}
+		
+		return true;
+	}
+	
+	
+	
+
 	
 }
