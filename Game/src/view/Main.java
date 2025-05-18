@@ -45,7 +45,7 @@ public class Main extends Application {
         primaryStage.show();
     }
     public void showSceneTwo(String userInput) throws IOException {
-    	GameScreen sceneTwo = new GameScreen(this,userInput);
+    	GameScreen sceneTwo = new GameScreen(this,userInput, this.controller);
         primaryStage.setScene(sceneTwo.getScene());
         primaryStage.setTitle("Scene Two");
         primaryStage.show();

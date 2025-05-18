@@ -35,7 +35,7 @@ public class MainPlayer {
 
 
 		
-		Image card = new Image(getClass().getResource("cards_back.png").toExternalForm());
+		Image card = new Image(getClass().getResource("game_cards.png").toExternalForm());
 		ImageView cardHolder1 = new ImageView(card);
 		ImageView cardHolder2 = new ImageView(card);
 		ImageView cardHolder3 = new ImageView(card);

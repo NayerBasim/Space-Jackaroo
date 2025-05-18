@@ -12,6 +12,7 @@ import components.CPUPlayer2;
 import components.CPUPlayer3;
 import components.MainPlayer;
 import components.PlayerHand;
+import controller.GameController;
 import engine.Game;
 import engine.GameManager;
 import engine.board.BoardManager;
@@ -58,7 +59,7 @@ public class GameScreen {
 	  private static final int CELL_SIZE = 12;      // px
 	  private static final double CIRCLE_RADIUS = 4;
 	  private final String PlayerName;
-	public GameScreen(Main app, String PlayerName) throws IOException{
+	public GameScreen(Main app, String PlayerName, GameController controller) throws IOException{
 			BorderPane root = new BorderPane();
 			this.PlayerName = PlayerName;
 			
@@ -73,6 +74,9 @@ public class GameScreen {
 	        cards.add(new Five("Five", "description",Suit.DIAMOND,(BoardManager)temp.getBoard(), (GameManager)temp ));
 
 	        Pane hand=new PlayerHand(cards);
+	        
+	       // controller.updateCards(hand);
+	        
 	        
 	        root.setBottom(new MainPlayer(app, PlayerName).getPlayer());
 	        root.setRight(new CPUPlayer1(app).getPlayer());
@@ -92,6 +96,8 @@ public class GameScreen {
 	            )
 	        );
 	        root.setBackground(new Background(bgImage));
+	        
+	        
 	        
 	        Scene scene = new Scene(root,900,900);
 		     this.GameScene = scene;
