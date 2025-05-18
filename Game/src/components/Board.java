@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import model.Colour;
+import controller.GameController;
 import view.Main;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -43,14 +45,25 @@ import javafx.stage.Stage;
 
 public class Board {
 	  public StackPane boardRoot;
-	  private ArrayList<Circle> safeCirclesPlayer ;
-	  private ArrayList<Circle> safeCirclesCPU1 ;
-	  private ArrayList<Circle> safeCirclesCPU2 ;
-	  private ArrayList<Circle> safeCirclesCPU3 ;
+	  private ArrayList<ArrayList<Circle>> safeZones ;
+	  private ArrayList<ArrayList<Circle>> baseZones ;
+	  private GameController controller;
 	  private ArrayList<Circle> trackCircles;
 	  private static final int GRID_SIZE = 31;     
 
-	public Board() {
+	public Board(GameController controller) {
+		safeZones = new ArrayList<ArrayList<Circle>>();
+		baseZones = new ArrayList<ArrayList<Circle>>();
+
+		  for(int i = 0 ; i < 4; i++){
+			  safeZones.add(new  ArrayList<Circle>());
+		  }
+		  for(int i = 0 ; i < 4; i++){
+			  baseZones.add(new  ArrayList<Circle>());
+		  }
+		  
+		
+		this.controller = controller;
 	     StackPane root = new StackPane();
 		 GridPane grid = new GridPane();
 	        grid.setGridLinesVisible(false);
@@ -205,58 +218,64 @@ public class Board {
 	        }
 	        
 	        //base cell 1
-	        createBaseCircle(grid, 11,2);
-	        createBaseCircle(grid, 12,2);
-	        createBaseCircle(grid, 11,3);
-	        createBaseCircle(grid, 12,3);
+	        createBaseCircle(grid, 11,2,0);
+	        createBaseCircle(grid, 12,2,0);
+	        createBaseCircle(grid, 11,3,0);
+	        createBaseCircle(grid, 12,3,0);
 	        
 	      //base cell 2
-	        createBaseCircle(grid, 27,11);
-	        createBaseCircle(grid, 28,11);
-	        createBaseCircle(grid, 27,12);
-	        createBaseCircle(grid, 28,12);
+	        createBaseCircle(grid, 27,11,1);
+	        createBaseCircle(grid, 28,11,1);
+	        createBaseCircle(grid, 27,12,1);
+	        createBaseCircle(grid, 28,12,1);
 	        
 	      //base cell 3
-	        createBaseCircle(grid, 18,27);
-	        createBaseCircle(grid, 19,27);
-	        createBaseCircle(grid, 18,28);
-	        createBaseCircle(grid, 19,28);
+	        createBaseCircle(grid, 18,27,2);
+	        createBaseCircle(grid, 19,27,2);
+	        createBaseCircle(grid, 18,28,2);
+	        createBaseCircle(grid, 19,28,2);
 	        
 	      //base cell 4
-	        createBaseCircle(grid, 2, 18);
-	        createBaseCircle(grid, 3, 18);
-	        createBaseCircle(grid, 2, 19);
-	        createBaseCircle(grid, 3, 19);
+	        createBaseCircle(grid, 2, 18, 3);
+	        createBaseCircle(grid, 3, 18, 3);
+	        createBaseCircle(grid, 2, 19, 3);
+	        createBaseCircle(grid, 3, 19, 3);
 	        
 	       
 	      //safe cell 1
-	        createSafeCircle(grid, 3,26);
-	        createSafeCircle(grid, 4,25);
-	        createSafeCircle(grid, 5,24);
-	        createSafeCircle(grid, 6,23);
+	        createSafeCircle(grid, 3,26, 0);
+	        createSafeCircle(grid, 4,25, 0);
+	        createSafeCircle(grid, 5,24, 0);
+	        createSafeCircle(grid, 6,23, 0);
 	      //safe cell 2
-	        createSafeCircle(grid, 26,27);
-	        createSafeCircle(grid, 25,26);
-	        createSafeCircle(grid, 24,25);
-	        createSafeCircle(grid, 23,24);
+	        createSafeCircle(grid, 26,27, 1);
+	        createSafeCircle(grid, 25,26, 1);
+	        createSafeCircle(grid, 24,25, 1);
+	        createSafeCircle(grid, 23,24, 1);
 	      //safe cell 3
-	        createSafeCircle(grid, 27,4);
-	        createSafeCircle(grid, 26,5);
-	        createSafeCircle(grid, 25,6);
-	        createSafeCircle(grid, 24,7);
+	        createSafeCircle(grid, 27,4, 2);
+	        createSafeCircle(grid, 26,5, 2);
+	        createSafeCircle(grid, 25,6, 2);
+	        createSafeCircle(grid, 24,7, 2);
 	        
 	      //safe cell 4
-	        createSafeCircle(grid, 4,3);
-	        createSafeCircle(grid, 5,4);
-	        createSafeCircle(grid, 6,5);
-	        createSafeCircle(grid, 7,6);
+	        createSafeCircle(grid, 4,3, 3);
+	        createSafeCircle(grid, 5,4, 3);
+	        createSafeCircle(grid, 6,5, 3);
+	        createSafeCircle(grid, 7,6, 3);
 	        
 	        grid.setPadding(new Insets(5));
 
 
 
 	        root.getChildren().add(grid);
-
+	        
+	        
+	        Button field = new Button("Test fielding"); //testing
+	        root.getChildren().add(field);  //testing
+	        field.setOnAction(e -> {
+	        	controller.fieldMarble(baseZones, trackCircles);
+	        });
 	        
 //	        Timeline timeline = new Timeline();
 //	        for (int i = 0; i < circles.size(); i++) {
@@ -289,45 +308,55 @@ public class Board {
 
 
 	}
-    // Build a Timeline that “lights up” one circle every 0.5s
+    // Build a Timeline that â€œlights upâ€ one circle every 0.5s
 	
 
 	
     private void createTrackCircle(GridPane grid,int motionX,int motionY) {
-    	Circle circle = new Circle(6, Color.BROWN);
-        circle.setStroke(Color.DARKGREEN);    
+    	Circle circle = new Circle(6, Color.GRAY);
+         
         StackPane cell = new StackPane(circle);
         grid.add(cell, motionX,motionY);
         GridPane.setHalignment(circle, HPos.CENTER);
         GridPane.setValignment (circle, VPos.CENTER);
         trackCircles.add(circle);
     }
-    private void createBaseCircle(GridPane grid,int motionX,int motionY) {
-    	Circle circle = new Circle(6, Color.BLUE);
-        circle.setStroke(Color.DARKGREEN);    
+    private void createBaseCircle(GridPane grid,int motionX,int motionY, int index) {
+    	
+    	ArrayList <Colour> colours=controller.getPlayerColours();
+    	Colour currColour= colours.get(index);
+    	Circle circle = new Circle(6);
+    	Color GUIColor = GameController.translatecolortocolor(currColour);
+    	circle.setFill(GUIColor);
+		
+    	
+    	
+
+   
         StackPane cell = new StackPane(circle);
         grid.add(cell, motionX,motionY);
         GridPane.setHalignment(circle, HPos.CENTER);
         GridPane.setValignment (circle, VPos.CENTER);
+        baseZones.get(index).add(circle);
 
     }
-    private void createSafeCircle(GridPane grid,int motionX,int motionY) {
-    	Circle circle = new Circle(6, Color.YELLOW);
-        circle.setStroke(Color.DARKGREEN);    
+    private void createSafeCircle(GridPane grid,int motionX,int motionY, int index) {
+    	Circle circle = new Circle(6, Color.GRAY);
+   
         StackPane cell = new StackPane(circle);
         grid.add(cell, motionX,motionY);
         GridPane.setHalignment(circle, HPos.CENTER);
         GridPane.setValignment (circle, VPos.CENTER);
+        circle.setOnMouseClicked(e ->{
 
-    }
-    private void createPlayerSafeCircle(GridPane grid,int motionX,int motionY) {
-    	Circle circle = new Circle(6, Color.YELLOW);
-        circle.setStroke(Color.DARKGREEN);    
-        StackPane cell = new StackPane(circle);
-        grid.add(cell, motionX,motionY);
-        GridPane.setHalignment(circle, HPos.CENTER);
-        GridPane.setValignment (circle, VPos.CENTER);
-       // safeCircles.add(circle);
+                System.out.println("Circle clicked!");
+                circle.setStrokeWidth(3);
+                circle.setStroke(Color.DARKGREEN);
+                controller.selectMarble(safeZones, trackCircles,circle);
+            
+        });
+        safeZones.get(index).add(circle);
+        
 
     }
 

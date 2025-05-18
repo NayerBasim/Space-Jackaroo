@@ -42,7 +42,7 @@ public class GameScreen {
 			this.app=app;
 			
 			
-	  	    StackPane grid = new Board().boardRoot;
+	  	    StackPane grid = new Board(controller).boardRoot;
 	  	    grid.setMaxSize(100, 100);
 	  	    
 

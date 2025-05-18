@@ -52,6 +52,9 @@ public class Game implements GameManager {
             this.players.get(i).setHand(Deck.drawCards());
         
     }
+    public int getcurrentPlayerIndex(){
+    	return this.currentPlayerIndex;
+    }
     
     public Board getBoard() {
         return board;
