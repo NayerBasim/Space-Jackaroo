@@ -32,7 +32,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 		controller = new GameController();
 		this.primaryStage = primaryStage;
-		showSceneOne();
+		showSceneTwo("zoz");
 	
 	
 		

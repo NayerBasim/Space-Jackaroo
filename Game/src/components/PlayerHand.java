@@ -34,6 +34,9 @@ public class PlayerHand extends HBox {
     		DropShadow shadow = new DropShadow();
     		currView.setEffect(shadow);
     		});
+    		
+    		
+    		
     		currView.setOnMouseExited(e -> {currView.setScaleX(1.0);
     		currView.setTranslateX(0);
     		currView.setTranslateY(0);

@@ -72,16 +72,19 @@ public class GameScreen {
 	  	    ArrayList<Card> cards = new ArrayList<Card>();
 	        cards.add(new Four("Four", "description", Suit.SPADE,(BoardManager)temp.getBoard(), (GameManager)temp));
 	        cards.add(new Five("Five", "description",Suit.DIAMOND,(BoardManager)temp.getBoard(), (GameManager)temp ));
+	        cards.add(new Five("Five", "description",Suit.DIAMOND,(BoardManager)temp.getBoard(), (GameManager)temp ));
+	        cards.add(new Five("Five", "description",Suit.DIAMOND,(BoardManager)temp.getBoard(), (GameManager)temp ));
+	        
 
 	        Pane hand=new PlayerHand(cards);
 	        
 	       // controller.updateCards(hand);
 	        
 	        
-	        root.setBottom(new MainPlayer(app, PlayerName).getPlayer());
-	        root.setRight(new CPUPlayer1(app).getPlayer());
-	        root.setTop(hand);
-	        root.setLeft(new CPUPlayer3(app).getPlayer());
+	        root.setBottom(new MainPlayer(app, PlayerName,cards).getPlayer());
+	        root.setRight(new CPUPlayer1(app,cards).getPlayer());
+	        root.setTop(new CPUPlayer2(app,cards).getPlayer());
+	        root.setLeft(new CPUPlayer3(app,cards).getPlayer());
 	        root.setCenter(grid);
 	        root.setPadding(new Insets(0,0,100,0));
 	        
