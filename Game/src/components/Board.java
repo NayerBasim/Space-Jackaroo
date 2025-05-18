@@ -43,7 +43,11 @@ import javafx.stage.Stage;
 
 public class Board {
 	  public StackPane boardRoot;
-	  private ArrayList<Circle> circles;
+	  private ArrayList<Circle> safeCirclesPlayer ;
+	  private ArrayList<Circle> safeCirclesCPU1 ;
+	  private ArrayList<Circle> safeCirclesCPU2 ;
+	  private ArrayList<Circle> safeCirclesCPU3 ;
+	  private ArrayList<Circle> trackCircles;
 	  private static final int GRID_SIZE = 31;     
 
 	public Board() {
@@ -52,7 +56,7 @@ public class Board {
 	        grid.setGridLinesVisible(false);
 	        
 	        
-	        circles = new ArrayList<Circle>();
+	        trackCircles = new ArrayList<Circle>();
 	        
 	        for (int i = 0; i < GRID_SIZE; i++) {
 	            ColumnConstraints cc = new ColumnConstraints();
@@ -296,7 +300,7 @@ public class Board {
         grid.add(cell, motionX,motionY);
         GridPane.setHalignment(circle, HPos.CENTER);
         GridPane.setValignment (circle, VPos.CENTER);
-        circles.add(circle);
+        trackCircles.add(circle);
     }
     private void createBaseCircle(GridPane grid,int motionX,int motionY) {
     	Circle circle = new Circle(6, Color.BLUE);
@@ -314,6 +318,16 @@ public class Board {
         grid.add(cell, motionX,motionY);
         GridPane.setHalignment(circle, HPos.CENTER);
         GridPane.setValignment (circle, VPos.CENTER);
+
+    }
+    private void createPlayerSafeCircle(GridPane grid,int motionX,int motionY) {
+    	Circle circle = new Circle(6, Color.YELLOW);
+        circle.setStroke(Color.DARKGREEN);    
+        StackPane cell = new StackPane(circle);
+        grid.add(cell, motionX,motionY);
+        GridPane.setHalignment(circle, HPos.CENTER);
+        GridPane.setValignment (circle, VPos.CENTER);
+       // safeCircles.add(circle);
 
     }
 

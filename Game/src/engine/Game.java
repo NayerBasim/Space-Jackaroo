@@ -21,7 +21,7 @@ import model.player.*;
 
 @SuppressWarnings("unused")
 public class Game implements GameManager {
-    final Board board;
+    public final Board board; //made this public
     private final ArrayList<Player> players;
 	private int currentPlayerIndex;
     private final ArrayList<Card> firePit;
