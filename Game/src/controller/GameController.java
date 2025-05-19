@@ -36,8 +36,8 @@ public class GameController {
 	Game game;
 	String name;
 	
-	public GameController() throws IOException{
-		this.game = new Game();
+	public GameController(String playerName) throws IOException{
+		this.game = new Game(playerName);
 		this.name = "";
 	}
 	
@@ -164,6 +164,7 @@ public class GameController {
 	// create method selectMarble, which takes as the parameter the Card clicked and sets the selected card in the game 
 		public boolean selectCard(Card card){
 			
+			System.out.println("Controller: "+card.getName());
 			
 			try{
 				game.selectCard(card);
@@ -288,12 +289,14 @@ public class GameController {
                 PlayerHand hand, Button play) {
 
 		try {
+			System.out.println(game.getPlayers().get(0).getSelectedCard().getName());
+			System.out.println("GUI Curr ind: " + game.getcurrentPlayerIndex());
 		    if (game.canPlayTurn()) {
 		        game.playPlayerTurn();
 		        updateBase(baseZones);
 		        updateSafe(safeZones);
 		        updateBoard(trackCircles);
-		        System.out.println(game.getPlayers().get(0).getSelectedCard().getName());
+		        
 		    }
 		    game.endPlayerTurn();
 		    if(game.checkWin() != null){

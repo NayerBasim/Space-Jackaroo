@@ -115,6 +115,8 @@ public class Player {
     
     public void play() throws GameException{
     	
+    	System.out.println("PLayer play: PLayer" + selectedCard.getName());
+    	
     	if(selectedCard==null) {throw new InvalidCardException();
     	}else if(!selectedCard.validateMarbleSize(selectedMarbles)) {
     		throw new InvalidMarbleException("Invalid Size!");
