@@ -317,12 +317,12 @@ public class GameController {
 									updateBase(baseZones);
 			                        updateSafe(safeZones);
 			                        updateBoard(trackCircles);
-
+			                        game.endPlayerTurn();
 								} catch (Exception e) {
 									Main.showAlert("Exception", e.getMessage());
 								}
 		                }
-		                game.endPlayerTurn();// to be checked
+		                //game.endPlayerTurn();
                         if(game.checkWin() != null){
                         	System.out.println("YOU LOSTTT !");
                         }

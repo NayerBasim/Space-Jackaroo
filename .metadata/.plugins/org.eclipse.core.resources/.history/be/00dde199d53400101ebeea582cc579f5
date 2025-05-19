@@ -37,7 +37,7 @@ public class GameController {
 	String name;
 	
 	public GameController() throws IOException{
-		this.game = new Game(name);
+		this.game = new Game();
 		this.name = "";
 	}
 	
@@ -322,7 +322,7 @@ public class GameController {
 									Main.showAlert("Exception", e.getMessage());
 								}
 		                }
-		                game.endPlayerTurn();// to be checked
+		                game.endPlayerTurn();
                         if(game.checkWin() != null){
                         	System.out.println("YOU LOSTTT !");
                         }

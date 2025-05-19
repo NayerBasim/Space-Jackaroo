@@ -37,7 +37,7 @@ public class GameController {
 	String name;
 	
 	public GameController() throws IOException{
-		this.game = new Game(name);
+		this.game = new Game();
 		this.name = "";
 	}
 	
