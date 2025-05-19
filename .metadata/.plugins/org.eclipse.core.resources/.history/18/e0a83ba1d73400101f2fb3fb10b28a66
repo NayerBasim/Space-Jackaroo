@@ -38,9 +38,7 @@ public class GameScreen {
 	  private static final double CIRCLE_RADIUS = 4;
 	  private final String PlayerName;
 	  private final Main app;
-	  GameController controller;
-	public GameScreen(Main app, String PlayerName) throws IOException{
-		    GameController controller = new GameController(PlayerName);
+	public GameScreen(Main app, String PlayerName, GameController controller) throws IOException{
 			BorderPane root = new BorderPane();
 			this.PlayerName = PlayerName;
 			this.app=app;

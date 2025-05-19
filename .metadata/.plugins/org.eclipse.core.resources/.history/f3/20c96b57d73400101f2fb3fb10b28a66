@@ -36,9 +36,9 @@ public class GameController {
 	Game game;
 	String name;
 	
-	public GameController(String name) throws IOException{
-		this.game = new Game(name);
-
+	public GameController() throws IOException{
+		this.game = new Game();
+		this.name = "";
 	}
 	
 	

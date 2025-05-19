@@ -27,7 +27,7 @@ public class Game implements GameManager {
     private final ArrayList<Card> firePit;
     private int turn;
 
-    public Game(String name) throws IOException {
+    public Game() throws IOException {
         turn = 0;
         currentPlayerIndex = 0;
         firePit = new ArrayList<>();
@@ -43,9 +43,9 @@ public class Game implements GameManager {
         Deck.loadCardPool(this.board, (GameManager)this);
         
         this.players = new ArrayList<>();
-        this.players.add(new Player(name, colourOrder.get(0)));
+//        this.players.add(new Player(playerName, colourOrder.get(0)));
         
-        for (int i = 1; i < 4; i++) 
+        for (int i = 0; i < 4; i++) 
             this.players.add(new CPU("CPU " + i, colourOrder.get(i), this.board));
         
         for (int i = 0; i < 4; i++) 
@@ -237,6 +237,3 @@ public class Game implements GameManager {
     
     
 }
-
-
-
