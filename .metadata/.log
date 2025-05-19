@@ -4865,3 +4865,483 @@ Java Model Exception: Java Model Status [Unknown javadoc format for String [in S
 !SUBENTRY 1 org.eclipse.jdt.core 4 1009 2025-05-19 20:37:44.394
 !MESSAGE Unknown javadoc format for String [in String.class [in java.lang [in C:\Users\dell\Downloads\(_CSEN301_) 2 - Eclipse (Other)\Eclipse JavaFX\jdk\jre\lib\rt.jar]]]
 >>>>>>> refs/remotes/origin/new
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.276
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.288
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.288
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.288
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 566 2025-05-19 21:21:07.288
+!MESSAGE Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+!STACK 0
+java.lang.IllegalArgumentException: Cannot set lower sequence number for root (previous: 27, new: 26). Ignoring the new value.
+	at org.eclipse.core.internal.resources.SaveManager$MasterTable.put(SaveManager.java:53)
+	at java.util.Properties.load0(Properties.java:392)
+	at java.util.Properties.load(Properties.java:341)
+	at org.eclipse.core.internal.resources.SaveManager.validateMasterTableBeforeSave(SaveManager.java:1590)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1263)
+	at org.eclipse.core.internal.resources.SaveManager.saveMasterTable(SaveManager.java:1255)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1232)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1144)
+	at org.eclipse.core.internal.resources.DelayedSnapshotJob.run(DelayedSnapshotJob.java:51)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
