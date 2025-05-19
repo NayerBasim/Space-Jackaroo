@@ -45,11 +45,9 @@ public class Game implements GameManager {
         Deck.loadCardPool(this.board, (GameManager)this);
         
         this.players = new ArrayList<>();
-<<<<<<< HEAD
-        this.players.add(new Player(playerName, colourOrder.get(0)));
-=======
+
         this.players.add(new Player(name, colourOrder.get(0)));
->>>>>>> refs/remotes/origin/main
+
         
         for (int i = 1; i < 4; i++) 
             this.players.add(new CPU("CPU " + i, colourOrder.get(i), this.board));
