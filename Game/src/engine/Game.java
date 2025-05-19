@@ -110,14 +110,17 @@ public class Game implements GameManager {
     
     public void endPlayerTurn(){
     	Card selectedCard = players.get(currentPlayerIndex).getSelectedCard();
-    	firePit.add(selectedCard);
-    	players.get(currentPlayerIndex).deselectAll();
-    	players.get(currentPlayerIndex).getHand().remove(selectedCard);
-    	currentPlayerIndex++;
-    	if(currentPlayerIndex >=4){
-    		turn++;
-    		currentPlayerIndex=0;
+    	if(selectedCard!=null){
+    		firePit.add(selectedCard);
+        	players.get(currentPlayerIndex).getHand().remove(selectedCard);
     	}
+    	
+    		players.get(currentPlayerIndex).deselectAll();
+    		currentPlayerIndex++;
+        	if(currentPlayerIndex >=4){
+        		turn++;
+        		currentPlayerIndex=0;
+        	}
     	if(turn>=4){
     		turn=0;
     		for(int i =0 ;i<4;i++){
