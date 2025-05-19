@@ -27,9 +27,7 @@ public class Game implements GameManager {
     private final ArrayList<Card> firePit;
     private int turn;
 
-    public Game(String name) throws IOException {
-
-
+    public Game() throws IOException {
         turn = 0;
         currentPlayerIndex = 0;
         firePit = new ArrayList<>();
@@ -45,12 +43,9 @@ public class Game implements GameManager {
         Deck.loadCardPool(this.board, (GameManager)this);
         
         this.players = new ArrayList<>();
-
-        this.players.add(new Player(name, colourOrder.get(0)));
-
-
+//        this.players.add(new Player(playerName, colourOrder.get(0)));
         
-        for (int i = 1; i < 4; i++) 
+        for (int i = 0; i < 4; i++) 
             this.players.add(new CPU("CPU " + i, colourOrder.get(i), this.board));
         
         for (int i = 0; i < 4; i++) 
@@ -103,25 +98,20 @@ public class Game implements GameManager {
     	}
     }
     public void playPlayerTurn() throws GameException{
-    	System.out.println("Game Curr ind: "+currentPlayerIndex);
-    	System.out.println("Game Play"+players.get(currentPlayerIndex).getSelectedCard().getName()	);
 	    players.get(currentPlayerIndex).play();	
 	    
     }
     
     public void endPlayerTurn(){
     	Card selectedCard = players.get(currentPlayerIndex).getSelectedCard();
-    	if(selectedCard!=null){
-    		firePit.add(selectedCard);
-        	players.get(currentPlayerIndex).getHand().remove(selectedCard);
+    	firePit.add(selectedCard);
+    	players.get(currentPlayerIndex).deselectAll();
+    	players.get(currentPlayerIndex).getHand().remove(selectedCard);
+    	currentPlayerIndex++;
+    	if(currentPlayerIndex >=4){
+    		turn++;
+    		currentPlayerIndex=0;
     	}
-    	
-    		players.get(currentPlayerIndex).deselectAll();
-    		currentPlayerIndex++;
-        	if(currentPlayerIndex >=4){
-        		turn++;
-        		currentPlayerIndex=0;
-        	}
     	if(turn>=4){
     		turn=0;
     		for(int i =0 ;i<4;i++){

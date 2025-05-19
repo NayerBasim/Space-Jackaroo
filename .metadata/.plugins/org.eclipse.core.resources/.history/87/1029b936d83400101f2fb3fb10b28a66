@@ -27,14 +27,16 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     private Stage primaryStage;
-
+    private GameController controller;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-
+		controller = new GameController();
 		this.primaryStage = primaryStage;
 		showSceneTwo("zoz");
-
+	
+	
+		
 
 	}
     public void showSceneOne() throws IOException {
@@ -44,7 +46,7 @@ public class Main extends Application {
         primaryStage.show();
     }
     public void showSceneTwo(String userInput) throws IOException {
-    	GameScreen sceneTwo = new GameScreen(this,userInput);
+    	GameScreen sceneTwo = new GameScreen(this,userInput, this.controller);
         primaryStage.setScene(sceneTwo.getScene());
         primaryStage.setTitle("Scene Two");
         primaryStage.show();
