@@ -36,11 +36,17 @@ public class GameController {
 	Game game;
 	String name;
 	
-
+<<<<<<< HEAD
 	public GameController() throws IOException{
 		this.game = new Game(name);
 		this.name = "";
+=======
 
+	public GameController(String name) throws IOException{
+		this.game = new Game(name);
+
+
+>>>>>>> refs/remotes/origin/new
 	}
 	
 	
