@@ -2,20 +2,30 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
+import components.PlayerHand;
 import model.Colour;
 import model.card.Card;
 import model.player.Marble;
 import model.player.Player;
 import view.Main;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 import engine.Game;
 import engine.board.Cell;
 import exception.CannotFieldException;
+import exception.GameException;
 import exception.IllegalDestroyException;
 import exception.InvalidCardException;
 import exception.InvalidMarbleException;
@@ -38,7 +48,7 @@ public class GameController {
 				app.showSceneTwo(userInput);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Main.showAlert("Exception", e.getMessage());
 			}
 		else
 			message.setText("Input your name");
@@ -47,17 +57,39 @@ public class GameController {
 	//public void updateCards
 	// create method updateCards , which takes the hand of the player in the GUI and changes its value to match with the value in game
 	
-	/*
-	public void updateCards(Pane hand){
-		ArrayList<Player> players = game.getPlayers();
-		ArrayList<Card> cards = players.get(0).getHand();
-		hand.setHand(cards);	
+	
+	public void updateCards(PlayerHand hand){
+		ArrayList<Card> cards = game.getPlayers().get(0).getHand();
+		hand.getChildren().clear();
+        for(Card card: cards) {
+        	ToggleButton currToggle= hand.addCard(card);
+        	
+        	currToggle.setOnMouseClicked(event -> {
+        		
+        		
+        		currToggle.setPrefSize(80, 110);
+        		
+        		for( Node n : hand.getChildren()){
+        			n.setStyle("");
+        		}
+        		currToggle.setStyle(
+        			    "-fx-border-color: black;" +
+        			    "-fx-border-width: 5;" +
+        			    "-fx-border-radius: 5;" +
+        			    "-fx-background-radius: 5;" +// Optional: matches rounded corners
+        			    "-fx-padding: 5;"
+        			);
+        		
+        		
+                selectCard(card);
+
+            });
+            }
+		
 	}
-	*/
 	
-	// public void updateBoard
-	// create method updateBoard , which takes the board circles and updates them according to the game instance
 	
+
 	
 	//public void selectMarble
 		// create method selectMarble, which takes as the parameter an index number and the circle clicked and sets the selected marble in the game 
@@ -85,8 +117,7 @@ public class GameController {
 				try {
 					game.selectMarble(m);
 				} catch (InvalidMarbleException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					Main.showAlert("Exception", e.getMessage());
 				}
 			}
 			
@@ -96,8 +127,20 @@ public class GameController {
 	
 	
 	//public void selectCard
-	// create method selectMarble, which takes as the parameter an index number and the Card clicked and sets the selected marble in the game 
-	
+	// create method selectMarble, which takes as the parameter the Card clicked and sets the selected card in the game 
+		public boolean selectCard(Card card){
+
+			
+			try{
+				game.selectCard(card);
+				
+			}catch(InvalidCardException e) { //can only access the player's hand aslan. whats the use?? 
+				return false;
+			}
+			
+			return true;
+		}
+		
 	
 	//
 	
@@ -114,21 +157,8 @@ public class GameController {
 		return hands;
 	}
 	
-	public boolean handleClick(Card card){
-		game.deselectAll();
-		
-		try{
-			
-			game.selectCard(card);
-			
-		}catch(InvalidCardException e) { //can only access the player's hand aslan. whats the use?? 
-			return false;
-		}
-		
-		return true;
-	}
-	
-	//public void filedmarble
+
+	//public void fieldmarble
 		// takes as argument all the base cells and the track from the GUI and removes one , and adds it to the track ( updating it also in the game class )
 		public void fieldMarble(ArrayList<ArrayList<Circle>> baseZones, ArrayList<Circle> trackCircles){
 			try {
@@ -138,10 +168,10 @@ public class GameController {
 				//baseZones.get(game.getcurrentPlayerIndex())
 			} catch (CannotFieldException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Main.showAlert("Exception", e.getMessage());
 			} catch (IllegalDestroyException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Main.showAlert("Exception", e.getMessage());
 			}
 			
 			
@@ -157,19 +187,38 @@ public class GameController {
 					Colour c = trackCells.get(i).getMarble().getColour();
 					Color GUIColor = translatecolortocolor(c);
 					trackCircles.get(i).setFill(GUIColor);
+				}else{
+					trackCircles.get(i).setFill(Color.GRAY);
 				}
 			}
 		}
 		
 		public void updateBase(ArrayList<ArrayList<Circle>> baseZones){
-			int homesize = game.getPlayers().get(game.getcurrentPlayerIndex()).getMarbles().size();
-			for(int i=0; i<4;i++){
-				if(i > homesize-1)
-					baseZones.get(game.getcurrentPlayerIndex()).get(i).setVisible(false);
-					
-				}
+			for(int homeCount = 0 ; homeCount < 4 ; homeCount ++){
+				int homesize = game.getPlayers().get(homeCount).getMarbles().size();
+				for(int i=0; i<4;i++){
+					if(i > homesize-1)
+						baseZones.get(homeCount).get(i).setVisible(false);
+						
+					}
+			}
 				
 			}
+		
+		public void updateSafe(ArrayList<ArrayList<Circle>> safeZones){
+			for(int safeCount = 0 ; safeCount < 4 ; safeCount ++){
+				ArrayList<Cell> cells = game.board.getSafeZones().get(safeCount).getCells();
+				Colour c = game.board.getSafeZones().get(safeCount).getColour();
+				for(int i=0; i<4;i++){
+					if(cells.get(i).getMarble() != null){
+						safeZones.get(safeCount).get(i).setFill(translatecolortocolor(c));
+					}else{
+						safeZones.get(safeCount).get(i).setFill(Color.GRAY);
+					}
+					
+				}
+			}
+		}
 		
 		//to translate engine color to the GUI color format
 		public static Color translatecolortocolor(Colour playerColor){
@@ -194,6 +243,69 @@ public class GameController {
 			
 			return playerColors;
 		}
+		
+		//public void playGUI
+		// responsible for playing a players turn
+		public void playGUI(ArrayList<ArrayList<Circle>> safeZones,
+                ArrayList<ArrayList<Circle>> baseZones,
+                ArrayList<Circle> trackCircles,
+                PlayerHand hand, Button play) {
+
+		try {
+		    if (game.canPlayTurn()) {
+		        game.playPlayerTurn();
+		        System.out.println(game.getPlayers().get(0).getSelectedCard().getName());
+		    }
+		    game.endPlayerTurn();
+	        updateBase(baseZones);
+	        updateSafe(safeZones);
+	        updateBoard(trackCircles);
+	        updateCards(hand);
+		    play.setDisable(true);
+
+		
+		    final int[] i = { 0 };
+		    Timeline timeline = new Timeline();
+		    
+		    KeyFrame frame = new KeyFrame(
+		        Duration.seconds(1),
+		        event -> {
+		            if (i[0] < 3) {
+		                if (game.canPlayTurn()) {
+		                        try {
+									game.playPlayerTurn();
+
+								} catch (Exception e) {
+									Main.showAlert("Exception", e.getMessage());
+								}
+		                }
+		                game.endPlayerTurn();
+                        updateBase(baseZones);
+                        updateSafe(safeZones);
+                        updateBoard(trackCircles);
+                        updateCards(hand);
+
+
+		                i[0]++;
+		                System.out.println("CPU played");
+		            } else {
+		            	play.setDisable(false);
+		                timeline.stop();   // ← directly call stop() on the captured variable
+		            }
+		        }
+		    );
+
+		    timeline.getKeyFrames().add(frame);
+		    timeline.setCycleCount(Animation.INDEFINITE);
+		    timeline.play();
+		    
+		
+		} catch (GameException e) {
+			Main.showAlert("Exception", e.getMessage());
+		}
+}
+
+		
 	
 	
 

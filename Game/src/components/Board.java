@@ -272,10 +272,15 @@ public class Board {
 	        
 	        
 	        Button field = new Button("Test fielding"); //testing
-	        root.getChildren().add(field);  //testing
+
+	        root.getChildren().addAll(field);  //testing
+
+	        
 	        field.setOnAction(e -> {
 	        	controller.fieldMarble(baseZones, trackCircles);
 	        });
+
+	        
 	        
 //	        Timeline timeline = new Timeline();
 //	        for (int i = 0; i < circles.size(); i++) {
@@ -308,18 +313,45 @@ public class Board {
 
 
 	}
-    // Build a Timeline that “lights up” one circle every 0.5s
+    // Build a Timeline that â€œlights upâ€� one circle every 0.5s
 	
 
 	
-    private void createTrackCircle(GridPane grid,int motionX,int motionY) {
+    public ArrayList<ArrayList<Circle>> getSafeZones() {
+		return safeZones;
+	}
+
+
+
+	public ArrayList<ArrayList<Circle>> getBaseZones() {
+		return baseZones;
+	}
+
+
+
+	public ArrayList<Circle> getTrackCircles() {
+		return trackCircles;
+	}
+
+
+
+	private void createTrackCircle(GridPane grid,int motionX,int motionY) {
     	Circle circle = new Circle(6, Color.GRAY);
-         
+    	circle.setOnMouseClicked(e ->{
+
+            System.out.println("Circle clicked!");
+            circle.setStrokeWidth(3);
+            circle.setStroke(Color.DARKGREEN);
+            controller.selectMarble(safeZones, trackCircles,circle);
+        
+    });
         StackPane cell = new StackPane(circle);
         grid.add(cell, motionX,motionY);
         GridPane.setHalignment(circle, HPos.CENTER);
         GridPane.setValignment (circle, VPos.CENTER);
         trackCircles.add(circle);
+        
+        
     }
     private void createBaseCircle(GridPane grid,int motionX,int motionY, int index) {
     	

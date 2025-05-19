@@ -203,25 +203,25 @@ public class Game implements GameManager {
 //        System.out.println(win_color);
 //
 //        }
-    public static void main(String[] args) throws IOException, GameException   {
-
-
-        Game game1 = new Game();
-        Colour win_color = null;
-        int i =0;
-        while(win_color == null){
-            game1.players.get(i).play();
-        	ArrayList<SafeZone> safeZones = game1.board.getSafeZones();
-        	for(int v = 0 ; v < 4; v++)
-        		System.out.println(safeZones.get(1).getCells().get(v).getMarble());
-            win_color = game1.checkWin();
-            i++;
-            if(i==4)
-                i=0;
-        }
-        System.out.println(win_color);
-
-        }
+//    public static void main(String[] args) throws IOException, GameException   {
+//
+//
+//        Game game1 = new Game();
+//        Colour win_color = null;
+//        int i =0;
+//        while(win_color == null){
+//            game1.players.get(i).play();
+//        	ArrayList<SafeZone> safeZones = game1.board.getSafeZones();
+//        	for(int v = 0 ; v < 4; v++)
+//        		System.out.println(safeZones.get(1).getCells().get(v).getMarble());
+//            win_color = game1.checkWin();
+//            i++;
+//            if(i==4)
+//                i=0;
+//        }
+//        System.out.println(win_color);
+//
+//        }
     
     // This makes no sense
     // I am sorry for whoever has to debug this 

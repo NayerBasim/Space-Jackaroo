@@ -21,7 +21,7 @@ public class CardImage {
 			rank=((Standard) card).getRank();
 			suit=((Standard) card).getSuit();
 		}else {
-			if(card.getName().equalsIgnoreCase("marblenurner")) {
+			if(card.getName().equalsIgnoreCase("marbleburner")) {
 				rank=14;
 				suit=null;
 				cardImage=new Image(getClass().getResourceAsStream("MarbleBurner.png"));

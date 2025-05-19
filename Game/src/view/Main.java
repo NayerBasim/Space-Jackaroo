@@ -58,12 +58,12 @@ public class Main extends Application {
 		launch(args);
 	}
 	
-	public void showAlert(String title, String message) {
+	public static void showAlert(String title, String message) {
 		Stage alertStage = new Stage();
         alertStage.setTitle(title);
 
         Label label = new Label(message);
-        Button closeButton = new Button("Continue Shopping");
+        Button closeButton = new Button("Continue ");
         closeButton.setOnAction(event -> alertStage.close());
 
         BorderPane pane = new BorderPane();
