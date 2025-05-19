@@ -5,6 +5,7 @@ import java.util.Collections;
 
 import engine.board.BoardManager;
 import exception.GameException;
+import exception.InvalidCardException;
 import model.Colour;
 import model.card.Card;
 
@@ -31,7 +32,7 @@ public class CPU extends Player {
         // Iterate through each card in the shuffled hand.
         for (Card card : cards) {
             // Select the card to be played.
-            this.selectCard(card);
+            this.selectCardCPU(card);
             
             // Prepare a list to keep track of valid marble counts for the action.
             ArrayList<Integer> counts = new ArrayList<>();
@@ -107,6 +108,14 @@ public class CPU extends Player {
         // If no cards were played, select the first card by default.
         if (cards.size() == initialHandSize)
             this.selectCard(this.getHand().get(0));
+    }
+    
+    public void selectCardCPU(Card card) throws InvalidCardException {
+    	
+    	if(this.getHand().contains(card)) {selectedCard=card;}
+    	
+    	else {throw new InvalidCardException();}
+    	
     }
 
 }

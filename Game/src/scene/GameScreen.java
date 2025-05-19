@@ -59,11 +59,14 @@ public class GameScreen {
 	        	currToggle.setOnMouseClicked(event -> {
 	        		
 	        		
-	        		currToggle.setPrefSize(80, 110);
+	        		
 	        		
 	        		for( Node n : playerHandPane.getChildren()){
-	        			n.setStyle("");
+	        			ToggleButton curr=(ToggleButton) n;
+	        			curr.setStyle("");
+	        			curr.setPrefSize(70, 100);
 	        		}
+	        		currToggle.setPrefSize(80, 110);
 	        		currToggle.setStyle(
 	        			    "-fx-border-color: black;" +
 	        			    "-fx-border-width: 5;" +
@@ -73,7 +76,16 @@ public class GameScreen {
 	        			);
 	        		
 	        		
-	                Boolean alert = controller.selectCard(card);
+	        		System.out.println("Card in toggle: " + card.getName());
+	        		System.out.println("Hand contains card? " + playerHand.contains(card));
+	        		System.out.println("Player hand:");
+	        		for (Card c : playerHand) {
+	        		    System.out.println(c.getName() + " | equals? " + c.equals(card));
+	        		}
+	        		
+	        		Card selected=(Card)currToggle.getUserData();
+	        		Boolean alert = controller.selectCard(selected);
+	                System.out.println("Selected card: " + selected.getName());  // Debug log
 	                if(!alert) {app.showAlert("Invalid Card Exception", "Chosen card is not in your hand");}
 	            });
 	    		

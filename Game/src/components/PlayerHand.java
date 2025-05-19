@@ -36,6 +36,7 @@ public class PlayerHand extends HBox {
 		btn.setStyle("-fx-padding: 0;");
 		btn.setGraphic(currView);
 		btn.setToggleGroup(handGroup);
+		btn.setUserData(card);
 		this.getChildren().add(btn);
 		return btn;
     }

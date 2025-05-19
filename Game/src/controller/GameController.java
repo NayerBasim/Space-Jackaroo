@@ -2,26 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 import components.PlayerHand;
-import model.Colour;
-import model.card.Card;
-import model.player.Marble;
-import model.player.Player;
-import view.Main;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
-import javafx.util.Duration;
 import engine.Game;
 import engine.board.Cell;
 import exception.CannotFieldException;
@@ -29,6 +11,25 @@ import exception.GameException;
 import exception.IllegalDestroyException;
 import exception.InvalidCardException;
 import exception.InvalidMarbleException;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.scene.Cursor;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.util.Duration;
+import model.Colour;
+import model.card.Card;
+import model.card.standard.Standard;
+import model.player.Marble;
+import model.player.Player;
+import view.Main;
 
 
 public class GameController {
@@ -61,17 +62,20 @@ public class GameController {
 	public void updateCards(PlayerHand hand){
 		ArrayList<Card> cards = game.getPlayers().get(0).getHand();
 		hand.getChildren().clear();
-        for(Card card: cards) {
+		for(Card card: cards) {
         	ToggleButton currToggle= hand.addCard(card);
         	
         	currToggle.setOnMouseClicked(event -> {
         		
         		
-        		currToggle.setPrefSize(80, 110);
+        		
         		
         		for( Node n : hand.getChildren()){
-        			n.setStyle("");
+        			ToggleButton curr=(ToggleButton) n;
+        			curr.setStyle("");
+        			curr.setPrefSize(70, 100);
         		}
+        		currToggle.setPrefSize(80, 110);
         		currToggle.setStyle(
         			    "-fx-border-color: black;" +
         			    "-fx-border-width: 5;" +
@@ -81,15 +85,40 @@ public class GameController {
         			);
         		
         		
-                try {
-                	game.getPlayers().get(0).getSelectedCard();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					Main.showAlert("error", e.getMessage());
-				}
-
+        		System.out.println("Card in toggle: " + card.getName());
+        		System.out.println("Hand contains card? " + cards.contains(card));
+        		System.out.println("Player hand:");
+        		for (Card c : cards) {
+        		    System.out.println(c.getName() + " | equals? " + c.equals(card));
+        		}
+        		
+        		Card selected=(Card)currToggle.getUserData();
+        		Boolean alert = this.selectCard(selected);
+                System.out.println("Selected card: " + selected.getName());  // Debug log
+                if(!alert) {Main.showAlert("Invalid Card Exception", "Chosen card is not in your hand");}
             });
-            }
+    		
+    		currToggle.setOnMouseEntered(e -> {currToggle.setScaleX(1.1);
+    		currToggle.setTranslateX(10);
+    		currToggle.setTranslateY(-10);
+    		currToggle.setCursor(Cursor.HAND);
+    		DropShadow shadow = new DropShadow();
+    		currToggle.setEffect(shadow);
+    		});
+    		
+    		
+    		
+    		currToggle.setOnMouseExited(e -> {currToggle.setScaleX(1.0);
+    		currToggle.setTranslateX(0);
+    		currToggle.setTranslateY(0);
+    		currToggle.setCursor(Cursor.DEFAULT);
+    		currToggle.setEffect(null);
+    		});
+
+    		
+            
+    	
+        }
 		
 	}
 	
@@ -134,7 +163,7 @@ public class GameController {
 	//public void selectCard
 	// create method selectMarble, which takes as the parameter the Card clicked and sets the selected card in the game 
 		public boolean selectCard(Card card){
-
+			
 			
 			try{
 				game.selectCard(card);
@@ -302,6 +331,8 @@ public class GameController {
 
 		                i[0]++;
 		                System.out.println("CPU played");
+		                if(game.getPlayers().get(game.getcurrentPlayerIndex()).getSelectedCard()==null) {System.out.println("null");}
+		                else{System.out.println(game.getPlayers().get(game.getcurrentPlayerIndex()).getSelectedCard().getName());}
 		            } else {
 		            	play.setDisable(false);
 		            	game.deselectAll();

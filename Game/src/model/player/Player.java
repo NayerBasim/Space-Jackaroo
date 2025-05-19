@@ -20,7 +20,7 @@ public class Player {
     private final Colour colour;
     private ArrayList<Card> hand;
     private final ArrayList<Marble> marbles;
-    private Card selectedCard;
+    Card selectedCard;
 	private final ArrayList<Marble> selectedMarbles;
 
     public Player(String name, Colour colour) {
@@ -86,8 +86,13 @@ public class Player {
     }
     
     public void selectCard(Card card) throws InvalidCardException {
+    	if(selectedCard==null) {System.out.println("Selected card in model: null" );}
+    	else{System.out.println("Selected card in model: " + selectedCard.getName());}
+    	System.out.println("Hand contains card: " + hand.contains(card));
+    	System.out.println("Setting selectedCard to: " + card.getName());
+    	if(hand.contains(card)) {selectedCard=card;
     	
-    	if(hand.contains(card)) {selectedCard=card;}
+}
     	else {throw new InvalidCardException();}
     	
     }

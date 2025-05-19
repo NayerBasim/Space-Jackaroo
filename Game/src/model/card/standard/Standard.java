@@ -1,6 +1,7 @@
 package model.card.standard;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import engine.GameManager;
 import engine.board.BoardManager;
@@ -32,5 +33,17 @@ public class Standard extends Card {
 		Marble currentMarble=marbles.get(0);
 		this.boardManager.moveBy(currentMarble, rank, false);
 		
+	}
+	
+	public boolean equals(Object obj) {
+	    if (this == obj) return true;
+	    if (obj == null || getClass() != obj.getClass()) return false;
+	    Standard card = (Standard) obj;
+	    return rank == card.rank && suit == card.suit;
+	}
+	
+	
+	public int hashCode() {
+	    return Objects.hash(suit, rank);
 	}
 }

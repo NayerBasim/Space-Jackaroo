@@ -18,5 +18,7 @@ public abstract class Wild extends Card {
     public void act(ArrayList<Marble> marbles) throws ActionException, InvalidMarbleException{
     	
     }
+    
+
 
 }
