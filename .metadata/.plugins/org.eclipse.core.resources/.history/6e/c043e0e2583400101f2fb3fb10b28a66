@@ -340,7 +340,8 @@ public class Board {
     	circle.setOnMouseClicked(e ->{
 
             System.out.println("Circle clicked!");
-
+            circle.setStrokeWidth(3);
+            circle.setStroke(Color.DARKGREEN);
             controller.selectMarble(safeZones, trackCircles,circle);
         
     });
@@ -381,6 +382,8 @@ public class Board {
         circle.setOnMouseClicked(e ->{
 
                 System.out.println("Circle clicked!");
+                circle.setStrokeWidth(3);
+                circle.setStroke(Color.DARKGREEN);
                 controller.selectMarble(safeZones, trackCircles,circle);
             
         });

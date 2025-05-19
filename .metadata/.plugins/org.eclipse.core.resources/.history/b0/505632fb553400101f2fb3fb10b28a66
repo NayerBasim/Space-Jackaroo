@@ -81,12 +81,7 @@ public class GameController {
         			);
         		
         		
-                try {
-                	game.getPlayers().get(0).getSelectedCard();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					Main.showAlert("error", e.getMessage());
-				}
+                selectCard(card);
 
             });
             }
@@ -201,9 +196,7 @@ public class GameController {
 		public void updateBase(ArrayList<ArrayList<Circle>> baseZones){
 			for(int homeCount = 0 ; homeCount < 4 ; homeCount ++){
 				int homesize = game.getPlayers().get(homeCount).getMarbles().size();
-				
-				for(int i=0; i < 4;i++){
-					baseZones.get(homeCount).get(i).setVisible(true);
+				for(int i=0; i<4;i++){
 					if(i > homesize-1)
 						baseZones.get(homeCount).get(i).setVisible(false);
 						
@@ -261,16 +254,12 @@ public class GameController {
 		try {
 		    if (game.canPlayTurn()) {
 		        game.playPlayerTurn();
-		        updateBase(baseZones);
-		        updateSafe(safeZones);
-		        updateBoard(trackCircles);
 		        System.out.println(game.getPlayers().get(0).getSelectedCard().getName());
 		    }
 		    game.endPlayerTurn();
-		    if(game.checkWin() != null){
-            	System.out.println("YOU WINNNNN !");
-            }
-	        
+	        updateBase(baseZones);
+	        updateSafe(safeZones);
+	        updateBoard(trackCircles);
 	        updateCards(hand);
 		    play.setDisable(true);
 
@@ -279,24 +268,21 @@ public class GameController {
 		    Timeline timeline = new Timeline();
 		    
 		    KeyFrame frame = new KeyFrame(
-		        Duration.seconds(2),
+		        Duration.seconds(1),
 		        event -> {
 		            if (i[0] < 3) {
 		                if (game.canPlayTurn()) {
 		                        try {
 									game.playPlayerTurn();
-									updateBase(baseZones);
-			                        updateSafe(safeZones);
-			                        updateBoard(trackCircles);
 
 								} catch (Exception e) {
 									Main.showAlert("Exception", e.getMessage());
 								}
 		                }
 		                game.endPlayerTurn();
-                        if(game.checkWin() != null){
-                        	System.out.println("YOU LOSTTT !");
-                        }
+                        updateBase(baseZones);
+                        updateSafe(safeZones);
+                        updateBoard(trackCircles);
                         updateCards(hand);
 
 
@@ -304,7 +290,6 @@ public class GameController {
 		                System.out.println("CPU played");
 		            } else {
 		            	play.setDisable(false);
-		            	game.deselectAll();
 		                timeline.stop();   // ← directly call stop() on the captured variable
 		            }
 		        }

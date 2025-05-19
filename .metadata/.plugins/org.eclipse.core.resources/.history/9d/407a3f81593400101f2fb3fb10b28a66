@@ -267,9 +267,6 @@ public class GameController {
 		        System.out.println(game.getPlayers().get(0).getSelectedCard().getName());
 		    }
 		    game.endPlayerTurn();
-		    if(game.checkWin() != null){
-            	System.out.println("YOU WINNNNN !");
-            }
 	        
 	        updateCards(hand);
 		    play.setDisable(true);
@@ -294,9 +291,7 @@ public class GameController {
 								}
 		                }
 		                game.endPlayerTurn();
-                        if(game.checkWin() != null){
-                        	System.out.println("YOU LOSTTT !");
-                        }
+                        
                         updateCards(hand);
 
 

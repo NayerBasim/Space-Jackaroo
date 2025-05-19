@@ -81,12 +81,7 @@ public class GameController {
         			);
         		
         		
-                try {
-                	game.getPlayers().get(0).getSelectedCard();
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					Main.showAlert("error", e.getMessage());
-				}
+                selectCard(card);
 
             });
             }
@@ -201,9 +196,7 @@ public class GameController {
 		public void updateBase(ArrayList<ArrayList<Circle>> baseZones){
 			for(int homeCount = 0 ; homeCount < 4 ; homeCount ++){
 				int homesize = game.getPlayers().get(homeCount).getMarbles().size();
-				
 				for(int i=0; i < 4;i++){
-					baseZones.get(homeCount).get(i).setVisible(true);
 					if(i > homesize-1)
 						baseZones.get(homeCount).get(i).setVisible(false);
 						
@@ -267,9 +260,6 @@ public class GameController {
 		        System.out.println(game.getPlayers().get(0).getSelectedCard().getName());
 		    }
 		    game.endPlayerTurn();
-		    if(game.checkWin() != null){
-            	System.out.println("YOU WINNNNN !");
-            }
 	        
 	        updateCards(hand);
 		    play.setDisable(true);
@@ -294,9 +284,7 @@ public class GameController {
 								}
 		                }
 		                game.endPlayerTurn();
-                        if(game.checkWin() != null){
-                        	System.out.println("YOU LOSTTT !");
-                        }
+                        
                         updateCards(hand);
 
 
@@ -304,7 +292,6 @@ public class GameController {
 		                System.out.println("CPU played");
 		            } else {
 		            	play.setDisable(false);
-		            	game.deselectAll();
 		                timeline.stop();   // ← directly call stop() on the captured variable
 		            }
 		        }

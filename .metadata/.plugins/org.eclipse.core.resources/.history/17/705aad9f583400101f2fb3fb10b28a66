@@ -82,7 +82,7 @@ public class GameController {
         		
         		
                 try {
-                	game.getPlayers().get(0).getSelectedCard();
+                	game.getPlayers().get(0).getSelectedCard()
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					Main.showAlert("error", e.getMessage());
@@ -267,9 +267,6 @@ public class GameController {
 		        System.out.println(game.getPlayers().get(0).getSelectedCard().getName());
 		    }
 		    game.endPlayerTurn();
-		    if(game.checkWin() != null){
-            	System.out.println("YOU WINNNNN !");
-            }
 	        
 	        updateCards(hand);
 		    play.setDisable(true);
@@ -294,9 +291,7 @@ public class GameController {
 								}
 		                }
 		                game.endPlayerTurn();
-                        if(game.checkWin() != null){
-                        	System.out.println("YOU LOSTTT !");
-                        }
+                        
                         updateCards(hand);
 
 
