@@ -243,26 +243,27 @@ public class Board {
 	        
 	       
 	      //safe cell 1
-	        createSafeCircle(grid, 3,26, 0);
-	        createSafeCircle(grid, 4,25, 0);
-	        createSafeCircle(grid, 5,24, 0);
-	        createSafeCircle(grid, 6,23, 0);
+	        createSafeCircle(grid, 3,26, 3);
+	        createSafeCircle(grid, 4,25, 3);
+	        createSafeCircle(grid, 5,24, 3);
+	        createSafeCircle(grid, 6,23, 3);
 	      //safe cell 2
-	        createSafeCircle(grid, 26,27, 1);
-	        createSafeCircle(grid, 25,26, 1);
-	        createSafeCircle(grid, 24,25, 1);
-	        createSafeCircle(grid, 23,24, 1);
+	        createSafeCircle(grid, 26,27, 2);
+	        createSafeCircle(grid, 25,26, 2);
+	        createSafeCircle(grid, 24,25, 2);
+	        createSafeCircle(grid, 23,24, 2);
 	      //safe cell 3
-	        createSafeCircle(grid, 27,4, 2);
-	        createSafeCircle(grid, 26,5, 2);
-	        createSafeCircle(grid, 25,6, 2);
-	        createSafeCircle(grid, 24,7, 2);
+	        createSafeCircle(grid, 27,4, 1);
+	        createSafeCircle(grid, 26,5, 1);
+	        createSafeCircle(grid, 25,6, 1);
+	        createSafeCircle(grid, 24,7, 1);
 	        
 	      //safe cell 4
-	        createSafeCircle(grid, 4,3, 3);
-	        createSafeCircle(grid, 5,4, 3);
-	        createSafeCircle(grid, 6,5, 3);
-	        createSafeCircle(grid, 7,6, 3);
+	        createSafeCircle(grid, 4,3, 0);
+	        createSafeCircle(grid, 5,4, 0);
+	        createSafeCircle(grid, 6,5, 0);
+	        createSafeCircle(grid, 7,6, 0);
+
 	        
 	        grid.setPadding(new Insets(5));
 
@@ -270,15 +271,7 @@ public class Board {
 
 	        root.getChildren().add(grid);
 	        
-	        
-	        Button field = new Button("Test fielding"); //testing
-
-	        root.getChildren().addAll(field);  //testing
-
-	        
-	        field.setOnAction(e -> {
-	        	controller.fieldMarble(baseZones, trackCircles);
-	        });
+	       
 
 	        
 	        
@@ -304,7 +297,7 @@ public class Board {
 	            )
 	        );
 	        root.setBackground(new Background(bgImage));
-
+	        grid.setMaxHeight(100);
 		     this.boardRoot = root;
 		     
 		    
@@ -352,8 +345,9 @@ public class Board {
         
         
     }
-    private void createBaseCircle(GridPane grid,int motionX,int motionY, int index) {
-    	
+	
+	private void createBaseCircle(GridPane grid,int motionX,int motionY, int index) {
+	    	
     	ArrayList <Colour> colours=controller.getPlayerColours();
     	Colour currColour= colours.get(index);
     	Circle circle = new Circle(6);
@@ -365,12 +359,15 @@ public class Board {
 
    
         StackPane cell = new StackPane(circle);
+        cell.setBackground(new Background(new BackgroundFill(getLightColor(currColour), CornerRadii.EMPTY, Insets.EMPTY)));
+
         grid.add(cell, motionX,motionY);
         GridPane.setHalignment(circle, HPos.CENTER);
         GridPane.setValignment (circle, VPos.CENTER);
         baseZones.get(index).add(circle);
+	
+	    }
 
-    }
     private void createSafeCircle(GridPane grid,int motionX,int motionY, int index) {
     	Circle circle = new Circle(6, Color.GRAY);
    
@@ -388,6 +385,19 @@ public class Board {
         
 
     }
+    
+    
+    public static Color getLightColor(Colour playerColor) {
+	    if (playerColor.equals(Colour.GREEN))
+	        return Color.rgb(144, 238, 144); // light green
+	    else if (playerColor.equals(Colour.RED))
+	        return Color.rgb(255, 182, 193); // light pink
+	    else if (playerColor.equals(Colour.YELLOW))
+	    	Color.rgb(255, 255, 204); // light yellow
+	    else if (playerColor.equals(Colour.BLUE))
+	        return Color.rgb(173, 216, 230); // light blue
+	    return Color.LIGHTGRAY;
+	}
 
 
 

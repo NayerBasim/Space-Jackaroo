@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -33,7 +34,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception {
 
 		this.primaryStage = primaryStage;
-		showSceneTwo("zoz");
+		showSceneOne();
 
 
 	}
@@ -45,9 +46,14 @@ public class Main extends Application {
     }
     public void showSceneTwo(String userInput) throws IOException {
     	GameScreen sceneTwo = new GameScreen(this,userInput);
-        primaryStage.setScene(sceneTwo.getScene());
+    	Scene scene=sceneTwo.getScene();
+        primaryStage.setScene(scene);
+        primaryStage.setMinWidth(1000);
+        primaryStage.setMinHeight(750);
         primaryStage.setTitle("Scene Two");
         primaryStage.show();
+        scene.getRoot().requestFocus(); // e.g., after stage.show()
+
     }
     
     
@@ -63,6 +69,13 @@ public class Main extends Application {
         Label label = new Label(message);
         Button closeButton = new Button("Continue ");
         closeButton.setOnAction(event -> alertStage.close());
+        closeButton.setOnKeyPressed(e->{
+        	if (e.getCode() == KeyCode.ENTER) {
+        		alertStage.close();
+        	}
+        	
+        	
+        });;
 
         BorderPane pane = new BorderPane();
         pane.setTop(label);

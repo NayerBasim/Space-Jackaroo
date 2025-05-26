@@ -26,9 +26,19 @@ public class Game implements GameManager {
 	private int currentPlayerIndex;
     private final ArrayList<Card> firePit;
     private int turn;
+    private boolean destroyedByTrap;
 
-    public Game(String name) throws IOException {
 
+    public boolean isDestroyedByTrap() {
+		return destroyedByTrap;
+	}
+    
+	public void setDestroyedByTrap(boolean destroyedByTrap) {
+		this.destroyedByTrap = destroyedByTrap;
+	}
+	
+	
+	public Game(String name) throws IOException {
 
         turn = 0;
         currentPlayerIndex = 0;
@@ -47,7 +57,6 @@ public class Game implements GameManager {
         this.players = new ArrayList<>();
 
         this.players.add(new Player(name, colourOrder.get(0)));
-
 
         
         for (int i = 1; i < 4; i++) 
@@ -103,13 +112,15 @@ public class Game implements GameManager {
     	}
     }
     public void playPlayerTurn() throws GameException{
-    	System.out.println("Game Curr ind: "+currentPlayerIndex);
-    	System.out.println("Game Play"+players.get(currentPlayerIndex).getSelectedCard().getName()	);
 	    players.get(currentPlayerIndex).play();	
 	    
     }
     
-    public void endPlayerTurn(){
+    public void endPlayerTurn() {
+    	
+    	destroyedByTrap=false;
+    	
+    	
     	Card selectedCard = players.get(currentPlayerIndex).getSelectedCard();
     	if(selectedCard!=null){
     		firePit.add(selectedCard);
@@ -133,6 +144,8 @@ public class Game implements GameManager {
     		}	
     	}	
     }  
+    
+    
     public Colour checkWin(){
     	boolean win = false;
     	ArrayList<SafeZone> safeZones = board.getSafeZones();
@@ -243,7 +256,27 @@ public class Game implements GameManager {
     // Goodbye world....
     // System.out.println("Goodbye World");
     
-    
+	public void skipPlayerTurn(){
+	    	
+			destroyedByTrap=false;
+	    	
+    		players.get(currentPlayerIndex).deselectAll();
+    		currentPlayerIndex++;
+        	if(currentPlayerIndex >=4){
+        		turn++;
+        		currentPlayerIndex=0;
+        	}
+	    	if(turn>=4){
+	    		turn=0;
+	    		for(int i =0 ;i<4;i++){
+	    			if(Deck.getPoolSize()<4){
+	    				Deck.refillPool(firePit);
+	    				firePit.clear();
+	    			}
+	    			players.get(i).setHand(Deck.drawCards());
+	    		}	
+	    	}	
+	    }  
     
     
 }

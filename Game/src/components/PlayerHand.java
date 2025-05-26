@@ -16,8 +16,19 @@ public class PlayerHand extends HBox {
 	
 	ToggleGroup handGroup;
 	private Object getChildren;
+	private ToggleButton lastSelected;
 
-    public PlayerHand() {
+    public ToggleButton getLastSelected() {
+		return lastSelected;
+	}
+
+
+	public void setLastSelected(ToggleButton lastSelected) {
+		this.lastSelected = lastSelected;
+	}
+
+
+	public PlayerHand() {
     	
     	this.setSpacing(-40); // overlap  
     	handGroup=new ToggleGroup();
@@ -29,9 +40,9 @@ public class PlayerHand extends HBox {
     	Image currImage=new CardImage(card).getImage();
 		CardView currView=new CardView(currImage);
 		ToggleButton btn=new ToggleButton();
-		btn.setPrefSize(70, 100); // Match the image size
+		btn.setPrefSize(70, 102); // Match the image size
 		btn.setMaxSize(80, 110);
-		btn.setMinSize(70, 100);
+		btn.setMinSize(70, 102);
 		btn.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
 		btn.setStyle("-fx-padding: 0;");
 		btn.setGraphic(currView);

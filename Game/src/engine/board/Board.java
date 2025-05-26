@@ -2,6 +2,7 @@ package engine.board;
 
 import java.util.ArrayList;
 
+import engine.Game;
 import engine.GameManager;
 import exception.CannotFieldException;
 import exception.IllegalDestroyException;
@@ -240,6 +241,8 @@ public class Board implements BoardManager {
     		destroyMarble(marble);
     		target.setTrap(false);
     		assignTrapCell();
+    		Game game=(Game)gameManager;
+    		game.setDestroyedByTrap(true);
     	}
     	
     }

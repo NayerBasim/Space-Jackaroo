@@ -17,53 +17,73 @@ import view.Main;
 
 
 public class CPUPlayer2 {
-private  VBox ProfileSection;
+private  HBox ProfileSection;
+public CPUHand hand;
+VBox prof;
+Label Name ;
+	
+	public CPUPlayer2(Main app, ArrayList<Card> cards){
+		HBox section = new HBox();
+		section.setAlignment(Pos.CENTER);
+		hand = new CPUHand(cards);
+		hand.setAlignment(Pos.CENTER);
+		
+		Image profilePic = new Image(getClass().getResource("profil.jpg").toExternalForm());
+		ImageView Profile = new ImageView(profilePic);
+		Profile.setFitWidth(75);
+		Profile.setFitHeight(75);
+		Profile.preserveRatioProperty();
+		
+	
+		
+		Name = new Label("CPU 2");
+		Name.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 20));
+		
+		
+		prof=new VBox();
+		prof.getChildren().addAll(Profile,Name);
+		prof.setAlignment(Pos.CENTER);
+		section.setSpacing(40);
+		
+		section.getChildren().addAll(prof,hand);
+	
+		
+	
+		Name.setPadding(new Insets(5,5,5,5));
+		section.setMaxHeight(200);
+		section.setAlignment(Pos.CENTER);
+	
+		this.ProfileSection = section;
+	}
+	public  HBox getPlayer(){
+		return this.ProfileSection;
+	}
+	
+	public void updateHand(ArrayList<Card> hands) {
+		this.hand.updatCPUHand(hands);
+	}
+	
+	public void setActive(boolean isActive) {
+		
+		 if (isActive) {
+		    	this.Name.setStyle("-fx-text-fill: darkblue; -fx-effect: dropshadow(gaussian, grey, 2, 0.9, 0, 0); -fx-font-weight: bold; -fx-font-style: italic;");
+		    } else {
+		        this.Name.setStyle(""); // Remove border
+		    }
+	}
+	
+public void setNext(boolean isNext) {
+		
 
-public CPUPlayer2(Main app, ArrayList<Card> cards){
-	VBox section = new VBox();
-	section.setAlignment(Pos.CENTER);
-	HBox hand = new CPUHand(cards);
-	hand.setAlignment(Pos.CENTER);
-	
-	Image profilePic = new Image(getClass().getResource("profil.jpg").toExternalForm());
-	ImageView Profile = new ImageView(profilePic);
-	Profile.setFitWidth(75);
-	Profile.setFitHeight(75);
-	Profile.preserveRatioProperty();
-	
-//	Image card = new Image(getClass().getResource("cards_back.png").toExternalForm());
-//	ImageView cardHolder1 = new ImageView(card);
-//	ImageView cardHolder2 = new ImageView(card);
-//	ImageView cardHolder3 = new ImageView(card);
-//	ImageView cardHolder4 = new ImageView(card);
-//	
-//	cardHolder1.setFitWidth(50);
-//	cardHolder1.setFitHeight(70);
-//	cardHolder1.setPreserveRatio(true);
-//	cardHolder2.setFitWidth(50);
-//	cardHolder2.setFitHeight(70);
-//	cardHolder2.setPreserveRatio(true);
-//	cardHolder3.setFitWidth(50);
-//	cardHolder3.setFitHeight(70);
-//	cardHolder3.setPreserveRatio(true);
-//	cardHolder4.setFitWidth(50);
-//	cardHolder4.setFitHeight(70);
-//	cardHolder4.setPreserveRatio(true);
-	
-	Label Name = new Label("CPU 2");
-	Name.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 20));
-	
-//	cards.getChildren().addAll(cardHolder1, cardHolder2, cardHolder3, cardHolder4);
-	section.getChildren().addAll(Name,Profile,hand);
-	
+	    if (isNext) {
+	    	this.Name.setStyle("-fx-text-fill: mediumspringgreen; -fx-effect: dropshadow(gaussian, grey, 2, 0.9, 0, 0); -fx-font-weight: bold; -fx-font-style: italic;");
+	    } else {
+	        this.Name.setStyle(""); // Remove border
+	    }
 
-	Name.setPadding(new Insets(5,5,5,5));
-	section.setMaxHeight(200);
+	}
 
-	this.ProfileSection = section;
-}
-public  VBox getPlayer(){
-	return this.ProfileSection;
-}
+
+
 
 }

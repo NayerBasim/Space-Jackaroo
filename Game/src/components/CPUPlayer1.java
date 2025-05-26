@@ -16,12 +16,15 @@ import model.card.Card;
 import view.Main;
 public class CPUPlayer1 {
 	private HBox ProfileSection;
+	public CPUHand hand;
+	VBox ProfileDiv;
+	Label Name;
 	
 	public CPUPlayer1(Main app, ArrayList<Card> cards){
 		HBox section = new HBox();
 		section.setAlignment(Pos.CENTER);
-		HBox hand = new CPUHand(cards);
-		VBox ProfileDiv = new VBox();
+		hand = new CPUHand(cards);
+		ProfileDiv= new VBox();
 		hand.setAlignment(Pos.CENTER);
 		ProfileDiv.setAlignment(Pos.CENTER);
 		
@@ -31,33 +34,13 @@ public class CPUPlayer1 {
 		Profile.setFitHeight(75);
 		Profile.preserveRatioProperty();
 		
-//		Image card = new Image(getClass().getResource("cards_back.png").toExternalForm());
-//		ImageView cardHolder1 = new ImageView(card);
-//		ImageView cardHolder2 = new ImageView(card);
-//		ImageView cardHolder3 = new ImageView(card);
-//		ImageView cardHolder4 = new ImageView(card);
-//		
-//		cardHolder1.setFitWidth(50);
-//		cardHolder1.setFitHeight(70);
-//		cardHolder1.setPreserveRatio(true);
-//		cardHolder1.setRotate(-90);
-//		cardHolder2.setFitWidth(50);
-//		cardHolder2.setFitHeight(70);
-//		cardHolder2.setPreserveRatio(true);
-//		cardHolder2.setRotate(-90);
-//		cardHolder3.setFitWidth(50);
-//		cardHolder3.setFitHeight(70);
-//		cardHolder3.setPreserveRatio(true);
-//		cardHolder3.setRotate(-90);
-//		cardHolder4.setFitWidth(50);
-//		cardHolder4.setFitHeight(70);
-//		cardHolder4.setPreserveRatio(true);
-//		cardHolder4.setRotate(-90);
+
 		
 		hand.setRotate(90);
 		
-		Label Name = new Label("CPU 1");
+		Name = new Label("CPU 1");
 		Name.setFont(Font.font("Verdana", FontWeight.BOLD, FontPosture.ITALIC, 20));
+		Name.setStyle("-fx-text-fill: mediumspringgreen; -fx-effect: dropshadow(gaussian, grey, 2, 0.9, 0, 0); -fx-font-weight: bold; -fx-font-style: italic;");
 		ProfileDiv.getChildren().addAll(Profile,Name);
 		ProfileDiv.setPadding(new Insets(10,10,10,10));
 		section.getChildren().addAll(hand,ProfileDiv);
@@ -78,4 +61,34 @@ public class CPUPlayer1 {
 	public HBox getPlayer(){
 		return this.ProfileSection;
 	}
+	
+	
+	public void updateHand(ArrayList<Card> hands) {
+		this.hand.updatCPUHand(hands);
+	}
+	
+	
+	public void setActive(boolean isActive) {
+		
+		if (isActive) {
+	    	this.Name.setStyle("-fx-text-fill: darkblue; -fx-effect: dropshadow(gaussian, grey, 2, 0.9, 0, 0); -fx-font-weight: bold; -fx-font-style: italic;");
+	    } else {
+	        this.Name.setStyle(""); // Remove border
+	    }
+		
+	}
+	
+	public void setNext(boolean isNext) {
+			
+	
+		    if (isNext) {
+		    	this.Name.setStyle("-fx-text-fill: mediumspringgreen; -fx-effect: dropshadow(gaussian, grey, 2, 0.9, 0, 0); -fx-font-weight: bold; -fx-font-style: italic;");
+		    } else {
+		        this.Name.setStyle(""); // Remove border
+		    }
+	
+		}
+
+	
+	
 }

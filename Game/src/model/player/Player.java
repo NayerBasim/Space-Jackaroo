@@ -1,6 +1,5 @@
 package model.player;
 
-import java.io.ObjectInputStream.GetField;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -10,9 +9,6 @@ import exception.InvalidCardException;
 import exception.InvalidMarbleException;
 import model.Colour;
 import model.card.Card;
-import model.card.standard.King;
-import model.card.standard.Queen;
-import model.card.standard.Ten;
 
 @SuppressWarnings("unused")
 public class Player {
@@ -70,6 +66,7 @@ public class Player {
     		Random rand = new Random();
     		int cardIndex = rand.nextInt(hand.size());
     		hand.remove(cardIndex);
+    		
     	}
     	
     }
@@ -86,10 +83,6 @@ public class Player {
     }
     
     public void selectCard(Card card) throws InvalidCardException {
-    	if(selectedCard==null) {System.out.println("Selected card in model: null" );}
-    	else{System.out.println("Selected card in model: " + selectedCard.getName());}
-    	System.out.println("Hand contains card: " + hand.contains(card));
-    	System.out.println("Setting selectedCard to: " + card.getName());
     	if(hand.contains(card)) {selectedCard=card;
     	
 }
@@ -115,9 +108,9 @@ public class Player {
     
     public void play() throws GameException{
     	
-    	System.out.println("PLayer play: PLayer" + selectedCard.getName());
+
     	
-    	if(selectedCard==null) {throw new InvalidCardException();
+    	if(selectedCard==null) {throw new InvalidCardException("Null Card");
     	}else if(!selectedCard.validateMarbleSize(selectedMarbles)) {
     		throw new InvalidMarbleException("Invalid Size!");
     	}else if(!selectedCard.validateMarbleColours(selectedMarbles)){ 
@@ -129,5 +122,10 @@ public class Player {
     	
     	
     }
+
+	public ArrayList<Marble> getSelectedMarbles() {
+		// TODO Auto-generated method stub
+		return this.selectedMarbles;
+	}
 
 }
