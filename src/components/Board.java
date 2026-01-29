@@ -1,0 +1,415 @@
+package components;
+
+
+import javafx.util.Duration;
+
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import model.Colour;
+import controller.GameController;
+import view.Main;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Application;
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
+import javafx.scene.Cursor;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+
+public class Board {
+	  public StackPane boardRoot;
+	  private ArrayList<ArrayList<Circle>> safeZones ;
+	  private ArrayList<ArrayList<Circle>> baseZones ;
+	  private GameController controller;
+	  private ArrayList<Circle> trackCircles;
+	  private static final int GRID_SIZE = 31;     
+
+	public Board(GameController controller) {
+		safeZones = new ArrayList<ArrayList<Circle>>();
+		baseZones = new ArrayList<ArrayList<Circle>>();
+
+		  for(int i = 0 ; i < 4; i++){
+			  safeZones.add(new  ArrayList<Circle>());
+		  }
+		  for(int i = 0 ; i < 4; i++){
+			  baseZones.add(new  ArrayList<Circle>());
+		  }
+		  
+		
+		this.controller = controller;
+	     StackPane root = new StackPane();
+		 GridPane grid = new GridPane();
+	        grid.setGridLinesVisible(false);
+	        
+	        
+	        trackCircles = new ArrayList<Circle>();
+	        
+	        for (int i = 0; i < GRID_SIZE; i++) {
+	            ColumnConstraints cc = new ColumnConstraints();
+	            RowConstraints    rc = new RowConstraints();
+	            rc.setPercentHeight(100.0/GRID_SIZE);
+	            cc.setPercentWidth(100.0/GRID_SIZE );
+
+	            grid.getColumnConstraints().add(cc);
+	            grid.getRowConstraints().add(rc);
+	        }
+	        
+		    // first part top left
+	        int N = 6;
+	        int offsetX = 0;
+	        int offsetY = 0;
+	        for (int i = 0; i < N; i++) {
+	        	createTrackCircle(grid, offsetX + i,offsetY + N-1-i);
+	        }
+	        
+	        
+	        // Second part top left
+	        offsetX += 6;
+	        offsetY = 1;
+	        N = 6;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX + i,offsetY + i);
+	        }
+	        
+	      // part top
+	        offsetX += 6;
+	        offsetY += 5;
+	        N = 8;
+	        for (int i = 0; i < N; i++) {
+	        	createTrackCircle(grid, offsetX + i,offsetY);
+	        }
+	        
+	        
+	        // FIRST part top right
+	        offsetX += 8;
+	        offsetY = 0;
+	        N= 6;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX + i,offsetY + N-1-i);
+	        }
+	        
+	        // Second part top right
+	        offsetX += 6;
+	        offsetY = 1;
+	        N = 5;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX + i,offsetY + i);
+	        }
+	        
+	        // THIRD part top right
+	        offsetX += 3;
+	        offsetY += 5;
+	        N= 6;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX - i,offsetY + i);
+	        }
+	        
+		    // part right
+	        offsetX -= 5;
+	        offsetY += 6;
+	        N = 7;
+	        for (int i = 0; i < N; i++) {
+	        	createTrackCircle(grid, offsetX,offsetY + i);
+	        }
+	        // first part bottom right
+
+	        offsetY += 7;
+
+	        N = 6;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX + i,offsetY + i);
+	        }
+	        
+	     // Second part bottom right
+	        offsetX += 6;
+	        offsetY += 6;
+	        N= 6;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX - i,offsetY + i);
+	        }
+	     // third part bottom right
+	        offsetX -= 6;
+	        offsetY += 4;
+	        N= 6;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX - i,offsetY - i);
+	        }
+	        
+		    // part bottom
+	        offsetX -= 6;
+	        offsetY -= 5;
+	        N = 8;
+	        for (int i = 0; i < N; i++) {
+	        	createTrackCircle(grid, offsetX - i,offsetY);
+	        }
+	        // first part top left
+	        offsetX -= 8;
+	        offsetY += 1;
+	        N= 6;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX - i,offsetY + i);
+	        }
+		    // second part bottom left
+	        offsetX -= 6;
+	        offsetY += 4;
+	        N= 5;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX - i,offsetY - i);
+	        }
+	     // third part bottom left
+
+	        offsetX = 1;
+	        offsetY -= 10;
+	        N= 6;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX + i,offsetY + N-1-i);
+	        }
+		    // part left
+	        offsetX += 5;
+	        offsetY -= 1;
+	        N = 7;
+	        for (int i = 0; i < N; i++) {
+	        	createTrackCircle(grid, offsetX,offsetY - i);
+	        }
+	        
+		     // third part left right
+	        offsetY -= 7;
+	        N= 6;
+	        for (int i = 0; i < N; i++) {
+
+	        	createTrackCircle(grid, offsetX - i,offsetY - i);
+	        }
+	        
+	        //base cell 1
+	        createBaseCircle(grid, 11,2,0);
+	        createBaseCircle(grid, 12,2,0);
+	        createBaseCircle(grid, 11,3,0);
+	        createBaseCircle(grid, 12,3,0);
+	        
+	      //base cell 2
+	        createBaseCircle(grid, 27,11,1);
+	        createBaseCircle(grid, 28,11,1);
+	        createBaseCircle(grid, 27,12,1);
+	        createBaseCircle(grid, 28,12,1);
+	        
+	      //base cell 3
+	        createBaseCircle(grid, 18,27,2);
+	        createBaseCircle(grid, 19,27,2);
+	        createBaseCircle(grid, 18,28,2);
+	        createBaseCircle(grid, 19,28,2);
+	        
+	      //base cell 4
+	        createBaseCircle(grid, 2, 18, 3);
+	        createBaseCircle(grid, 3, 18, 3);
+	        createBaseCircle(grid, 2, 19, 3);
+	        createBaseCircle(grid, 3, 19, 3);
+	        
+	       
+	      //safe cell 1
+	        createSafeCircle(grid, 3,26, 3);
+	        createSafeCircle(grid, 4,25, 3);
+	        createSafeCircle(grid, 5,24, 3);
+	        createSafeCircle(grid, 6,23, 3);
+	      //safe cell 2
+	        createSafeCircle(grid, 26,27, 2);
+	        createSafeCircle(grid, 25,26, 2);
+	        createSafeCircle(grid, 24,25, 2);
+	        createSafeCircle(grid, 23,24, 2);
+	      //safe cell 3
+	        createSafeCircle(grid, 27,4, 1);
+	        createSafeCircle(grid, 26,5, 1);
+	        createSafeCircle(grid, 25,6, 1);
+	        createSafeCircle(grid, 24,7, 1);
+	        
+	      //safe cell 4
+	        createSafeCircle(grid, 4,3, 0);
+	        createSafeCircle(grid, 5,4, 0);
+	        createSafeCircle(grid, 6,5, 0);
+	        createSafeCircle(grid, 7,6, 0);
+
+	        
+	        grid.setPadding(new Insets(5));
+
+
+
+	        root.getChildren().add(grid);
+	        
+	       
+
+	        
+	        
+//	        Timeline timeline = new Timeline();
+//	        for (int i = 0; i < circles.size(); i++) {
+//	            Circle c = circles.get(i);
+//	            KeyFrame kf = new KeyFrame(
+//	                Duration.seconds(i * 0.5),
+//	                e -> c.setFill(Color.YELLOW)
+//	            );
+//	            timeline.getKeyFrames().add(kf);
+//	        }
+//	       
+//	        timeline.play();
+	        Image backgroundImage = new Image("jackaroo_board.png");
+	        BackgroundImage bgImage = new BackgroundImage(
+	            backgroundImage,
+	            BackgroundRepeat.NO_REPEAT,
+	            BackgroundRepeat.NO_REPEAT,
+	            BackgroundPosition.DEFAULT,
+	            new BackgroundSize(
+	                100, 100, true, true, true, true
+	            )
+	        );
+	        root.setBackground(new Background(bgImage));
+	        grid.setMaxHeight(100);
+		     this.boardRoot = root;
+		     
+		    
+
+
+
+
+	}
+    // Build a Timeline that â€œlights upâ€� one circle every 0.5s
+	
+
+	
+    public ArrayList<ArrayList<Circle>> getSafeZones() {
+		return safeZones;
+	}
+
+
+
+	public ArrayList<ArrayList<Circle>> getBaseZones() {
+		return baseZones;
+	}
+
+
+
+	public ArrayList<Circle> getTrackCircles() {
+		return trackCircles;
+	}
+
+
+
+	private void createTrackCircle(GridPane grid,int motionX,int motionY) {
+    	Circle circle = new Circle(6, Color.GRAY);
+    	circle.setOnMouseClicked(e ->{
+
+            System.out.println("Circle clicked!");
+
+            try {
+				controller.selectMarble(safeZones, trackCircles,circle);
+			} catch (URISyntaxException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        
+    });
+        StackPane cell = new StackPane(circle);
+        grid.add(cell, motionX,motionY);
+        GridPane.setHalignment(circle, HPos.CENTER);
+        GridPane.setValignment (circle, VPos.CENTER);
+        trackCircles.add(circle);
+        
+        
+    }
+	
+	private void createBaseCircle(GridPane grid,int motionX,int motionY, int index) {
+	    	
+    	ArrayList <Colour> colours=controller.getPlayerColours();
+    	Colour currColour= colours.get(index);
+    	Circle circle = new Circle(6);
+    	Color GUIColor = GameController.translatecolortocolor(currColour);
+    	circle.setFill(GUIColor);
+		
+    	
+    	
+
+   
+        StackPane cell = new StackPane(circle);
+        cell.setBackground(new Background(new BackgroundFill(getLightColor(currColour), CornerRadii.EMPTY, Insets.EMPTY)));
+
+        grid.add(cell, motionX,motionY);
+        GridPane.setHalignment(circle, HPos.CENTER);
+        GridPane.setValignment (circle, VPos.CENTER);
+        baseZones.get(index).add(circle);
+	
+	    }
+
+    private void createSafeCircle(GridPane grid,int motionX,int motionY, int index) {
+    	Circle circle = new Circle(6, Color.GRAY);
+   
+        StackPane cell = new StackPane(circle);
+        grid.add(cell, motionX,motionY);
+        GridPane.setHalignment(circle, HPos.CENTER);
+        GridPane.setValignment (circle, VPos.CENTER);
+        circle.setOnMouseClicked(e ->{
+
+                System.out.println("Circle clicked!");
+                try {
+					controller.selectMarble(safeZones, trackCircles,circle);
+				} catch (URISyntaxException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            
+        });
+        safeZones.get(index).add(circle);
+        
+
+    }
+    
+    
+    public static Color getLightColor(Colour playerColor) {
+	    if (playerColor.equals(Colour.GREEN))
+	        return Color.rgb(144, 238, 144); // light green
+	    else if (playerColor.equals(Colour.RED))
+	        return Color.rgb(255, 182, 193); // light pink
+	    else if (playerColor.equals(Colour.YELLOW))
+	    	Color.rgb(255, 255, 204); // light yellow
+	    else if (playerColor.equals(Colour.BLUE))
+	        return Color.rgb(173, 216, 230); // light blue
+	    return Color.LIGHTGRAY;
+	}
+
+
+
+}
